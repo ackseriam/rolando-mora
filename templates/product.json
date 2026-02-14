@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -24,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -70,7 +72,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -98,6 +99,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -188,6 +192,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -259,6 +264,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -404,10 +410,59 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "reviews_section_WErqrT": {
+      "type": "reviews-section",
+      "blocks": {
+        "review_iHKDwi": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_dYtAEw": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_7WkeTb": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        }
+      },
+      "block_order": [
+        "review_iHKDwi",
+        "review_dYtAEw",
+        "review_7WkeTb"
+      ],
+      "name": "GoPure Stylized Reviews",
+      "settings": {
+        "title": "CUSTOMERS",
+        "subtitle": "can't get enough",
+        "bg_color": "#f3f0ff",
+        "card_bg_color": "#fff5f7",
+        "badge_bg_color": "#e0d7ff",
+        "text_color": "#4834d4",
+        "button_label": "See All Reviews",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "reviews_section_WErqrT"
   ]
 }
