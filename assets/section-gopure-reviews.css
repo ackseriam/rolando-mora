@@ -6,9 +6,6 @@
     --color-card-pink: #fff5f7;
     --color-pill-purple: #e0d7ff;
     --color-text-purple: #4834d4;
-    --slide-width-desktop: 60%;
-    /* Configurable width for peek */
-    --slide-width-mobile: 85%;
 }
 
 .bg-wisp {
@@ -17,31 +14,24 @@
 
 .gopure-reviews-section {
     padding: 60px 0;
+    /* Removing side padding to allow full bleed peek */
     overflow: hidden;
-    /* Hide the overflow from the page */
-}
-
-.page-width-carousel {
-    max-width: 100%;
-    /* Allow full width for carousel track */
-    padding: 0;
-    overflow: visible;
-    /* Let track overflow */
+    position: relative;
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
 }
 
 .text-center {
     text-align: center;
 }
 
-/* Typography */
+/* Header Typography */
 .section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 2.2rem;
-    letter-spacing: 3px;
+    margin: 0 0 0;
     color: var(--color-deep-purple);
-    margin: 0;
 }
 
 .section-subtitle {
@@ -49,78 +39,101 @@
     font-style: italic;
     font-size: 1.8rem;
     color: var(--color-deep-purple);
-    margin: 5px 0 40px 0;
+    margin: 0 0 40px 0;
     text-transform: lowercase;
 }
 
-/* Carousel Track */
+/* Carousel Container */
 .reviews-carousel-container {
-    position: relative;
     width: 100%;
-    overflow: visible;
-    /* Important for peek */
+    position: relative;
+    /* Allow overflow for peek effect, handled by body/section overflow usually, but here we want visible track */
 }
 
-/* The wrapper that clips the very edges of the screen if needed, 
-   but here we want it visible mostly. 
-   We rely on .gopure-reviews-section overflow:hidden 
-*/
 .reviews-track-wrapper {
-    display: flex;
-    align-items: center;
+    overflow: hidden;
+    /* Hide ultra-far slides, but allow peek logic via width */
     width: 100%;
-    /* No overflow hidden here to allow slides to be seen on sides of "center" if we used a narrow container */
 }
 
 .reviews-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    width: 100%;
-    will-change: transform;
+    /* Smooth easeOutQuart like easing */
+    padding: 0;
+    margin: 0;
+    /* Track width will be huge, let flex handle it */
 }
 
-/* Slides */
+/* Slide Logic for Peek */
 .review-slide {
-    flex: 0 0 var(--slide-width-mobile);
+    flex: 0 0 90%;
+    /* Mobile: Show mostly one slide but hint at others */
     min-width: 0;
     box-sizing: border-box;
-    padding: 0 8px;
-
-    /* Transition Key Properties */
-    opacity: 0.4;
-    transform: scale(0.9);
-    transition: all 0.5s ease;
-    user-select: none;
+    padding: 0 15px;
+    /* Gap between slides */
+    opacity: 0.6;
+    /* Fade inactive slides */
+    transform: scale(0.92);
+    /* Shrink inactive slides */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 }
 
 .review-slide.is-selected {
     opacity: 1;
     transform: scale(1);
-    z-index: 10;
 }
 
+/* Title and Subtitle inside each slide */
+.review-slide .section-title {
+    margin: 0;
+    padding: 0;
+}
+
+.review-slide .section-subtitle {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+/* Card Design */
 .review-card {
     background-color: var(--color-card-pink);
-    border-radius: 24px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(72, 52, 212, 0.15);
-    height: 100%;
-    position: relative;
+    flex: 1;
+    /* Fill remaining slide height */
 }
 
-/* Tablet/Desktop */
 @media (min-width: 768px) {
     .review-slide {
-        flex: 0 0 var(--slide-width-desktop);
-        padding: 0 20px;
+        flex: 0 0 85%;
+        background-color: white;
+        border-radius: 32px;
+        box-shadow: 0 10px 30px #4834d41a;
+        padding: 35px;
     }
 
     .review-card {
         flex-direction: row;
         height: 380px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .review-slide {
+        flex: 0 0 85%;
+        background-color: var(--color-card-pink);
         border-radius: 32px;
+        box-shadow: 0 10px 30px #4834d41a;
+        /* Show even more of adjacent slides on large screens */
+        padding: 35px;
     }
 }
 
@@ -128,50 +141,52 @@
 .review-images-col {
     flex: 5;
     display: flex;
-    padding: 10px;
-    gap: 10px;
+    padding: 12px;
+    gap: 12px;
 }
 
 .image-wrapper {
     flex: 1;
     position: relative;
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
 }
 
 .review-img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
-/* Pill Labels */
 .image-label-pill {
     position: absolute;
-    top: 12px;
+    top: 10px;
     background-color: var(--color-pill-purple);
     color: var(--color-deep-purple);
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 999px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     z-index: 2;
-    letter-spacing: 0.5px;
 }
 
 .label-left {
     left: 10px;
+    display: none;
 }
 
 .label-right {
     right: 10px;
+    display: none;
 }
 
 /* Content Column */
 .review-content-col {
     flex: 3;
-    padding: 24px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -181,142 +196,170 @@
 
 .stars {
     color: #C87BFF;
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 2px;
 }
 
 .review-quote {
-    font-size: 1.05rem;
-    font-weight: 800;
+    font-size: 1.1rem;
+    font-weight: 600;
     line-height: 1.4;
-    margin: 0 0 16px 0;
+    margin: 0 0 20px 0;
     color: var(--color-deep-purple);
+    font-style: normal;
+    text-align: center;
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
 }
 
 .reviewer-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-top: auto;
 }
 
 .reviewer-img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 2px 8px rgba(72, 52, 212, 0.1);
+    border: 1px solid rgba(72, 52, 212, 0.2);
     object-fit: cover;
 }
 
 .reviewer-name {
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-deep-purple);
 }
 
-.reviewer-meta {
-    font-size: 0.7rem;
-    color: var(--color-deep-purple);
-    opacity: 0.8;
-}
-
-/* Nav Arrows (Floating) */
+/* Navigation Arrows - Fixed Position relative to Container, not slide */
 .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background-color: #fff;
-    border: 1px solid rgba(72, 52, 212, 0.1);
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     color: var(--color-deep-purple);
+    border: 1px solid rgba(72, 52, 212, 0.1);
+    font-size: 1.2rem;
     z-index: 20;
     transition: all 0.2s;
 }
 
 .nav-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
     background-color: var(--color-deep-purple);
-    color: #fff;
-    box-shadow: 0 6px 16px rgba(72, 52, 212, 0.3);
+    color: #ffffff;
 }
 
+/* Position arrows depending on visibility */
 .nav-prev {
-    left: 5%;
+    left: 2%;
 }
 
 .nav-next {
-    right: 5%;
+    right: 2%;
 }
 
-/* Ensure arrows don't verify visual hierarchy on widely varying screens */
-@media (max-width: 1024px) {
-    .nav-arrow {
-        display: none;
+@media (min-width: 768px) {
+    .nav-prev {
+        left: 5%;
+    }
+
+    .nav-next {
+        right: 5%;
     }
 }
 
 @media (min-width: 1400px) {
     .nav-prev {
-        left: calc(20% - 60px);
+        left: calc(50% - 650px);
     }
 
     .nav-next {
-        right: calc(20% - 60px);
+        right: calc(50% - 650px);
     }
 }
 
-/* Bottom Progress Area */
-.bottom-area {
-    margin-top: 40px;
-    padding: 0 20px;
-    text-align: center;
+/* Bottom Elements */
+.bottom-pill-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
-.disclaimer-pill {
-    display: inline-block;
+.bottom-disclaimer-pill {
     background-color: var(--color-pill-purple);
+    padding: 6px 20px;
+    border-radius: 9999px;
     color: var(--color-deep-purple);
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 6px 18px;
-    border-radius: 999px;
-    margin-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
-.progress-track {
-    width: 100%;
+.progress-bar-container {
+    width: 90%;
     max-width: 600px;
-    height: 3px;
-    background-color: #eee;
+    height: 2px;
+    background-color: rgba(72, 52, 212, 0.1);
     margin: 0 auto;
-    border-radius: 3px;
+    border-radius: 2px;
     overflow: hidden;
 }
 
-.progress-fill {
-    height: 100%;
+.progress-bar-fill {
     background-color: var(--color-deep-purple);
-    width: 0%;
+    height: 100%;
     transition: width 0.3s ease;
 }
 
-.see-all-link {
-    display: inline-block;
-    margin-top: 25px;
-    color: var(--color-deep-purple);
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 1px;
-    border-bottom: 2px solid rgba(72, 52, 212, 0.2);
-    padding-bottom: 2px;
+@media (max-width: 767px) {
+    .reviews-carousel-container {
+        padding: 0;
+    }
+
+    .nav-arrow {
+        width: 36px;
+        height: 36px;
+        left: 10px;
+    }
+
+    .nav-next {
+        left: auto;
+        right: 10px;
+    }
+
+    .review-content-col {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .image-wrapper {
+        min-height: 200px;
+    }
+
+    .review-slide {
+        flex: 0 0 85%;
+        background-color: white;
+        border-radius: 32px;
+        box-shadow: 0 10px 30px #4834d41a;
+    }
 }

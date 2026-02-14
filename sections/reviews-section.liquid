@@ -1,6 +1,12 @@
 {% comment %}
   GoPure Style Reviews Section - Stylized Purple Design
-  Refined for "Peek" Effect with Neighbors
+  Replicating exact design from Stitch V2:
+  - Deep Purple Typography
+  - Rounded Cards & Images
+  - Pill Labels
+  - Circular Reviewer Photos
+  - Bottom Progress Bar
+  - Centered Peek Carousel
 {% endcomment %}
 
 {{ 'section-gopure-reviews.css' | asset_url | stylesheet_tag }}
@@ -15,32 +21,32 @@
 {%- endstyle -%}
 
 <div class="gopure-reviews-section section-{{ section.id }} bg-wisp" id="product-reviews">
-  <div class="page-width-carousel text-center">
-    
-    {%- if section.settings.title != blank -%}
-      <h2 class="section-title">{{ section.settings.title }}</h2>
-    {%- endif -%}
-    {%- if section.settings.subtitle != blank -%}
-      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
-
+  <div class="page-width"> 
     <div class="reviews-carousel-container">
-      
-      <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}">
+      <!-- Navigation Arrows -->
+      <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}" aria-label="Previous Slide">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
-      <button class="nav-arrow nav-next" id="NextSlide-{{ section.id }}">
+      <button class="nav-arrow nav-next" id="NextSlide-{{ section.id }}" aria-label="Next Slide">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
 
       <div class="reviews-track-wrapper">
-        <div class="reviews-track" id="ReviewsTrack-{{ section.id }}" style="transform: translateX(0);">
+        <div class="reviews-track" id="ReviewsTrack-{{ section.id }}">
           {%- for block in section.blocks -%}
             <div class="review-slide" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+              
+              {%- if section.settings.title != blank -%}
+                <h2 class="section-title text-center">{{ section.settings.title }}</h2>
+              {%- endif -%}
+              {%- if section.settings.subtitle != blank -%}
+                <p class="section-subtitle text-center">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+              
               <div class="review-card">
                 
+                <!-- Left Column: Images -->
                 <div class="review-images-col">
-                  <!-- Before Image -->
                   <div class="image-wrapper">
                     {%- if block.settings.image_before != blank -%}
                       {{ block.settings.image_before | image_url: width: 600 | image_tag: loading: 'lazy', class: 'review-img' }}
@@ -50,7 +56,6 @@
                     <span class="image-label-pill label-left">Before</span>
                   </div>
 
-                  <!-- After Image -->
                   <div class="image-wrapper">
                     {%- if block.settings.image_after != blank -%}
                       {{ block.settings.image_after | image_url: width: 600 | image_tag: loading: 'lazy', class: 'review-img' }}
@@ -61,21 +66,25 @@
                   </div>
                 </div>
 
+                <!-- Right Column: Content -->
                 <div class="review-content-col">
                   <div class="stars">★★★★★</div>
-                  <blockquote class="review-quote">"{{ block.settings.quote }}"</blockquote>
+                  <blockquote class="review-quote">
+                    "{{ block.settings.quote }}"
+                  </blockquote>
                   
                   <div class="reviewer-info">
                      {%- if block.settings.author_image != blank -%}
                       {{ block.settings.author_image | image_url: width: 100 | image_tag: loading: 'lazy', class: 'reviewer-img' }}
                     {%- else -%}
-                      <img src="https://ui-avatars.com/api/?name={{ block.settings.author_name | url_encode }}&background=e0d7ff&color=4834d4&size=100" alt="{{ block.settings.author_name }}" class="reviewer-img">
+                      <!-- Placeholder Avatar -->
+                      <img src="https://ui-avatars.com/api/?name={{ block.settings.author_name }}&background=e0d7ff&color=4834d4" alt="{{ block.settings.author_name }}" class="reviewer-img">
                     {%- endif -%}
                     
                     <div>
                         <div class="reviewer-name">{{ block.settings.author_name }}</div>
                         {%- if block.settings.concern != blank -%}
-                            <div class="reviewer-meta">{{ block.settings.concern }}</div>
+                            <div class="reviewer-meta" style="font-size: 0.8rem; margin:0;">{{ block.settings.concern }}</div>
                         {%- endif -%}
                     </div>
                   </div>
@@ -88,21 +97,22 @@
       </div>
     </div>
 
-    <!-- Bottom Info -->
-    <div class="bottom-area">
-        <span class="disclaimer-pill">Consumer results, may vary</span>
-        
-        <div class="progress-track">
-            <div class="progress-fill" id="ProgressBar-{{ section.id }}"></div>
-        </div>
-
-        {%- if section.settings.button_label != blank -%}
-            <a href="{{ section.settings.button_link }}" class="see-all-link">
-            {{ section.settings.button_label }} →
-            </a>
-        {%- endif -%}
+    <!-- Bottom Elements -->
+    <div class="bottom-pill-container">
+        <span class="bottom-disclaimer-pill text-center">Consumer results, may vary</span>
     </div>
 
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="ProgressBar-{{ section.id }}"></div>
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="text-center" style="margin-top: 20px;">
+        <a href="{{ section.settings.button_link }}" class="see-all-btn">
+          {{ section.settings.button_label }} <span>→</span>
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -110,76 +120,64 @@
   document.addEventListener('DOMContentLoaded', () => {
     const sectionId = '{{ section.id }}';
     const track = document.getElementById(`ReviewsTrack-${sectionId}`);
+    const progressBar = document.getElementById(`ProgressBar-${sectionId}`);
     if (!track) return;
 
-    let slides = Array.from(document.querySelectorAll(`#ReviewsTrack-${sectionId} .review-slide`));
+    const slides = document.querySelectorAll(`#ReviewsTrack-${sectionId} .review-slide`);
     const slideCount = slides.length;
-    let currentIndex = 0; // The index in the data array, not visually
+    let currentIndex = 0;
 
-    const progressBar = document.getElementById(`ProgressBar-${sectionId}`);
-    
-    // Config
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    
-    // Update Layout Function
-    function render() {
-        if (!track) return;
+    const prevBtn = document.getElementById(`PrevSlide-${sectionId}`);
+    const nextBtn = document.getElementById(`NextSlide-${sectionId}`);
+
+    function updateCarousel(index) {
+        if (index < 0) index = slideCount - 1;
+        if (index >= slideCount) index = 0;
+
+        currentIndex = index;
+
+        // Calculate center position
+        const trackWrapper = track.parentElement;
+        const slideWidth = slides[0].offsetWidth; // Includes padding/margin if set continuously in CSS
+        const wrapperWidth = trackWrapper.offsetWidth;
         
-        // Ensure we know the slide width
-        // We calculate translation to center the current index
-        const trackWidth = track.parentElement.offsetWidth;
-        const slideWidth = slides[0].offsetWidth; 
+        // Calculate the center offset
+        // We want the current slide to be centered in the wrapper
+        // TranslateX = -(slidePosition) + (halfWrapper - halfSlide)
         
-        // Calculate center offset
-        const centerOffset = (trackWidth - slideWidth) / 2;
+        // Get total distance to this slide
+        // Since all slides are same width (flex basis), simple math
+        // But better to use offsetLeft to be safe
+        const slideLeft = slides[index].offsetLeft;
+        const centerOffset = (wrapperWidth - slideWidth) / 2;
         
-        // Translate to move the current slide to 0 (left edge), then add center offset
-        // But slides are just in a flow.
-        // We simply move the WHOLE TRACK so that the target slide is at the center.
-        // Position of target slide relative to track start = index * slideWidth (roughly, if no gaps, but flex has gaps)
+        const translateValue = -(slideLeft - centerOffset);
         
-        // Better: use offsetLeft of the target slide
-        const targetSlide = slides[currentIndex];
-        const currentLeft = targetSlide.offsetLeft;
+        track.style.transform = `translateX(${translateValue}px)`;
         
-        const translateX = -(currentLeft - centerOffset);
-        
-        track.style.transform = `translateX(${translateX}px)`;
-        
-        // Update Classes
+        // Update Classes for Visuals (Opacity/Scale)
         slides.forEach((slide, i) => {
             if (i === currentIndex) {
                 slide.classList.add('is-selected');
-                slide.style.opacity = '1';
-                slide.style.transform = 'scale(1)';
             } else {
                 slide.classList.remove('is-selected');
-                slide.style.opacity = '0.4';
-                slide.style.transform = 'scale(0.9)';
             }
         });
-        
-        // Update Progress
-        const percent = ((currentIndex + 1) / slideCount) * 100;
-        if(progressBar) progressBar.style.width = `${percent}%`;
+
+      // Update Progress Bar
+      const progress = ((currentIndex + 1) / slideCount) * 100;
+      if (progressBar) progressBar.style.width = `${progress}%`;
     }
 
-    // Controls
-    document.getElementById(`PrevSlide-${sectionId}`)?.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-        render();
-    });
-    
-    document.getElementById(`NextSlide-${sectionId}`)?.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slideCount;
-        render();
-    });
+    if(prevBtn) prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    if(nextBtn) nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
 
-    window.addEventListener('resize', render);
-    
-    // Initial Render
-    // Wait for layout
-    setTimeout(render, 100);
+    // Handle Resize to recalculate centers
+    window.addEventListener('resize', () => updateCarousel(currentIndex));
+
+    // Initialize Progress
+    // Small timeout to ensure rendering is complete
+    setTimeout(() => updateCarousel(0), 100);
   });
 </script>
 
@@ -251,26 +249,27 @@
       "name": "Review",
       "settings": [
         {
-            "type": "image_picker",
-            "id": "image_before",
-            "label": "Before Image"
+          "type": "image_picker",
+          "id": "image_before",
+          "label": "Before Image"
         },
         {
-            "type": "image_picker",
-            "id": "image_after",
-            "label": "After Image"
+          "type": "image_picker",
+          "id": "image_after",
+          "label": "After Image"
         },
         {
-            "type": "text",
-            "id": "duration",
-            "label": "Duration Label",
-            "default": "8 Weeks"
+          "type": "text",
+          "id": "duration",
+          "label": "Duration Label",
+          "default": "8 Weeks",
+          "info": "Appears after 'After' on the image label"
         },
         {
-            "type": "textarea",
-            "id": "quote",
-            "label": "Review Quote",
-            "default": "The glow is actually insane."
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "The glow is actually insane."
         },
         {
             "type": "image_picker",
@@ -278,16 +277,16 @@
             "label": "Author Photo"
         },
         {
-            "type": "text",
-            "id": "author_name",
-            "label": "Author Name",
-            "default": "Sarah J."
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Sarah J."
         },
         {
-            "type": "text",
-            "id": "concern",
-            "label": "Author Title/Concern",
-            "default": "Dullness"
+          "type": "text",
+          "id": "concern",
+          "label": "Skin Concern",
+          "default": "Dullness"
         }
       ]
     }
@@ -296,11 +295,23 @@
     {
       "name": "GoPure Stylized Reviews",
       "blocks": [
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" }
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+            "type": "review"
+          },
+          {
+            "type": "review"
+          }
       ]
     }
   ]
-}
+} 
 {% endschema %}
