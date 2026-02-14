@@ -21,14 +21,7 @@
 {%- endstyle -%}
 
 <div class="gopure-reviews-section section-{{ section.id }} bg-wisp" id="product-reviews">
-  <div class="page-width">
-    {%- if section.settings.title != blank -%}
-      <h2 class="section-title text-center">{{ section.settings.title }}</h2>
-    {%- endif -%}
-    {%- if section.settings.subtitle != blank -%}
-      <p class="section-subtitle text-center">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
-
+  <div class="page-width"> 
     <div class="reviews-carousel-container">
       <!-- Navigation Arrows -->
       <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}" aria-label="Previous Slide">
@@ -42,6 +35,14 @@
         <div class="reviews-track" id="ReviewsTrack-{{ section.id }}">
           {%- for block in section.blocks -%}
             <div class="review-slide" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+              
+              {%- if section.settings.title != blank -%}
+                <h2 class="section-title text-center">{{ section.settings.title }}</h2>
+              {%- endif -%}
+              {%- if section.settings.subtitle != blank -%}
+                <p class="section-subtitle text-center">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+              
               <div class="review-card">
                 
                 <!-- Left Column: Images -->

@@ -68,17 +68,20 @@
 
 /* Slide Logic for Peek */
 .review-slide {
-    flex: 0 0 85%;
+    flex: 0 0 90%;
     /* Mobile: Show mostly one slide but hint at others */
     min-width: 0;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 15px;
     /* Gap between slides */
-    opacity: 0.5;
+    opacity: 0.6;
     /* Fade inactive slides */
-    transform: scale(0.95);
+    transform: scale(0.92);
     /* Shrink inactive slides */
     transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .review-slide.is-selected {
@@ -86,22 +89,31 @@
     transform: scale(1);
 }
 
+/* Title and Subtitle inside each slide */
+.review-slide .section-title {
+    margin: 0;
+    padding: 0;
+}
+
+.review-slide .section-subtitle {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
 /* Card Design */
 .review-card {
     background-color: var(--color-card-pink);
-    border-radius: 32px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(72, 52, 212, 0.1);
-    height: 100%;
-    /* Fill slide height */
+    flex: 1;
+    /* Fill remaining slide height */
 }
 
 @media (min-width: 768px) {
     .review-slide {
-        flex: 0 0 65%;
-        /* Desktop: Show 65% width to allow large peeks on sides */
+        flex: 0 0 50%;
+        /* Desktop: Show 50% width to allow significant peeks on both sides */
         padding: 0 20px;
     }
 
@@ -113,8 +125,12 @@
 
 @media (min-width: 1200px) {
     .review-slide {
-        flex: 0 0 55%;
-        /* Even smaller % on very large screens for more peek */
+        flex: 0 0 85%;
+        background-color: var(--color-card-pink);
+        border-radius: 32px;
+        box-shadow: 0 10px 30px #4834d41a;
+        /* Show even more of adjacent slides on large screens */
+        padding: 35px;
     }
 }
 
@@ -187,6 +203,7 @@
     margin: 0 0 20px 0;
     color: var(--color-deep-purple);
     font-style: normal;
+    text-align: center;
 }
 
 .reviewer-info {
@@ -239,20 +256,30 @@
 
 /* Position arrows depending on visibility */
 .nav-prev {
-    left: 5%;
+    left: 2%;
 }
 
 .nav-next {
-    right: 5%;
+    right: 2%;
+}
+
+@media (min-width: 768px) {
+    .nav-prev {
+        left: 5%;
+    }
+
+    .nav-next {
+        right: 5%;
+    }
 }
 
 @media (min-width: 1400px) {
     .nav-prev {
-        left: calc(50% - 600px);
+        left: calc(50% - 650px);
     }
 
     .nav-next {
-        right: calc(50% - 600px);
+        right: calc(50% - 650px);
     }
 }
 
@@ -324,5 +351,8 @@
 
     .review-slide {
         flex: 0 0 85%;
+        background-color: white;
+        border-radius: 32px;
+        box-shadow: 0 10px 30px #4834d41a;
     }
 }
