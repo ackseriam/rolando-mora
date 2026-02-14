@@ -1,4 +1,11 @@
 {% # theme-check-disable %}
+
+{% comment %} Landour font – loaded globally via CDN {% endcomment %}
+<link
+  href="https://db.onlinewebfonts.com/c/b41f60a682c9ae245991ffadaf42a817?family=Landour+Regular+Text"
+  rel="stylesheet"
+>
+
 {%- unless settings.type_body_font.system? -%}
   <link
     rel="preload"
