@@ -1,0 +1,279 @@
+{% comment %}
+  GoPure Style Reviews Section - Stylized Purple Design
+  Replicating exact design from Stitch V2:
+  - Deep Purple Typography
+  - Rounded Cards & Images
+  - Pill Labels
+  - Circular Reviewer Photos
+  - Bottom Progress Bar
+{% endcomment %}
+
+{{ 'section-gopure-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --color-lavender-bg: {{ section.settings.bg_color }};
+    --color-card-pink: {{ section.settings.card_bg_color }};
+    --color-pill-purple: {{ section.settings.badge_bg_color }};
+    --color-deep-purple: {{ section.settings.text_color }};
+  }
+{%- endstyle -%}
+
+<div class="gopure-reviews-section section-{{ section.id }} bg-wisp" id="product-reviews">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="section-title text-center">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="section-subtitle text-center">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    <div class="reviews-carousel-container">
+      <!-- Navigation Arrows -->
+      <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}" aria-label="Previous Slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="nav-arrow nav-next" id="NextSlide-{{ section.id }}" aria-label="Next Slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="reviews-track-wrapper">
+        <div class="reviews-track" id="ReviewsTrack-{{ section.id }}">
+          {%- for block in section.blocks -%}
+            <div class="review-slide" {{ block.shopify_attributes }}>
+              <div class="review-card">
+                
+                <!-- Left Column: Images -->
+                <div class="review-images-col">
+                  <div class="image-wrapper">
+                    {%- if block.settings.image_before != blank -%}
+                      {{ block.settings.image_before | image_url: width: 600 | image_tag: loading: 'lazy', class: 'review-img' }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg review-img' }}
+                    {%- endif -%}
+                    <span class="image-label-pill label-left">Before</span>
+                  </div>
+
+                  <div class="image-wrapper">
+                    {%- if block.settings.image_after != blank -%}
+                      {{ block.settings.image_after | image_url: width: 600 | image_tag: loading: 'lazy', class: 'review-img' }}
+                    {%- else -%}
+                      {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg review-img' }}
+                    {%- endif -%}
+                    <span class="image-label-pill label-right">After {{ block.settings.duration }}</span>
+                  </div>
+                </div>
+
+                <!-- Right Column: Content -->
+                <div class="review-content-col">
+                  <div class="stars">★★★★★</div>
+                  <blockquote class="review-quote">
+                    "{{ block.settings.quote }}"
+                  </blockquote>
+                  
+                  <div class="reviewer-info">
+                     {%- if block.settings.author_image != blank -%}
+                      {{ block.settings.author_image | image_url: width: 100 | image_tag: loading: 'lazy', class: 'reviewer-img' }}
+                    {%- else -%}
+                      <!-- Placeholder Avatar -->
+                      <img src="https://ui-avatars.com/api/?name={{ block.settings.author_name }}&background=e0d7ff&color=4834d4" alt="{{ block.settings.author_name }}" class="reviewer-img">
+                    {%- endif -%}
+                    
+                    <div>
+                        <div class="reviewer-name">{{ block.settings.author_name }}</div>
+                        {%- if block.settings.concern != blank -%}
+                            <div class="reviewer-meta" style="font-size: 0.8rem; margin:0;">{{ block.settings.concern }}</div>
+                        {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Elements -->
+    <div class="bottom-pill-container">
+        <span class="bottom-disclaimer-pill text-center">Consumer results, may vary</span>
+    </div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="ProgressBar-{{ section.id }}"></div>
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="text-center" style="margin-top: 20px;">
+        <a href="{{ section.settings.button_link }}" class="see-all-btn">
+          {{ section.settings.button_label }} <span>→</span>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sectionId = '{{ section.id }}';
+    const track = document.getElementById(`ReviewsTrack-${sectionId}`);
+    const progressBar = document.getElementById(`ProgressBar-${sectionId}`);
+    if (!track) return;
+
+    const slides = document.querySelectorAll(`#ReviewsTrack-${sectionId} .review-slide`);
+    const slideCount = slides.length;
+    let currentIndex = 0;
+
+    const prevBtn = document.getElementById(`PrevSlide-${sectionId}`);
+    const nextBtn = document.getElementById(`NextSlide-${sectionId}`);
+
+    function updateCarousel(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+
+      currentIndex = index;
+      const translateValue = -index * 100;
+      track.style.transform = `translateX(${translateValue}%)`;
+      
+      // Update Progress Bar
+      const progress = ((currentIndex + 1) / slideCount) * 100;
+      if (progressBar) progressBar.style.width = `${progress}%`;
+    }
+
+    if(prevBtn) prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    if(nextBtn) nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+    // Initialize Progress
+    updateCarousel(0);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "GoPure Stylized Reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "CUSTOMERS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "can't get enough"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#f3f0ff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#fff5f7"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Pill Label Color",
+      "default": "#e0d7ff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text/Heading Color",
+      "default": "#4834d4"
+    },
+    {
+      "type": "header",
+      "content": "Footer"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "See All Reviews"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_before",
+          "label": "Before Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_after",
+          "label": "After Image"
+        },
+        {
+          "type": "text",
+          "id": "duration",
+          "label": "Duration Label",
+          "default": "8 Weeks",
+          "info": "Appears after 'After' on the image label"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "The glow is actually insane."
+        },
+        {
+            "type": "image_picker",
+            "id": "author_image",
+            "label": "Author Photo"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Sarah J."
+        },
+        {
+          "type": "text",
+          "id": "concern",
+          "label": "Skin Concern",
+          "default": "Dullness"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GoPure Stylized Reviews",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

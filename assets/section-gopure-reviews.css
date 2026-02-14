@@ -1,0 +1,286 @@
+/* Stylized Purple Design - GoPure Reviews */
+
+:root {
+    --color-deep-purple: #4834d4;
+    --color-lavender-bg: #f3f0ff;
+    --color-card-pink: #fff5f7;
+    --color-pill-purple: #e0d7ff;
+    --color-text-purple: #4834d4;
+}
+
+.bg-wisp {
+    background-color: var(--color-lavender-bg);
+}
+
+.gopure-reviews-section {
+    padding: 60px 20px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Manrope', sans-serif;
+    /* Start using Manrope if available, fallback sans-serif */
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Header Typography */
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    /* Extra Bold */
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    margin: 0 0 5px 0;
+    letter-spacing: 3px;
+    /* Widest tracking */
+    color: var(--color-deep-purple);
+}
+
+.section-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--color-deep-purple);
+    margin: 0 0 40px 0;
+    text-transform: lowercase;
+    /* as per design */
+}
+
+/* Carousel Container */
+.reviews-carousel-container {
+    max-width: 900px;
+    /* Slightly tighter width */
+    margin: 0 auto;
+    position: relative;
+    padding: 0 50px;
+    /* Space for arrows */
+}
+
+.reviews-track-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    /* Soft rounding for the whole track area if needed */
+}
+
+.reviews-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.review-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+/* Card Design */
+.review-card {
+    background-color: var(--color-card-pink);
+    border-radius: 32px;
+    /* rounded-[2rem] */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(72, 52, 212, 0.1);
+    /* Purple tint shadow */
+}
+
+@media (min-width: 768px) {
+    .review-card {
+        flex-direction: row;
+        height: 380px;
+    }
+}
+
+/* Images Column */
+.review-images-col {
+    flex: 5;
+    /* Adjusted ratio */
+    display: flex;
+    padding: 12px;
+    gap: 12px;
+}
+
+.image-wrapper {
+    flex: 1;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.review-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* New Pill Labels */
+.image-label-pill {
+    position: absolute;
+    top: 10px;
+    background-color: var(--color-pill-purple);
+    color: var(--color-deep-purple);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+}
+
+.label-left {
+    left: 10px;
+}
+
+.label-right {
+    right: 10px;
+}
+
+/* Content Column */
+.review-content-col {
+    flex: 3;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.stars {
+    color: #C87BFF;
+    /* Keep star color bright */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 2px;
+}
+
+.review-quote {
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    color: var(--color-deep-purple);
+    font-style: normal;
+}
+
+/* Reviewer Info with Circular Image */
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.reviewer-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(72, 52, 212, 0.2);
+    object-fit: cover;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-deep-purple);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: var(--color-deep-purple);
+    border: none;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.nav-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-prev {
+    left: 0;
+}
+
+.nav-next {
+    right: 0;
+}
+
+/* Bottom Elements */
+.bottom-pill-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.bottom-disclaimer-pill {
+    background-color: var(--color-pill-purple);
+    padding: 6px 20px;
+    border-radius: 9999px;
+    color: var(--color-deep-purple);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    max-width: 600px;
+    height: 2px;
+    background-color: rgba(72, 52, 212, 0.1);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    width: 33%;
+    /* Dynamic based on slide */
+    height: 100%;
+    background-color: var(--color-deep-purple);
+    transition: width 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .reviews-carousel-container {
+        padding: 0;
+    }
+
+    .nav-arrow {
+        display: none;
+    }
+
+    /* Hide arrows on mobile */
+    .review-content-col {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .image-wrapper {
+        min-height: 200px;
+    }
+}
