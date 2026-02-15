@@ -8,7 +8,7 @@
  
   @media (min-width: 990px) {
     .consumer-approved {
-      padding: 5rem 0;
+      padding: 6rem 0; /* Increased padding matches lg:py-6xl */
     }
   }
  
@@ -22,7 +22,7 @@
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Mobile matching font-2xl */
     line-height: 1.2;
     margin: 0;
     color: {{ section.settings.heading_color }};
@@ -30,7 +30,7 @@
  
   @media (min-width: 990px) {
     .consumer-approved__heading {
-      font-size: 3rem;
+      font-size: 64px; /* Desktop matching font-5xl */
     }
   }
  
@@ -39,51 +39,52 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     position: relative;
   }
  
+  /* Desktop Layout */
   @media (min-width: 990px) {
     .consumer-approved__cards {
       flex-direction: row;
       justify-content: center;
-      gap: 0;
+      gap: 0; /* Gap handled by JS/Transform for fan effect */
       margin-top: 5rem;
+      height: 400px; /* Ensure height for fanned cards */
+      align-items: center;
     }
   }
  
   .consumer-approved__card {
     background-color: {{ section.settings.card_color }};
-    border-radius: 0.8rem;
+    border-radius: 12px; /* br-md */
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 340px;
-    min-height: 220px;
-    font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
+    max-width: 320px;
+    min-height: 240px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow for depth */
     will-change: transform, opacity;
   }
  
   @media (min-width: 990px) {
     .consumer-approved__card {
-      flex: 1;
+      /* Absolute positioning or specific margins might be needed if pure transform isn't enough, 
+         but flex center + transform works for the fan effect if container has height. 
+         Actually, the user's script uses transforms from a centered position. */
+      flex: 0 0 300px; /* Fixed width for fanned cards */
       max-width: none;
       padding: 3rem 2rem;
+      opacity: 0; /* Initial state for JS animation */
     }
   }
  
-  /* Desktop: JS controls transforms and opacity directly */
-  @media (min-width: 990px) {
-    .consumer-approved__card {
-      opacity: 0;
-    }
-  }
- 
-  /* Mobile: CSS transition fade-in */
+  /* Mobile Animation: CSS transition fade-in */
   @media (max-width: 989px) {
     .consumer-approved__card {
       opacity: 0;
@@ -92,13 +93,8 @@
                   opacity 0.7s cubic-bezier(0.33, 1, 0.68, 1);
     }
  
-    .consumer-approved__card--delay-1 {
-      transition-delay: 0.1s;
-    }
- 
-    .consumer-approved__card--delay-2 {
-      transition-delay: 0.2s;
-    }
+    .consumer-approved__card--delay-1 { transition-delay: 0.1s; }
+    .consumer-approved__card--delay-2 { transition-delay: 0.2s; }
  
     .consumer-approved__cards.is-visible .consumer-approved__card {
       opacity: 1;
@@ -119,13 +115,13 @@
  
   @media (min-width: 990px) {
     .consumer-approved__number {
-      font-size: 4.5rem;
+      font-size: 4.5rem; /* font-7xl */
     }
   }
  
   .consumer-approved__description {
-    font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* weight-600 */
     font-size: 1rem;
     line-height: 1.2;
     margin: 0;
@@ -135,15 +131,16 @@
  
   .consumer-approved__disclaimer {
     margin-top: 2.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: {{ section.settings.disclaimer_color }};
-    font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    font-style: italic;
   }
  
   @media (min-width: 990px) {
     .consumer-approved__disclaimer {
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
     }
   }
 </style>
@@ -186,15 +183,15 @@
     var cards = cardsContainer.querySelectorAll('.consumer-approved__card');
     var isDesktop = window.matchMedia('(min-width: 990px)');
  
-    /* Card final transform values */
+    /* Exact Card Transform Values from GoPure */
     var cardData = [
-      { finalX: 78.33, rotation: -5.03 },
+      { finalX: -78.33, rotation: -5.03 },
       { finalX: 0, rotation: 0.698 },
-      { finalX: -78.33, rotation: 2.27 }
+      { finalX: 78.33, rotation: 5.03 }
     ];
  
     /* Extra spread offset for initial clustered state (px toward center) */
-    var CLUSTER_OFFSET = 280;
+    var CLUSTER_OFFSET = 200;
  
     /* Ease-out cubic for smooth deceleration */
     function easeOutCubic(t) {
@@ -205,8 +202,12 @@
     function getScrollProgress() {
       var rect = section.getBoundingClientRect();
       var viewH = window.innerHeight;
-      var start = viewH;
+      
+      // Animation triggers when top of section travels from bottom of screen (start) 
+      // to about 30% up the screen (end)
+      var start = viewH * 0.9; 
       var end = viewH * 0.3;
+      
       var raw = (start - rect.top) / (start - end);
       return Math.max(0, Math.min(1, raw));
     }
@@ -221,19 +222,21 @@
       for (var i = 0; i < cards.length; i++) {
         var data = cardData[i];
  
-        /* Interpolate from clustered (center) to final spread position */
-        /* Initial extra offset pushes cards toward center; fades to 0 at p=1 */
+        /* Interpolate */
+        /* Start: Clustered in center (offset = CLUSTER_OFFSET) */
+        /* End: Fanned out (offset = 0) */
         var clusterX = (i === 0) ? CLUSTER_OFFSET : (i === 2) ? -CLUSTER_OFFSET : 0;
         var extraOffset = clusterX * (1 - p);
+        
+        /* Final X position includes the static offset (e.g. 78.33px) + dynamic cluster offset */
         var currentX = data.finalX + extraOffset;
+        
+        /* Rotation also interpolates from 0 to final */
+        var currentRot = data.rotation * p;
  
-        cards[i].style.transform = 'translateX(' + currentX + 'px) rotate(' + data.rotation + 'deg)';
-        cards[i].style.opacity = Math.min(1, rawProgress * 2.5);
+        cards[i].style.transform = 'translateX(' + currentX + 'px) rotate(' + currentRot + 'deg)';
+        cards[i].style.opacity = Math.min(1, rawProgress * 2.5); // Fade in quickly
       }
- 
-      /* Interpolate gap from 0 to 48px (3rem) */
-      var gap = 48 * p;
-      cardsContainer.style.gap = gap + 'px';
     }
  
     /* Mobile: use IntersectionObserver for simple fade-in */
@@ -258,7 +261,6 @@
  
     /* Scroll handler with requestAnimationFrame throttle */
     var ticking = false;
- 
     function onScroll() {
       if (!ticking) {
         ticking = true;
@@ -281,22 +283,13 @@
     /* Re-init on resize (desktop ↔ mobile) */
     isDesktop.addEventListener('change', function () {
       if (isDesktop.matches) {
-        /* Switch to desktop: remove mobile classes, bind scroll */
         cardsContainer.classList.remove('is-visible');
-        for (var i = 0; i < cards.length; i++) {
-          cards[i].style.transform = '';
-          cards[i].style.opacity = '';
-        }
+        cards.forEach(c => { c.style.transform = ''; c.style.opacity = '0'; });
         updateCards();
         window.addEventListener('scroll', onScroll, { passive: true });
       } else {
-        /* Switch to mobile: remove desktop inline styles, init mobile */
         window.removeEventListener('scroll', onScroll);
-        cardsContainer.style.gap = '';
-        for (var j = 0; j < cards.length; j++) {
-          cards[j].style.transform = '';
-          cards[j].style.opacity = '';
-        }
+        cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; });
         initMobile();
       }
     });
@@ -316,40 +309,56 @@
       "default": "Consumer Approved"
     },
     {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
       "type": "text",
       "id": "card_1_percentage",
-      "label": "Card 1 Percentage",
+      "label": "Percentage",
       "default": "100%"
     },
     {
       "type": "textarea",
       "id": "card_1_description",
-      "label": "Card 1 Description",
+      "label": "Description",
       "default": "Said their skin looked more supple"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
     },
     {
       "type": "text",
       "id": "card_2_percentage",
-      "label": "Card 2 Percentage",
+      "label": "Percentage",
       "default": "97%"
     },
     {
       "type": "textarea",
       "id": "card_2_description",
-      "label": "Card 2 Description",
+      "label": "Description",
       "default": "Said their skin appeared firmer"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
     },
     {
       "type": "text",
       "id": "card_3_percentage",
-      "label": "Card 3 Percentage",
+      "label": "Percentage",
       "default": "97%"
     },
     {
       "type": "textarea",
       "id": "card_3_description",
-      "label": "Card 3 Description",
+      "label": "Description",
       "default": "Said their crepey skin looked more even and smooth"
+    },
+    {
+      "type": "header",
+      "content": "Style"
     },
     {
       "type": "textarea",
@@ -360,37 +369,37 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Section Background Color",
-      "default": "#E8DFF5"
+      "label": "Section Background",
+      "default": "#F3F0FF"
     },
     {
       "type": "color",
       "id": "card_color",
-      "label": "Card Background Color",
-      "default": "#FFFDF7"
+      "label": "Card Background",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "heading_color",
-      "label": "Heading Text Color",
-      "default": "#1B1B1B"
+      "label": "Heading Color",
+      "default": "#4834d4"
     },
     {
       "type": "color",
       "id": "number_color",
-      "label": "Number/Percentage Color",
-      "default": "#1B1B1B"
+      "label": "Number Color",
+      "default": "#4834d4"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Description Text Color",
-      "default": "#1B1B1B"
+      "label": "Description Color",
+      "default": "#333333"
     },
     {
       "type": "color",
       "id": "disclaimer_color",
-      "label": "Disclaimer Text Color",
+      "label": "Disclaimer Color",
       "default": "#666666"
     }
   ],
