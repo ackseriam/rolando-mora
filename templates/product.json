@@ -488,6 +488,7 @@
         "disclaimer_color": "#666666"
       }
     },
+<<<<<<< HEAD
     "what_to_expect_QGHJcG": {
       "type": "what-to-expect",
       "name": "What to Expect",
@@ -520,12 +521,109 @@
         "heading_color": "#211566",
         "text_color": "#3D3040",
         "badge_color": "#E0D7FF",
+=======
+    "comparison_table_KxRt7p": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_price": {
+          "type": "row",
+          "settings": {
+            "row_label": "Price",
+            "gopure_positive": true,
+            "gopure_value": "As low as $24.99",
+            "competitor_negative": true,
+            "competitor_value": "$150+"
+          }
+        },
+        "row_antiaging": {
+          "type": "row",
+          "settings": {
+            "row_label": "Anti-Aging Benefits",
+            "gopure_positive": true,
+            "gopure_value": "Lifts, Firms, Tightens",
+            "competitor_negative": true,
+            "competitor_value": "Basic Moisturizing"
+          }
+        },
+        "row_firming": {
+          "type": "row",
+          "settings": {
+            "row_label": "Visible Firming Results",
+            "gopure_positive": true,
+            "gopure_value": "<strong>4<\/strong> Weeks",
+            "competitor_negative": true,
+            "competitor_value": "No Results"
+          }
+        },
+        "row_tech": {
+          "type": "row",
+          "settings": {
+            "row_label": "Exclusive Technology",
+            "gopure_positive": true,
+            "gopure_value": "ActivSmooth™ Complex",
+            "competitor_negative": true,
+            "competitor_value": "Generic Formula"
+          }
+        },
+        "row_clean": {
+          "type": "row",
+          "settings": {
+            "row_label": "Clean and Safe Profile",
+            "gopure_positive": true,
+            "gopure_value": "<strong>2,700+<\/strong> Banned Ingredients",
+            "competitor_negative": true,
+            "competitor_value": "Contains Toxins"
+          }
+        },
+        "row_active": {
+          "type": "row",
+          "settings": {
+            "row_label": "Active Ingredients",
+            "gopure_positive": false,
+            "gopure_value": "<strong>6%<\/strong> (60x MORE!)",
+            "competitor_negative": false,
+            "competitor_value": "0.10%"
+          }
+        },
+        "row_guarantee": {
+          "type": "row",
+          "settings": {
+            "row_label": "Guarantee",
+            "gopure_positive": true,
+            "gopure_value": "<strong>60-day<\/strong> money-back guarantee",
+            "competitor_negative": true,
+            "competitor_value": "No guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "row_price",
+        "row_antiaging",
+        "row_firming",
+        "row_tech",
+        "row_clean",
+        "row_active",
+        "row_guarantee"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "section_heading": "Cleaner, Proven, More Effective",
+        "competitor_name": "Luxury Body Moisturizer",
+        "background_color": "#FAF8F5",
+        "heading_color": "#C8A951",
+        "gopure_highlight_bg": "#FDF9F0",
+        "check_color": "#C8A951",
+        "cross_color": "#C1392B",
+        "cta_text": "TRY OUR VIRAL NECK CREAM TODAY",
+        "cta_url": "/products/gp-tighten-lift-neck-cream#product-top-variant",
+>>>>>>> claude/replicate-comparison-table-go3lc
         "cta_bg_color": "#1A1A1A"
       }
     }
   },
   "order": [
     "main",
+    "comparison_table_KxRt7p",
     "product_recommendations_qggXJq",
     "reviews_section_WErqrT",
     "consumer_approved_DWcCmL",
