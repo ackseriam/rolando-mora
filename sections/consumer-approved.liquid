@@ -168,13 +168,13 @@
       </div>
  
       <div class="consumer-approved__card consumer-approved__card--2 consumer-approved__card--delay-2">
-        <span class="consumer-approved__number">{{ section.settings.card_3_percentage }}</span>
         <p class="consumer-approved__description">{{ section.settings.card_3_description }}</p>
       </div>
     </div>
  
     <p class="consumer-approved__disclaimer">{{ section.settings.disclaimer }}</p>
-  </div>
+  </div>        <span class="consumer-approved__number">{{ section.settings.card_3_percentage }}</span>
+
 </section>
  
 <script>
@@ -186,120 +186,153 @@
     if (!section || !cardsContainer) return;
  
     var cards = cardsContainer.querySelectorAll('.consumer-approved__card');
+    var numberElements = cardsContainer.querySelectorAll('.consumer-approved__number'); // Get numbers
     var isDesktop = window.matchMedia('(min-width: 990px)');
  
-    /* Exact Card Transform Values from GoPure */
+    /* Card Animation Data */
     var cardData = [
-      { finalX: -78.33, rotation: -5.03 },
-      { finalX: 0, rotation: 0.698 },
-      { finalX: 78.33, rotation: 5 }
+      { start: { x: 40, rotate: -2, y: 10 }, end: { x: -80, rotate: -5.03, y: 0 } },
+      { start: { x: 0, rotate: 0, y: 0 }, end: { x: 0, rotate: 0.698, y: 0 } },
+      { start: { x: -40, rotate: 2, y: 10 }, end: { x: 80, rotate: 5, y: 0 } }
     ];
  
-    /* Extra spread offset for initial clustered state (px toward center) */
-    var CLUSTER_OFFSET = 200;
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
  
-    /* Ease-out cubic for smooth deceleration */
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
+    /* 
+       ESTA FUNCION HACE EL CONTEO (0 -> %)
+       It converts "100%" to 100, animates 0->100, then adds "%" back.
+    */
+    function animateCounters() {
+      numberElements.forEach(function(el) {
+        if (el.dataset.animated) return; // Run once only
+        
+        var originalText = el.innerText.trim();
+        // Regex to split number from suffix (e.g., "97%" -> "97", "%")
+        var match = originalText.match(/(\d+)(.*)/); 
+        if (!match) return; // If no number found, skip
+ 
+        var targetVal = parseInt(match[1], 10);
+        var suffix = match[2] || '';
+        var duration = 4000; // 2 seconds
+        var startTime = null;
+ 
+        el.dataset.animated = "true";
+ 
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var ease = easeOutCubic(progress);
+          
+          var currentVal = Math.floor(ease * targetVal);
+          el.innerText = currentVal + suffix;
+ 
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            el.innerText = originalText; // Final value exact
+          }
+        }
+        window.requestAnimationFrame(step);
+      });
     }
  
-    /* Calculate scroll progress: 0 when section enters viewport, 1 when fully visible */
+    /* Scroll Logic */
     function getScrollProgress() {
       var rect = section.getBoundingClientRect();
       var viewH = window.innerHeight;
-      
-      // Animation triggers when top of section travels from bottom of screen (start) 
-      // to about 30% up the screen (end)
-      var start = viewH * 0.9; 
-      var end = viewH * 0.3;
+      var start = viewH * 0.85; 
+      var end = viewH * 0.25;
       
       var raw = (start - rect.top) / (start - end);
       return Math.max(0, Math.min(1, raw));
     }
  
-    /* Apply transforms based on scroll progress */
-    function updateCards() {
+    function updateAnimations() {
+      var rawProgress = getScrollProgress();
+      
+      // Trigger numbers early (when section just enters)
+      if (rawProgress > 0.05 || !isDesktop.matches) {
+          animateCounters();
+      }
+ 
       if (!isDesktop.matches) return;
  
-      var rawProgress = getScrollProgress();
       var p = easeOutCubic(rawProgress);
  
       for (var i = 0; i < cards.length; i++) {
         var data = cardData[i];
+        var currentX = data.start.x + (data.end.x - data.start.x) * p;
+        var currentRot = data.start.rotate + (data.end.rotate - data.start.rotate) * p;
+        var currentY = data.start.y + (data.end.y - data.start.y) * p;
+        var opacity = 0.5 + (0.5 * p);
  
-        /* Interpolate */
-        /* Start: Clustered in center (offset = CLUSTER_OFFSET) */
-        /* End: Fanned out (offset = 0) */
-        var clusterX = (i === 0) ? CLUSTER_OFFSET : (i === 2) ? -CLUSTER_OFFSET : 0;
-        var extraOffset = clusterX * (1 - p);
-        
-        /* Final X position includes the static offset (e.g. 78.33px) + dynamic cluster offset */
-        var currentX = data.finalX + extraOffset;
-        
-        /* Rotation also interpolates from 0 to final */
-        var currentRot = data.rotation * p;
- 
-        cards[i].style.transform = 'translateX(' + currentX + 'px) rotate(' + currentRot + 'deg)';
-        cards[i].style.opacity = Math.min(1, rawProgress * 2.5); // Fade in quickly
+        cards[i].style.transform = `translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRot}deg)`;
+        cards[i].style.opacity = opacity;
+        cards[i].style.zIndex = (i === 1) ? 2 : 1;
       }
     }
  
-    /* Mobile: use IntersectionObserver for simple fade-in */
+    /* Mobile Setup */
     function initMobile() {
       if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(
-          function (entries) {
+        var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                animateCounters(); 
                 observer.unobserve(entry.target);
               }
             });
-          },
-          { threshold: 0.15 }
-        );
+          }, { threshold: 0.15 });
         observer.observe(cardsContainer);
       } else {
         cardsContainer.classList.add('is-visible');
+        animateCounters();
       }
     }
  
-    /* Scroll handler with requestAnimationFrame throttle */
     var ticking = false;
     function onScroll() {
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(function () {
-          updateCards();
-          ticking = false;
+            updateAnimations();
+            ticking = false;
         });
       }
     }
  
     function init() {
       if (isDesktop.matches) {
-        updateCards();
+        // Reset manual style just in case of resize
+        cards.forEach(c => c.style.transition = 'none'); 
+        updateAnimations();
         window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
       } else {
         initMobile();
       }
     }
  
-    /* Re-init on resize (desktop ↔ mobile) */
+    // Handle Resize/Breakpoint Support
     isDesktop.addEventListener('change', function () {
       if (isDesktop.matches) {
         cardsContainer.classList.remove('is-visible');
-        cards.forEach(c => { c.style.transform = ''; c.style.opacity = '0'; });
-        updateCards();
+        updateAnimations();
         window.addEventListener('scroll', onScroll, { passive: true });
       } else {
         window.removeEventListener('scroll', onScroll);
-        cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; });
+        // Clean desktop styles
+        cards.forEach(c => { 
+            c.style.transform = ''; 
+            c.style.opacity = ''; 
+            c.style.zIndex = '';
+        });
         initMobile();
       }
     });
  
-    init();
+    requestAnimationFrame(init);
   })();
 </script>
  
