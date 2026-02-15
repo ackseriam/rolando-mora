@@ -1,0 +1,494 @@
+<style>
+  .what-to-expect {
+    background-color: {{ section.settings.background_color }};
+    padding: 3rem 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect {
+      padding: 5rem 1rem;
+    }
+  }
+
+  .what-to-expect__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .what-to-expect__heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__heading {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .what-to-expect__heading-italic {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: {{ section.settings.heading_color }};
+    display: block;
+    margin: 0;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__heading-italic {
+      font-size: 2.8rem;
+    }
+  }
+
+  .what-to-expect__heading-main {
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    color: {{ section.settings.heading_color }};
+    display: block;
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__heading-main {
+      font-size: 3.5rem;
+    }
+  }
+
+  .what-to-expect__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .what-to-expect__card {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .what-to-expect__card-image {
+    flex: 0 0 40%;
+    max-width: 40%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__card-image {
+      flex: 0 0 45%;
+      max-width: 45%;
+    }
+  }
+
+  .what-to-expect__card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 543 / 876;
+  }
+
+  .what-to-expect__card-content {
+    flex: 1;
+    padding: 1.25rem 1.25rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__card-content {
+      padding: 1.5rem 2rem 1.5rem 1.5rem;
+      gap: 1rem;
+    }
+  }
+
+  .what-to-expect__badge {
+    display: inline-block;
+    background-color: {{ section.settings.badge_color }};
+    color: {{ section.settings.heading_color }};
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    letter-spacing: 0.08em;
+    align-self: flex-start;
+  }
+
+  .what-to-expect__bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__bullets {
+      gap: 0.75rem;
+    }
+  }
+
+  .what-to-expect__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: {{ section.settings.text_color }};
+    font-weight: 400;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__bullet {
+      font-size: 0.85rem;
+    }
+  }
+
+  .what-to-expect__bullet-icon {
+    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
+    margin-top: 3px;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Mobile CTA */
+  .what-to-expect__cta-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 990px) {
+    .what-to-expect__cta-wrapper {
+      display: none;
+    }
+  }
+
+  .what-to-expect__cta {
+    display: inline-block;
+    background-color: {{ section.settings.cta_bg_color }};
+    color: #ffffff;
+    font-family: 'Landour Regular Text', 'Landour', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.2s ease;
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+  }
+
+  .what-to-expect__cta:hover {
+    opacity: 0.85;
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;600;700&display=swap">
+
+<section class="what-to-expect" data-section-id="{{ section.id }}">
+  <div class="what-to-expect__container">
+    <div class="what-to-expect__heading">
+      <span class="what-to-expect__heading-italic">{{ section.settings.section_heading_italic }}</span>
+      <span class="what-to-expect__heading-main">{{ section.settings.section_heading_main }}</span>
+    </div>
+
+    <div class="what-to-expect__grid">
+      {%- for i in (1..4) -%}
+        {%- capture day_label_key -%}card_{{ i }}_day_label{%- endcapture -%}
+        {%- capture image_key -%}card_{{ i }}_image_url{%- endcapture -%}
+        {%- capture bullet_1_key -%}card_{{ i }}_bullet_1{%- endcapture -%}
+        {%- capture bullet_2_key -%}card_{{ i }}_bullet_2{%- endcapture -%}
+        {%- capture bullet_3_key -%}card_{{ i }}_bullet_3{%- endcapture -%}
+
+        <div class="what-to-expect__card">
+          <div class="what-to-expect__card-image">
+            <img
+              src="{{ section.settings[image_key] }}"
+              alt="{{ section.settings[day_label_key] }}"
+              loading="lazy"
+              width="543"
+              height="876"
+            >
+          </div>
+          <div class="what-to-expect__card-content">
+            <span class="what-to-expect__badge">{{ section.settings[day_label_key] }}</span>
+            <ul class="what-to-expect__bullets">
+              <li class="what-to-expect__bullet">
+                <svg class="what-to-expect__bullet-icon" fill="none" height="13" viewBox="0 0 13 13" width="13" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.5" cy="6.5" fill="currentColor" r="6.5"></circle>
+                  <path d="m10.0264 3.7002c.1452.00232.2984.05943.4082.17285.2295.23759.2025.58474.0088.80761l.0009.00098c-.47409.56769-.94913 1.13637-1.42379 1.7041l-.00098.00098c-.83316.98967-1.67379 2.01179-2.52246 3.00488l.00098.00098c-.1366.16472-.31109.27922-.50879.32226-.19698.04286-.40195.0104-.59473-.09179v.00195c-.15792-.07769-.29403-.19114-.41113-.30371-.10816-.10402-.21707-.22479-.30567-.31738l-.00878-.00879c-.44417-.4324-.84965-.89091-1.25293-1.39942l.00097-.00097c-.18976-.22118-.21565-.56154.00684-.79785h-.00098l.00195-.00196c.00143-.0015.00246-.00339.00391-.00488h.00098c.1054-.11515.25555-.17058.39746-.17285.14624-.00228.30532.0511.41894.17871l.00391.00488c.30591.36452.62613.72171.95508 1.06641l.33203.34082.00195.00097c.07945.08171.15781.15907.23926.23731.01496-.01699.03121-.03175.04297-.04785l.00781-.01172.00977-.00977.27929-.32715c.38412-.46108.78771-.94321 1.17188-1.40429l.00098-.00098c.7697-.91123 1.53445-1.84327 2.31933-2.75781v-.00098c.109-.13487.27019-.18782.41605-.18554z" fill="#fffefe" stroke="#fff" stroke-width="0.4"></path>
+                </svg>
+                <span>{{ section.settings[bullet_1_key] }}</span>
+              </li>
+              <li class="what-to-expect__bullet">
+                <svg class="what-to-expect__bullet-icon" fill="none" height="13" viewBox="0 0 13 13" width="13" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.5" cy="6.5" fill="currentColor" r="6.5"></circle>
+                  <path d="m10.0264 3.7002c.1452.00232.2984.05943.4082.17285.2295.23759.2025.58474.0088.80761l.0009.00098c-.47409.56769-.94913 1.13637-1.42379 1.7041l-.00098.00098c-.83316.98967-1.67379 2.01179-2.52246 3.00488l.00098.00098c-.1366.16472-.31109.27922-.50879.32226-.19698.04286-.40195.0104-.59473-.09179v.00195c-.15792-.07769-.29403-.19114-.41113-.30371-.10816-.10402-.21707-.22479-.30567-.31738l-.00878-.00879c-.44417-.4324-.84965-.89091-1.25293-1.39942l.00097-.00097c-.18976-.22118-.21565-.56154.00684-.79785h-.00098l.00195-.00196c.00143-.0015.00246-.00339.00391-.00488h.00098c.1054-.11515.25555-.17058.39746-.17285.14624-.00228.30532.0511.41894.17871l.00391.00488c.30591.36452.62613.72171.95508 1.06641l.33203.34082.00195.00097c.07945.08171.15781.15907.23926.23731.01496-.01699.03121-.03175.04297-.04785l.00781-.01172.00977-.00977.27929-.32715c.38412-.46108.78771-.94321 1.17188-1.40429l.00098-.00098c.7697-.91123 1.53445-1.84327 2.31933-2.75781v-.00098c.109-.13487.27019-.18782.41605-.18554z" fill="#fffefe" stroke="#fff" stroke-width="0.4"></path>
+                </svg>
+                <span>{{ section.settings[bullet_2_key] }}</span>
+              </li>
+              <li class="what-to-expect__bullet">
+                <svg class="what-to-expect__bullet-icon" fill="none" height="13" viewBox="0 0 13 13" width="13" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.5" cy="6.5" fill="currentColor" r="6.5"></circle>
+                  <path d="m10.0264 3.7002c.1452.00232.2984.05943.4082.17285.2295.23759.2025.58474.0088.80761l.0009.00098c-.47409.56769-.94913 1.13637-1.42379 1.7041l-.00098.00098c-.83316.98967-1.67379 2.01179-2.52246 3.00488l.00098.00098c-.1366.16472-.31109.27922-.50879.32226-.19698.04286-.40195.0104-.59473-.09179v.00195c-.15792-.07769-.29403-.19114-.41113-.30371-.10816-.10402-.21707-.22479-.30567-.31738l-.00878-.00879c-.44417-.4324-.84965-.89091-1.25293-1.39942l.00097-.00097c-.18976-.22118-.21565-.56154.00684-.79785h-.00098l.00195-.00196c.00143-.0015.00246-.00339.00391-.00488h.00098c.1054-.11515.25555-.17058.39746-.17285.14624-.00228.30532.0511.41894.17871l.00391.00488c.30591.36452.62613.72171.95508 1.06641l.33203.34082.00195.00097c.07945.08171.15781.15907.23926.23731.01496-.01699.03121-.03175.04297-.04785l.00781-.01172.00977-.00977.27929-.32715c.38412-.46108.78771-.94321 1.17188-1.40429l.00098-.00098c.7697-.91123 1.53445-1.84327 2.31933-2.75781v-.00098c.109-.13487.27019-.18782.41605-.18554z" fill="#fffefe" stroke="#fff" stroke-width="0.4"></path>
+                </svg>
+                <span>{{ section.settings[bullet_3_key] }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="what-to-expect__cta-wrapper">
+      <a href="{{ section.settings.cta_url }}" class="what-to-expect__cta">
+        {{ section.settings.cta_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "What to Expect",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_heading_italic",
+      "label": "Heading Italic Text",
+      "default": "What to"
+    },
+    {
+      "type": "text",
+      "id": "section_heading_main",
+      "label": "Heading Main Text",
+      "default": "EXPECT"
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "text",
+      "id": "card_1_day_label",
+      "label": "Day Label",
+      "default": "DAY 1"
+    },
+    {
+      "type": "text",
+      "id": "card_1_image_url",
+      "label": "Image URL",
+      "default": "https://cdn.shopify.com/s/files/1/0743/0383/files/tighten-lift-neck-cream-hydrating-skincare-1.7oz.jpg?v=1759926070"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_bullet_1",
+      "label": "Bullet 1",
+      "default": "Use GoPure everywhere for full-body firming (or just your neck!)"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_bullet_2",
+      "label": "Bullet 2",
+      "default": "Take before photos and throw away your old body moisturizer"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_bullet_3",
+      "label": "Bullet 3",
+      "default": "ActivSmooth Complex penetrates deep and gets to work instantly"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "text",
+      "id": "card_2_day_label",
+      "label": "Day Label",
+      "default": "DAY 7"
+    },
+    {
+      "type": "text",
+      "id": "card_2_image_url",
+      "label": "Image URL",
+      "default": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-close-up-image.jpg?v=1759926588"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_bullet_1",
+      "label": "Bullet 1",
+      "default": "Subtle firming improvements become visible"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_bullet_2",
+      "label": "Bullet 2",
+      "default": "Skin feels noticeably smoother and more supple everywhere you've applied it"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_bullet_3",
+      "label": "Bullet 3",
+      "default": "You're excited to continue your routine"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "text",
+      "id": "card_3_day_label",
+      "label": "Day Label",
+      "default": "DAY 30"
+    },
+    {
+      "type": "text",
+      "id": "card_3_image_url",
+      "label": "Image URL",
+      "default": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-image.jpg?v=1759926070"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_bullet_1",
+      "label": "Bullet 1",
+      "default": "Take your after photos"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_bullet_2",
+      "label": "Bullet 2",
+      "default": "Dramatic difference in firmness and smoothness everywhere you've applied it"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_bullet_3",
+      "label": "Bullet 3",
+      "default": "Friends start asking what you're doing differently"
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "text",
+      "id": "card_4_day_label",
+      "label": "Day Label",
+      "default": "DAY 60"
+    },
+    {
+      "type": "text",
+      "id": "card_4_image_url",
+      "label": "Image URL",
+      "default": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-health-beauty.jpg?v=1759926586"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_bullet_1",
+      "label": "Bullet 1",
+      "default": "Your transformation photos tell the whole story"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_bullet_2",
+      "label": "Bullet 2",
+      "default": "Skin looks visibly lifted, firm, tighter, and years younger from head to toe"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_bullet_3",
+      "label": "Bullet 3",
+      "default": "You're officially addicted to your new full-body routine"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button (Mobile Only)"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "TRANSFORM YOUR NECK TODAY"
+    },
+    {
+      "type": "text",
+      "id": "cta_url",
+      "label": "CTA Button URL",
+      "default": "/products/gp-tighten-lift-neck-cream#product-top-variant"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#F3F0FF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading / Accent Color (Indigo)",
+      "default": "#4834d4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Bullet Text Color (Plum)",
+      "default": "#3D3040"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Background",
+      "default": "#E0D7FF"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Button Background (Onyx)",
+      "default": "#1A1A1A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "What to Expect"
+    }
+  ]
+}
+{% endschema %}
