@@ -619,6 +619,41 @@
         "cta_url": "",
         "cta_bg_color": "#3f27ae"
       }
+    },
+    "hero_jwzzDB": {
+      "type": "hero",
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/6-percent-activsmooth-complex-ingredients-cupuacu-tamarind-caffeine-sacha-inchi.jpg",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
@@ -627,6 +662,7 @@
     "reviews_section_WErqrT",
     "consumer_approved_DWcCmL",
     "what_to_expect_QGHJcG",
-    "comparison_table_C3bQFn"
+    "comparison_table_C3bQFn",
+    "hero_jwzzDB"
   ]
 }
