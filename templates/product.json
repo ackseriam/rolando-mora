@@ -480,7 +480,12 @@
         "card_3_percentage": "97%",
         "card_3_description": "Said their crepey skin looked more even and smooth",
         "disclaimer": "*Based on consumer perception questionnaire of 32 subjects after 4 weeks",
-        "background_color": "#EDE5F5"
+        "background_color": "#ede5f5",
+        "card_color": "#ffffff",
+        "heading_color": "#4834d4",
+        "number_color": "#4834d4",
+        "text_color": "#4834d4",
+        "disclaimer_color": "#666666"
       }
     }
   },
