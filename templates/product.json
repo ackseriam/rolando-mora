@@ -487,12 +487,48 @@
         "text_color": "#4834d4",
         "disclaimer_color": "#666666"
       }
+    },
+    "what_to_expect_QGHJcG": {
+      "type": "what-to-expect",
+      "name": "What to Expect",
+      "settings": {
+        "section_heading_italic": "What to",
+        "section_heading_main": "EXPECT",
+        "card_1_day_label": "DAY 1",
+        "card_1_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/tighten-lift-neck-cream-hydrating-skincare-1.7oz.jpg?v=1759926070",
+        "card_1_bullet_1": "Use GoPure everywhere for full-body firming (or just your neck!)",
+        "card_1_bullet_2": "Take before photos and throw away your old body moisturizer",
+        "card_1_bullet_3": "ActivSmooth Complex penetrates deep and gets to work instantly",
+        "card_2_day_label": "DAY 7",
+        "card_2_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-close-up-image.jpg?v=1759926588",
+        "card_2_bullet_1": "Subtle firming improvements become visible",
+        "card_2_bullet_2": "Skin feels noticeably smoother and more supple everywhere you've applied it",
+        "card_2_bullet_3": "You're excited to continue your routine",
+        "card_3_day_label": "DAY 30",
+        "card_3_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-image.jpg?v=1759926070",
+        "card_3_bullet_1": "Take your after photos",
+        "card_3_bullet_2": "Dramatic difference in firmness and smoothness everywhere you've applied it",
+        "card_3_bullet_3": "Friends start asking what you're doing differently",
+        "card_4_day_label": "DAY 60",
+        "card_4_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-health-beauty.jpg?v=1759926586",
+        "card_4_bullet_1": "Your transformation photos tell the whole story",
+        "card_4_bullet_2": "Skin looks visibly lifted, firm, tighter, and years younger from head to toe",
+        "card_4_bullet_3": "You're officially addicted to your new full-body routine",
+        "cta_text": "TRANSFORM YOUR NECK TODAY",
+        "cta_url": "/products/gp-tighten-lift-neck-cream#product-top-variant",
+        "background_color": "#F3F0FF",
+        "heading_color": "#4834d4",
+        "text_color": "#3D3040",
+        "badge_color": "#E0D7FF",
+        "cta_bg_color": "#1A1A1A"
+      }
     }
   },
   "order": [
     "main",
     "product_recommendations_qggXJq",
     "reviews_section_WErqrT",
-    "consumer_approved_DWcCmL"
+    "consumer_approved_DWcCmL",
+    "what_to_expect_QGHJcG"
   ]
 }
