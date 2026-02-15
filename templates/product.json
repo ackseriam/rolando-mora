@@ -467,11 +467,27 @@
         "button_label": "See All Reviews",
         "button_link": ""
       }
+    },
+    "consumer_approved_DWcCmL": {
+      "type": "consumer-approved",
+      "name": "Consumer Approved",
+      "settings": {
+        "heading": "Consumer Approved",
+        "card_1_percentage": "100%",
+        "card_1_description": "Said their skin looked more supple",
+        "card_2_percentage": "97%",
+        "card_2_description": "Said their skin appeared firmer",
+        "card_3_percentage": "97%",
+        "card_3_description": "Said their crepey skin looked more even and smooth",
+        "disclaimer": "*Based on consumer perception questionnaire of 32 subjects after 4 weeks",
+        "background_color": "#EDE5F5"
+      }
     }
   },
   "order": [
     "main",
     "product_recommendations_qggXJq",
-    "reviews_section_WErqrT"
+    "reviews_section_WErqrT",
+    "consumer_approved_DWcCmL"
   ]
 }
