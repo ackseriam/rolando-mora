@@ -488,7 +488,6 @@
         "disclaimer_color": "#666666"
       }
     },
-<<<<<<< HEAD
     "what_to_expect_QGHJcG": {
       "type": "what-to-expect",
       "name": "What to Expect",
@@ -519,13 +518,15 @@
         "cta_url": "/products/gp-tighten-lift-neck-cream#product-top-variant",
         "background_color": "#fef7fa",
         "heading_color": "#211566",
-        "text_color": "#3D3040",
-        "badge_color": "#E0D7FF",
-=======
-    "comparison_table_KxRt7p": {
+        "text_color": "#3d3040",
+        "badge_color": "#e0d7ff",
+        "cta_bg_color": "#1a1a1a"
+      }
+    },
+    "comparison_table_C3bQFn": {
       "type": "comparison-table",
       "blocks": {
-        "row_price": {
+        "row_e9EJd6": {
           "type": "row",
           "settings": {
             "row_label": "Price",
@@ -535,7 +536,7 @@
             "competitor_value": "$150+"
           }
         },
-        "row_antiaging": {
+        "row_C6kFJV": {
           "type": "row",
           "settings": {
             "row_label": "Anti-Aging Benefits",
@@ -545,17 +546,17 @@
             "competitor_value": "Basic Moisturizing"
           }
         },
-        "row_firming": {
+        "row_GFhhnY": {
           "type": "row",
           "settings": {
             "row_label": "Visible Firming Results",
             "gopure_positive": true,
-            "gopure_value": "<strong>4<\/strong> Weeks",
+            "gopure_value": "<strong>4</strong> Weeks",
             "competitor_negative": true,
             "competitor_value": "No Results"
           }
         },
-        "row_tech": {
+        "row_UjBkmz": {
           "type": "row",
           "settings": {
             "row_label": "Exclusive Technology",
@@ -565,45 +566,45 @@
             "competitor_value": "Generic Formula"
           }
         },
-        "row_clean": {
+        "row_cGTjd6": {
           "type": "row",
           "settings": {
             "row_label": "Clean and Safe Profile",
             "gopure_positive": true,
-            "gopure_value": "<strong>2,700+<\/strong> Banned Ingredients",
+            "gopure_value": "<strong>2,700+</strong> Banned Ingredients",
             "competitor_negative": true,
             "competitor_value": "Contains Toxins"
           }
         },
-        "row_active": {
+        "row_eGHwJA": {
           "type": "row",
           "settings": {
             "row_label": "Active Ingredients",
             "gopure_positive": false,
-            "gopure_value": "<strong>6%<\/strong> (60x MORE!)",
+            "gopure_value": "<strong>6%</strong> (60x MORE!)",
             "competitor_negative": false,
             "competitor_value": "0.10%"
           }
         },
-        "row_guarantee": {
+        "row_qPY9VR": {
           "type": "row",
           "settings": {
             "row_label": "Guarantee",
             "gopure_positive": true,
-            "gopure_value": "<strong>60-day<\/strong> money-back guarantee",
+            "gopure_value": "<strong>60-day</strong> money-back guarantee",
             "competitor_negative": true,
             "competitor_value": "No guarantee"
           }
         }
       },
       "block_order": [
-        "row_price",
-        "row_antiaging",
-        "row_firming",
-        "row_tech",
-        "row_clean",
-        "row_active",
-        "row_guarantee"
+        "row_e9EJd6",
+        "row_C6kFJV",
+        "row_GFhhnY",
+        "row_UjBkmz",
+        "row_cGTjd6",
+        "row_eGHwJA",
+        "row_qPY9VR"
       ],
       "name": "Comparison Table",
       "settings": {
@@ -615,18 +616,17 @@
         "check_color": "#C8A951",
         "cross_color": "#C1392B",
         "cta_text": "TRY OUR VIRAL NECK CREAM TODAY",
-        "cta_url": "/products/gp-tighten-lift-neck-cream#product-top-variant",
->>>>>>> claude/replicate-comparison-table-go3lc
+        "cta_url": "",
         "cta_bg_color": "#1A1A1A"
       }
     }
   },
   "order": [
     "main",
-    "comparison_table_KxRt7p",
     "product_recommendations_qggXJq",
     "reviews_section_WErqrT",
     "consumer_approved_DWcCmL",
-    "what_to_expect_QGHJcG"
+    "what_to_expect_QGHJcG",
+    "comparison_table_C3bQFn"
   ]
 }
