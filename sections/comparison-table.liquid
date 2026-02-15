@@ -1,0 +1,514 @@
+<style>
+  .comparison-table-section {
+    background-color: {{ section.settings.background_color }};
+    padding: 3rem 0;
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+  }
+
+  @media (min-width: 990px) {
+    .comparison-table-section {
+      padding: 5rem 0;
+    }
+  }
+
+  .comparison-table__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .comparison-table__heading {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 2.5rem;
+  }
+
+  @media (min-width: 990px) {
+    .comparison-table__heading {
+      font-size: 1.75rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  /* ── Table wrapper for horizontal scroll on mobile ── */
+  .comparison-table__wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 990px) {
+    .comparison-table__wrapper {
+      overflow-x: visible;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  /* ── Table ── */
+  .comparison-table__table {
+    width: 100%;
+    min-width: 580px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
+
+  /* Column widths */
+  .comparison-table__table col.col-label {
+    width: 34%;
+  }
+  .comparison-table__table col.col-gopure {
+    width: 33%;
+  }
+  .comparison-table__table col.col-competitor {
+    width: 33%;
+  }
+
+  /* ── Header cells ── */
+  .comparison-table__table thead th {
+    padding: 1rem 0.75rem 1.25rem;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+    border-bottom: 2px solid {{ section.settings.heading_color }};
+  }
+
+  .comparison-table__table thead th:first-child {
+    text-align: left;
+    border-bottom-color: transparent;
+  }
+
+  /* GoPure header column highlight */
+  .comparison-table__table thead th.gopure-col {
+    background-color: {{ section.settings.gopure_highlight_bg }};
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: 2px solid {{ section.settings.heading_color }};
+    position: relative;
+  }
+
+  .comparison-table__header-img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto 0.5rem;
+    border-radius: 8px;
+  }
+
+  .comparison-table__header-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* ── Body rows ── */
+  .comparison-table__table tbody td {
+    padding: 0.875rem 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    vertical-align: middle;
+    text-align: center;
+    color: #333333;
+    border-bottom: 1px solid #e6e0d6;
+  }
+
+  .comparison-table__table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Label column */
+  .comparison-table__table tbody td.label-col {
+    text-align: left;
+    font-weight: 600;
+    color: {{ section.settings.heading_color }};
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* GoPure column highlight */
+  .comparison-table__table tbody td.gopure-col {
+    background-color: {{ section.settings.gopure_highlight_bg }};
+  }
+
+  .comparison-table__table tbody tr:last-child td.gopure-col {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  /* ── Checkmarks & Crosses ── */
+  .ct-check {
+    color: {{ section.settings.check_color }};
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+
+  .ct-cross {
+    color: {{ section.settings.cross_color }};
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+
+  .ct-value {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #333333;
+  }
+
+  .ct-value strong {
+    font-weight: 700;
+  }
+
+  .gopure-col .ct-value {
+    color: #1a1a1a;
+  }
+
+  /* ── Mobile CTA ── */
+  .comparison-table__cta {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  @media (min-width: 990px) {
+    .comparison-table__cta {
+      display: none;
+    }
+  }
+
+  .comparison-table__cta-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem 2rem;
+    background-color: {{ section.settings.cta_bg_color }};
+    color: #ffffff;
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .comparison-table__cta-btn:hover {
+    opacity: 0.9;
+  }
+</style>
+
+<section class="comparison-table-section" data-section-id="{{ section.id }}">
+  <div class="comparison-table__container">
+    <h2 class="comparison-table__heading">{{ section.settings.section_heading }}</h2>
+
+    <div class="comparison-table__wrapper">
+      <table class="comparison-table__table" role="table">
+        <colgroup>
+          <col class="col-label">
+          <col class="col-gopure">
+          <col class="col-competitor">
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th></th>
+            <th class="gopure-col">
+              {%- if section.settings.gopure_image != blank -%}
+                <img
+                  class="comparison-table__header-img"
+                  src="{{ section.settings.gopure_image | image_url: width: 160 }}"
+                  alt="GoPure"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <img
+                  class="comparison-table__header-img"
+                  src="https://cdn.shopify.com/s/files/1/0743/0383/files/tighten-lift-neck-cream-gopure-anti-aging-skincare.png?v=1759765864"
+                  alt="GoPure"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              <span class="comparison-table__header-label">GOPURE</span>
+            </th>
+            <th>
+              {%- if section.settings.competitor_image != blank -%}
+                <img
+                  class="comparison-table__header-img"
+                  src="{{ section.settings.competitor_image | image_url: width: 160 }}"
+                  alt="{{ section.settings.competitor_name }}"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <img
+                  class="comparison-table__header-img"
+                  src="https://cdn.shopify.com/s/files/1/0743/0383/files/moisturizing-cream-jar-skincare-image.png?v=1759423008"
+                  alt="{{ section.settings.competitor_name }}"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              <span class="comparison-table__header-label">{{ section.settings.competitor_name }}</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="label-col">{{ block.settings.row_label }}</td>
+              <td class="gopure-col">
+                {%- if block.settings.gopure_positive -%}
+                  <span class="ct-check" aria-hidden="true">&#10003;</span>
+                {%- endif -%}
+                <span class="ct-value">{{ block.settings.gopure_value }}</span>
+              </td>
+              <td>
+                {%- if block.settings.competitor_negative -%}
+                  <span class="ct-cross" aria-hidden="true">&#10007;</span>
+                {%- endif -%}
+                <span class="ct-value">{{ block.settings.competitor_value }}</span>
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="comparison-table__cta">
+        <a
+          class="comparison-table__cta-btn"
+          href="{{ section.settings.cta_url }}"
+        >
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Cleaner, Proven, More Effective"
+    },
+    {
+      "type": "image_picker",
+      "id": "gopure_image",
+      "label": "GoPure Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "competitor_image",
+      "label": "Competitor Product Image"
+    },
+    {
+      "type": "text",
+      "id": "competitor_name",
+      "label": "Competitor Name",
+      "default": "Luxury Body Moisturizer"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Label Color",
+      "default": "#C8A951"
+    },
+    {
+      "type": "color",
+      "id": "gopure_highlight_bg",
+      "label": "GoPure Column Highlight Background",
+      "default": "#FDF9F0"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Checkmark Color",
+      "default": "#C8A951"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Cross Color",
+      "default": "#C1392B"
+    },
+    {
+      "type": "header",
+      "content": "Mobile CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "TRY OUR VIRAL NECK CREAM TODAY"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Button Background",
+      "default": "#1A1A1A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_label",
+          "label": "Row Label",
+          "default": "Feature"
+        },
+        {
+          "type": "checkbox",
+          "id": "gopure_positive",
+          "label": "Show Checkmark for GoPure",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "gopure_value",
+          "label": "GoPure Value",
+          "default": "Yes"
+        },
+        {
+          "type": "checkbox",
+          "id": "competitor_negative",
+          "label": "Show Cross for Competitor",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "competitor_value",
+          "label": "Competitor Value",
+          "default": "No"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Price",
+            "gopure_positive": true,
+            "gopure_value": "As low as $24.99",
+            "competitor_negative": true,
+            "competitor_value": "$150+"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Anti-Aging Benefits",
+            "gopure_positive": true,
+            "gopure_value": "Lifts, Firms, Tightens",
+            "competitor_negative": true,
+            "competitor_value": "Basic Moisturizing"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Visible Firming Results",
+            "gopure_positive": true,
+            "gopure_value": "<strong>4</strong> Weeks",
+            "competitor_negative": true,
+            "competitor_value": "No Results"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Exclusive Technology",
+            "gopure_positive": true,
+            "gopure_value": "ActivSmooth™ Complex",
+            "competitor_negative": true,
+            "competitor_value": "Generic Formula"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Clean and Safe Profile",
+            "gopure_positive": true,
+            "gopure_value": "<strong>2,700+</strong> Banned Ingredients",
+            "competitor_negative": true,
+            "competitor_value": "Contains Toxins"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Active Ingredients",
+            "gopure_positive": false,
+            "gopure_value": "<strong>6%</strong> (60x MORE!)",
+            "competitor_negative": false,
+            "competitor_value": "0.10%"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "Guarantee",
+            "gopure_positive": true,
+            "gopure_value": "<strong>60-day</strong> money-back guarantee",
+            "competitor_negative": true,
+            "competitor_value": "No guarantee"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
