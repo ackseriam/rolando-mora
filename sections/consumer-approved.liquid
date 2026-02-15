@@ -5,19 +5,19 @@
     text-align: center;
     overflow: hidden;
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved {
       padding: 5rem 0;
     }
   }
-
+ 
   .consumer-approved__container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
-
+ 
   .consumer-approved__heading {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-weight: 400;
@@ -25,15 +25,15 @@
     font-size: 1.5rem;
     line-height: 1.2;
     margin: 0;
-    color: #1a1a1a;
+    color: {{ section.settings.heading_color }};
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved__heading {
       font-size: 3rem;
     }
   }
-
+ 
   .consumer-approved__cards {
     display: flex;
     flex-direction: column;
@@ -42,18 +42,18 @@
     margin-top: 1.5rem;
     position: relative;
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved__cards {
       flex-direction: row;
       justify-content: center;
-      gap: 3rem;
+      gap: 0;
       margin-top: 5rem;
     }
   }
-
+ 
   .consumer-approved__card {
-    background-color: #FFFBF5;
+    background-color: {{ section.settings.card_color }};
     border-radius: 0.8rem;
     padding: 2.5rem 2rem;
     display: flex;
@@ -65,12 +65,9 @@
     min-height: 220px;
     font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
     font-weight: 600;
-    color: #1a1a1a;
-    transition: transform 0.9s cubic-bezier(0.33, 1, 0.68, 1),
-                opacity 0.9s cubic-bezier(0.33, 1, 0.68, 1);
     will-change: transform, opacity;
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved__card {
       flex: 1;
@@ -78,59 +75,37 @@
       padding: 3rem 2rem;
     }
   }
-
-  /* Initial state — before scroll trigger fires */
-  .consumer-approved__card {
-    opacity: 0;
-  }
-
-  /* Mobile: slide up on reveal */
-  @media (max-width: 989px) {
-    .consumer-approved__card {
-      transform: translateY(40px);
-    }
-
-    .consumer-approved__cards.is-visible .consumer-approved__card {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  /* Desktop: cards start stacked, then fan out */
+ 
+  /* Desktop: JS controls transforms and opacity directly */
   @media (min-width: 990px) {
     .consumer-approved__card {
-      transform: rotate(0deg) translateX(0px) scale(0.96);
+      opacity: 0;
     }
-
-    .consumer-approved__cards.is-visible .consumer-approved__card--0 {
-      transform: rotate(-5.03deg) translateX(78.33px);
+  }
+ 
+  /* Mobile: CSS transition fade-in */
+  @media (max-width: 989px) {
+    .consumer-approved__card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1),
+                  opacity 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+ 
+    .consumer-approved__card--delay-1 {
+      transition-delay: 0.1s;
+    }
+ 
+    .consumer-approved__card--delay-2 {
+      transition-delay: 0.2s;
+    }
+ 
+    .consumer-approved__cards.is-visible .consumer-approved__card {
       opacity: 1;
-    }
-
-    .consumer-approved__cards.is-visible .consumer-approved__card--1 {
-      transform: rotate(0.698deg) translateX(0px);
-      opacity: 1;
-    }
-
-    .consumer-approved__cards.is-visible .consumer-approved__card--2 {
-      transform: rotate(2.27deg) translateX(-78.33px);
-      opacity: 1;
+      transform: translateY(0);
     }
   }
-
-  /* Stagger animation timing */
-  .consumer-approved__card--0 {
-    transition-delay: 0s;
-  }
-
-  .consumer-approved__card--1 {
-    transition-delay: 0.15s;
-  }
-
-  .consumer-approved__card--2 {
-    transition-delay: 0.3s;
-  }
-
+ 
   .consumer-approved__number {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-weight: 400;
@@ -138,99 +113,198 @@
     font-size: 3.5rem;
     line-height: 1;
     margin-bottom: 0.75rem;
-    color: #1a1a1a;
+    color: {{ section.settings.number_color }};
     display: block;
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved__number {
       font-size: 4.5rem;
     }
   }
-
+ 
   .consumer-approved__description {
     font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.2;
     margin: 0;
-    color: #1a1a1a;
+    color: {{ section.settings.text_color }};
     max-width: 240px;
   }
-
+ 
   .consumer-approved__disclaimer {
     margin-top: 2.5rem;
     font-size: 0.875rem;
-    color: #555;
+    color: {{ section.settings.disclaimer_color }};
     font-family: 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif;
     font-weight: 400;
   }
-
+ 
   @media (min-width: 990px) {
     .consumer-approved__disclaimer {
       margin-top: 1.25rem;
     }
   }
 </style>
-
+ 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;600;700&display=swap">
-
+ 
 <section class="consumer-approved" data-section-id="{{ section.id }}">
   <div class="consumer-approved__container">
     <h2 class="consumer-approved__heading">{{ section.settings.heading }}</h2>
-
+ 
     <div class="consumer-approved__cards" id="consumer-approved-cards-{{ section.id }}">
       <div class="consumer-approved__card consumer-approved__card--0">
         <span class="consumer-approved__number">{{ section.settings.card_1_percentage }}</span>
         <p class="consumer-approved__description">{{ section.settings.card_1_description }}</p>
       </div>
-
-      <div class="consumer-approved__card consumer-approved__card--1">
+ 
+      <div class="consumer-approved__card consumer-approved__card--1 consumer-approved__card--delay-1">
         <span class="consumer-approved__number">{{ section.settings.card_2_percentage }}</span>
         <p class="consumer-approved__description">{{ section.settings.card_2_description }}</p>
       </div>
-
-      <div class="consumer-approved__card consumer-approved__card--2">
+ 
+      <div class="consumer-approved__card consumer-approved__card--2 consumer-approved__card--delay-2">
         <span class="consumer-approved__number">{{ section.settings.card_3_percentage }}</span>
         <p class="consumer-approved__description">{{ section.settings.card_3_description }}</p>
       </div>
     </div>
-
+ 
     <p class="consumer-approved__disclaimer">{{ section.settings.disclaimer }}</p>
   </div>
 </section>
-
+ 
 <script>
   (function () {
     var sectionId = '{{ section.id }}';
+    var section = document.querySelector('[data-section-id="' + sectionId + '"]');
     var cardsContainer = document.getElementById('consumer-approved-cards-' + sectionId);
-
-    if (!cardsContainer) return;
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: '0px 0px -50px 0px'
-        }
-      );
-
-      observer.observe(cardsContainer);
-    } else {
-      /* Fallback for browsers without IntersectionObserver */
-      cardsContainer.classList.add('is-visible');
+ 
+    if (!section || !cardsContainer) return;
+ 
+    var cards = cardsContainer.querySelectorAll('.consumer-approved__card');
+    var isDesktop = window.matchMedia('(min-width: 990px)');
+ 
+    /* Card final transform values */
+    var cardData = [
+      { finalX: 78.33, rotation: -5.03 },
+      { finalX: 0, rotation: 0.698 },
+      { finalX: -78.33, rotation: 2.27 }
+    ];
+ 
+    /* Extra spread offset for initial clustered state (px toward center) */
+    var CLUSTER_OFFSET = 280;
+ 
+    /* Ease-out cubic for smooth deceleration */
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
     }
+ 
+    /* Calculate scroll progress: 0 when section enters viewport, 1 when fully visible */
+    function getScrollProgress() {
+      var rect = section.getBoundingClientRect();
+      var viewH = window.innerHeight;
+      var start = viewH;
+      var end = viewH * 0.3;
+      var raw = (start - rect.top) / (start - end);
+      return Math.max(0, Math.min(1, raw));
+    }
+ 
+    /* Apply transforms based on scroll progress */
+    function updateCards() {
+      if (!isDesktop.matches) return;
+ 
+      var rawProgress = getScrollProgress();
+      var p = easeOutCubic(rawProgress);
+ 
+      for (var i = 0; i < cards.length; i++) {
+        var data = cardData[i];
+ 
+        /* Interpolate from clustered (center) to final spread position */
+        /* Initial extra offset pushes cards toward center; fades to 0 at p=1 */
+        var clusterX = (i === 0) ? CLUSTER_OFFSET : (i === 2) ? -CLUSTER_OFFSET : 0;
+        var extraOffset = clusterX * (1 - p);
+        var currentX = data.finalX + extraOffset;
+ 
+        cards[i].style.transform = 'translateX(' + currentX + 'px) rotate(' + data.rotation + 'deg)';
+        cards[i].style.opacity = Math.min(1, rawProgress * 2.5);
+      }
+ 
+      /* Interpolate gap from 0 to 48px (3rem) */
+      var gap = 48 * p;
+      cardsContainer.style.gap = gap + 'px';
+    }
+ 
+    /* Mobile: use IntersectionObserver for simple fade-in */
+    function initMobile() {
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        observer.observe(cardsContainer);
+      } else {
+        cardsContainer.classList.add('is-visible');
+      }
+    }
+ 
+    /* Scroll handler with requestAnimationFrame throttle */
+    var ticking = false;
+ 
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(function () {
+          updateCards();
+          ticking = false;
+        });
+      }
+    }
+ 
+    function init() {
+      if (isDesktop.matches) {
+        updateCards();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      } else {
+        initMobile();
+      }
+    }
+ 
+    /* Re-init on resize (desktop ↔ mobile) */
+    isDesktop.addEventListener('change', function () {
+      if (isDesktop.matches) {
+        /* Switch to desktop: remove mobile classes, bind scroll */
+        cardsContainer.classList.remove('is-visible');
+        for (var i = 0; i < cards.length; i++) {
+          cards[i].style.transform = '';
+          cards[i].style.opacity = '';
+        }
+        updateCards();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      } else {
+        /* Switch to mobile: remove desktop inline styles, init mobile */
+        window.removeEventListener('scroll', onScroll);
+        cardsContainer.style.gap = '';
+        for (var j = 0; j < cards.length; j++) {
+          cards[j].style.transform = '';
+          cards[j].style.opacity = '';
+        }
+        initMobile();
+      }
+    });
+ 
+    init();
   })();
 </script>
-
+ 
 {% schema %}
 {
   "name": "Consumer Approved",
@@ -286,8 +360,38 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background Color",
-      "default": "#EDE5F5"
+      "label": "Section Background Color",
+      "default": "#E8DFF5"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card Background Color",
+      "default": "#FFFDF7"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#1B1B1B"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number/Percentage Color",
+      "default": "#1B1B1B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Description Text Color",
+      "default": "#1B1B1B"
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer Text Color",
+      "default": "#666666"
     }
   ],
   "presets": [
