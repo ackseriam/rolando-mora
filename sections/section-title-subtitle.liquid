@@ -1,0 +1,45 @@
+<style>
+    .TITLE {
+        font-family: var(--font-heading--family, "Landour Regular Text", "Landour", sans-serif);
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: {{ section.settings.text_color }};
+        letter-spacing: 0em;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+</style>
+<div class="what-to-expect__heading">
+        <span class="what-to-expect__heading-main TITLE">REAL WOMEN</span>
+      <span class="what-to-expect__heading-italic">real results</span>
+    </div>
+    {% schema %}
+{
+  "name": "What to expect",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "REAL WOMEN"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "real results"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#C8A951"
+    }
+  ],
+  "presets": [
+    {
+      "name": "What to expect"
+    }
+  ]
+}
+{% endschema %}
