@@ -696,6 +696,33 @@
         "padding-block-end": 40
       }
     },
+    "dermatologist_quote_mT4db6": {
+      "type": "dermatologist-quote",
+      "name": "Dermatologist Quote",
+      "settings": {
+        "heading_italic": "What Our Dermatologist",
+        "heading_main": "has to say",
+        "quote_text": "With consistent use, the formulation will diminish the look of sagging skin, fine lines, and wrinkles on the neck.",
+        "doctor_name": "Dr. Jessica Kaprive",
+        "doctor_title": "goPure Dermatology Advisor",
+        "background_color": "#f3f0ff",
+        "quote_background_color": "#fff5f7",
+        "image_frame_color": "#dde4f6"
+      }
+    },
+    "section_title_subtitle_tdQRAh": {
+      "type": "section-title-subtitle",
+      "name": "Title - subtitle",
+      "settings": {
+        "title": "REAL WOMEN",
+        "title_font_size": 48,
+        "subtitle": "real results",
+        "subtitle_font_size": 48,
+        "text_color": "#3f27ae",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "section_C4wFwP": {
       "type": "section",
       "blocks": {
@@ -705,6 +732,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/459fd1e96324472cad71422b91014b37.mp4",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -728,6 +756,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/459fd1e96324472cad71422b91014b37.mp4",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -751,6 +780,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/459fd1e96324472cad71422b91014b37.mp4",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -774,6 +804,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/459fd1e96324472cad71422b91014b37.mp4",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -906,19 +937,6 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
-    },
-    "section_title_subtitle_tdQRAh": {
-      "type": "section-title-subtitle",
-      "name": "Title - subtitle",
-      "settings": {
-        "title": "REAL WOMEN",
-        "title_font_size": 48,
-        "subtitle": "real results",
-        "subtitle_font_size": 48,
-        "text_color": "#3F27AE",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -931,6 +949,7 @@
     "comparison_table_C3bQFn",
     "marquee_banner_XYiyFi",
     "hero_jwzzDB",
+    "dermatologist_quote_mT4db6",
     "section_title_subtitle_tdQRAh",
     "section_C4wFwP",
     "section_n3RDLG"
