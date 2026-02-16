@@ -1,0 +1,574 @@
+<style>
+  .gopure-standard {
+    background-color: #ffffff;
+    padding: 3rem 0 0;
+    overflow: hidden;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard {
+      padding: 4rem 0 0;
+    }
+  }
+
+  .gopure-standard__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .gopure-standard__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard__grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  /* COLUMN 1 — Stats */
+  .gopure-standard__stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 0.7rem;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard__stats {
+      padding-top: 1.25rem;
+    }
+  }
+
+  .gopure-standard__badge {
+    display: inline-block;
+    background-color: {{ section.settings.badge_bg_color }};
+    color: {{ section.settings.color_indigo }};
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .gopure-standard__heading {
+    margin: 0 0 2rem;
+  }
+
+  .gopure-standard__heading-main {
+    display: block;
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: {{ section.settings.color_indigo }};
+    line-height: 1.2;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard__heading-main {
+      font-size: 2rem;
+    }
+  }
+
+  .gopure-standard__heading-italic {
+    display: block;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2rem;
+    color: {{ section.settings.color_indigo }};
+    line-height: 1.2;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard__heading-italic {
+      font-size: 2.5rem;
+    }
+  }
+
+  .gopure-standard__stat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .gopure-standard__stat {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .gopure-standard__stat-icon {
+    flex-shrink: 0;
+    width: 43px;
+    height: 41px;
+    margin-top: 2px;
+  }
+
+  .gopure-standard__stat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .gopure-standard__stat-title {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    color: {{ section.settings.color_indigo }};
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  .gopure-standard__stat-desc {
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: {{ section.settings.color_indigo }};
+    line-height: 1.4;
+  }
+
+  /* COLUMN 2 — Product Image */
+  .gopure-standard__image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .gopure-standard__product-img {
+    display: block;
+    width: 271px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 990px) {
+    .gopure-standard__product-img {
+      width: 400px;
+    }
+  }
+
+  /* COLUMN 3 — Testing Card */
+  .gopure-standard__card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .gopure-standard__card-top {
+    background-color: {{ section.settings.color_primary }};
+    padding: 1.5rem 1.25rem;
+  }
+
+  .gopure-standard__card-heading {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .gopure-standard__card-subtext {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .gopure-standard__card-bottom {
+    background-color: #ffffff;
+    padding: 1.25rem;
+  }
+
+  .gopure-standard__method {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid #e8e4f0;
+  }
+
+  .gopure-standard__method:first-child {
+    padding-top: 0;
+  }
+
+  .gopure-standard__method:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .gopure-standard__method-title {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    color: {{ section.settings.color_primary }};
+    letter-spacing: 0.04em;
+    margin: 0 0 0.2rem;
+    line-height: 1.3;
+  }
+
+  .gopure-standard__method-desc {
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: #444444;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .gopure-standard__highlight {
+    background-color: {{ section.settings.badge_bg_color }};
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .gopure-standard__highlight p {
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: {{ section.settings.color_indigo }};
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .gopure-standard__highlight strong {
+    font-weight: 700;
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;600;700&display=swap">
+
+<section class="gopure-standard" data-section-id="{{ section.id }}">
+  <div class="gopure-standard__container">
+    <div class="gopure-standard__grid">
+
+      <!-- COLUMN 1 — Stats -->
+      <div class="gopure-standard__stats">
+        <span class="gopure-standard__badge">{{ section.settings.badge_text }}</span>
+
+        <div class="gopure-standard__heading">
+          <span class="gopure-standard__heading-main">{{ section.settings.heading_main }}</span>
+          <span class="gopure-standard__heading-italic">{{ section.settings.heading_italic }}</span>
+        </div>
+
+        <div class="gopure-standard__stat-list">
+          <div class="gopure-standard__stat">
+            <div class="gopure-standard__stat-icon">
+              <svg width="43" height="41" viewBox="0 0 43 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.0554 20.2083C42.0818 21.9385 40.0297 23.3782 39.6149 24.9737C39.1836 26.624 40.2571 28.872 39.4139 30.316C38.5623 31.781 36.0267 32.0293 34.8187 33.2207C33.6107 34.4079 33.3873 36.8664 31.8871 37.7125C30.4084 38.5461 28.0712 37.5441 26.3734 37.9862C24.732 38.4114 23.2755 40.4194 21.4928 40.4194C19.71 40.4194 18.188 38.4114 16.5335 37.9862C14.8223 37.5441 12.5157 38.5503 11.0115 37.7125C9.48542 36.8664 9.19134 34.4079 7.94268 33.2207C6.69836 32.0335 4.15517 31.781 3.25882 30.316C2.37583 28.872 3.37637 26.624 2.89462 24.9737C2.43109 23.3782 0.335028 21.9385 0.308609 20.2083C0.28219 18.4781 2.33428 17.0383 2.74909 15.4428C3.18045 13.7926 2.10691 11.5446 2.95015 10.1006C3.80176 8.6356 6.3373 8.38722 7.5453 7.19585C8.75335 6.0087 8.9767 3.55018 10.4769 2.70402C11.9556 1.87048 14.2929 2.87241 15.9906 2.43038C17.6321 2.0052 19.0885 -0.00286865 20.8756 -0.00286865C22.6627 -0.00286865 24.1804 2.0052 25.8349 2.43038C27.5461 2.87241 29.8527 1.86627 31.3569 2.70402C32.883 3.55018 33.177 6.0087 34.4257 7.19585C35.67 8.38301 38.2132 8.6356 39.1096 10.1006C39.9925 11.5446 38.992 13.7926 39.4738 15.4428C39.9373 17.0383 42.0334 18.4781 42.0598 20.2083H42.0554Z" fill="#A4E8FD"/>
+                <path d="M13.246 18.6499L19.8907 26.2654L38.53 5.52396" stroke="#3F27AE" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gopure-standard__stat-text">
+              <span class="gopure-standard__stat-title">{{ section.settings.stat_1_title }}</span>
+              <span class="gopure-standard__stat-desc">{{ section.settings.stat_1_description }}</span>
+            </div>
+          </div>
+
+          <div class="gopure-standard__stat">
+            <div class="gopure-standard__stat-icon">
+              <svg width="43" height="41" viewBox="0 0 43 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.0554 20.2083C42.0818 21.9385 40.0297 23.3782 39.6149 24.9737C39.1836 26.624 40.2571 28.872 39.4139 30.316C38.5623 31.781 36.0267 32.0293 34.8187 33.2207C33.6107 34.4079 33.3873 36.8664 31.8871 37.7125C30.4084 38.5461 28.0712 37.5441 26.3734 37.9862C24.732 38.4114 23.2755 40.4194 21.4928 40.4194C19.71 40.4194 18.188 38.4114 16.5335 37.9862C14.8223 37.5441 12.5157 38.5503 11.0115 37.7125C9.48542 36.8664 9.19134 34.4079 7.94268 33.2207C6.69836 32.0335 4.15517 31.781 3.25882 30.316C2.37583 28.872 3.37637 26.624 2.89462 24.9737C2.43109 23.3782 0.335028 21.9385 0.308609 20.2083C0.28219 18.4781 2.33428 17.0383 2.74909 15.4428C3.18045 13.7926 2.10691 11.5446 2.95015 10.1006C3.80176 8.6356 6.3373 8.38722 7.5453 7.19585C8.75335 6.0087 8.9767 3.55018 10.4769 2.70402C11.9556 1.87048 14.2929 2.87241 15.9906 2.43038C17.6321 2.0052 19.0885 -0.00286865 20.8756 -0.00286865C22.6627 -0.00286865 24.1804 2.0052 25.8349 2.43038C27.5461 2.87241 29.8527 1.86627 31.3569 2.70402C32.883 3.55018 33.177 6.0087 34.4257 7.19585C35.67 8.38301 38.2132 8.6356 39.1096 10.1006C39.9925 11.5446 38.992 13.7926 39.4738 15.4428C39.9373 17.0383 42.0334 18.4781 42.0598 20.2083H42.0554Z" fill="#A4E8FD"/>
+                <path d="M13.246 18.6499L19.8907 26.2654L38.53 5.52396" stroke="#3F27AE" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gopure-standard__stat-text">
+              <span class="gopure-standard__stat-title">{{ section.settings.stat_2_title }}</span>
+              <span class="gopure-standard__stat-desc">{{ section.settings.stat_2_description }}</span>
+            </div>
+          </div>
+
+          <div class="gopure-standard__stat">
+            <div class="gopure-standard__stat-icon">
+              <svg width="43" height="41" viewBox="0 0 43 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.0554 20.2083C42.0818 21.9385 40.0297 23.3782 39.6149 24.9737C39.1836 26.624 40.2571 28.872 39.4139 30.316C38.5623 31.781 36.0267 32.0293 34.8187 33.2207C33.6107 34.4079 33.3873 36.8664 31.8871 37.7125C30.4084 38.5461 28.0712 37.5441 26.3734 37.9862C24.732 38.4114 23.2755 40.4194 21.4928 40.4194C19.71 40.4194 18.188 38.4114 16.5335 37.9862C14.8223 37.5441 12.5157 38.5503 11.0115 37.7125C9.48542 36.8664 9.19134 34.4079 7.94268 33.2207C6.69836 32.0335 4.15517 31.781 3.25882 30.316C2.37583 28.872 3.37637 26.624 2.89462 24.9737C2.43109 23.3782 0.335028 21.9385 0.308609 20.2083C0.28219 18.4781 2.33428 17.0383 2.74909 15.4428C3.18045 13.7926 2.10691 11.5446 2.95015 10.1006C3.80176 8.6356 6.3373 8.38722 7.5453 7.19585C8.75335 6.0087 8.9767 3.55018 10.4769 2.70402C11.9556 1.87048 14.2929 2.87241 15.9906 2.43038C17.6321 2.0052 19.0885 -0.00286865 20.8756 -0.00286865C22.6627 -0.00286865 24.1804 2.0052 25.8349 2.43038C27.5461 2.87241 29.8527 1.86627 31.3569 2.70402C32.883 3.55018 33.177 6.0087 34.4257 7.19585C35.67 8.38301 38.2132 8.6356 39.1096 10.1006C39.9925 11.5446 38.992 13.7926 39.4738 15.4428C39.9373 17.0383 42.0334 18.4781 42.0598 20.2083H42.0554Z" fill="#A4E8FD"/>
+                <path d="M13.246 18.6499L19.8907 26.2654L38.53 5.52396" stroke="#3F27AE" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gopure-standard__stat-text">
+              <span class="gopure-standard__stat-title">{{ section.settings.stat_3_title }}</span>
+              <span class="gopure-standard__stat-desc">{{ section.settings.stat_3_description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2 — Product Image -->
+      <div class="gopure-standard__image">
+        {%- if section.settings.product_image != blank -%}
+          <img
+            class="gopure-standard__product-img"
+            src="{{ section.settings.product_image | image_url: width: 800 }}"
+            alt="GoPure Tighten &amp; Lift Neck Cream jar"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            class="gopure-standard__product-img"
+            src="https://cdn.shopify.com/s/files/1/0743/0383/files/gopure-tighten-lift-neck-cream_4eb6c54c-6c2a-47ca-8c6d-ad4d3d75f5e0.png?v=1760097295"
+            alt="GoPure Tighten &amp; Lift Neck Cream jar"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+
+      <!-- COLUMN 3 — Testing Card -->
+      <div class="gopure-standard__card">
+        <div class="gopure-standard__card-top">
+          <h3 class="gopure-standard__card-heading">{{ section.settings.card_heading }}</h3>
+          <p class="gopure-standard__card-subtext">{{ section.settings.card_subtext }}</p>
+        </div>
+
+        <div class="gopure-standard__card-bottom">
+          <div class="gopure-standard__method">
+            <p class="gopure-standard__method-title">{{ section.settings.method_1_title }}</p>
+            <p class="gopure-standard__method-desc">{{ section.settings.method_1_description }}</p>
+          </div>
+          <div class="gopure-standard__method">
+            <p class="gopure-standard__method-title">{{ section.settings.method_2_title }}</p>
+            <p class="gopure-standard__method-desc">{{ section.settings.method_2_description }}</p>
+          </div>
+          <div class="gopure-standard__method">
+            <p class="gopure-standard__method-title">{{ section.settings.method_3_title }}</p>
+            <p class="gopure-standard__method-desc">{{ section.settings.method_3_description }}</p>
+          </div>
+          <div class="gopure-standard__method">
+            <p class="gopure-standard__method-title">{{ section.settings.method_4_title }}</p>
+            <p class="gopure-standard__method-desc">{{ section.settings.method_4_description }}</p>
+          </div>
+
+          <div class="gopure-standard__highlight">
+            {{ section.settings.highlight_text }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GoPure Standard",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge & Heading"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Clinical Testing"
+    },
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "Heading (Bold Uppercase)",
+      "default": "THE GOPURE"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Serif)",
+      "default": "Standard"
+    },
+    {
+      "type": "header",
+      "content": "Stat 1"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_title",
+      "label": "Stat 1 Title",
+      "default": "15 Versions Tested"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_description",
+      "label": "Stat 1 Description",
+      "default": "Before any product touches your skin"
+    },
+    {
+      "type": "header",
+      "content": "Stat 2"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_title",
+      "label": "Stat 2 Title",
+      "default": "1 Full Year"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_description",
+      "label": "Stat 2 Description",
+      "default": "Of rigorous clinical trials per product"
+    },
+    {
+      "type": "header",
+      "content": "Stat 3"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_title",
+      "label": "Stat 3 Title",
+      "default": "100+ HOURS"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_description",
+      "label": "Stat 3 Description",
+      "default": "Of specialized training for our testing specialists"
+    },
+    {
+      "type": "header",
+      "content": "Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "header",
+      "content": "Testing Card"
+    },
+    {
+      "type": "text",
+      "id": "card_heading",
+      "label": "Card Heading",
+      "default": "Real Science, Not Just Surveys"
+    },
+    {
+      "type": "textarea",
+      "id": "card_subtext",
+      "label": "Card Subtext",
+      "default": "While most brands rely only on 'consumer surveys' (aka opinions), we also invest in legitimate clinical research:"
+    },
+    {
+      "type": "header",
+      "content": "Testing Method 1"
+    },
+    {
+      "type": "text",
+      "id": "method_1_title",
+      "label": "Method 1 Title",
+      "default": "VISIA® COMPLEXION ANALYSIS"
+    },
+    {
+      "type": "text",
+      "id": "method_1_description",
+      "label": "Method 1 Description",
+      "default": "Medical-grade skin imaging technology"
+    },
+    {
+      "type": "header",
+      "content": "Testing Method 2"
+    },
+    {
+      "type": "text",
+      "id": "method_2_title",
+      "label": "Method 2 Title",
+      "default": "CUTOMETER® TESTING"
+    },
+    {
+      "type": "text",
+      "id": "method_2_description",
+      "label": "Method 2 Description",
+      "default": "Measures skin elasticity using precision vacuum technology"
+    },
+    {
+      "type": "header",
+      "content": "Testing Method 3"
+    },
+    {
+      "type": "text",
+      "id": "method_3_title",
+      "label": "Method 3 Title",
+      "default": "BALLISTOMETER® ANALYSIS"
+    },
+    {
+      "type": "text",
+      "id": "method_3_description",
+      "label": "Method 3 Description",
+      "default": "Cutting-edge technology measuring skin firmness"
+    },
+    {
+      "type": "header",
+      "content": "Testing Method 4"
+    },
+    {
+      "type": "text",
+      "id": "method_4_title",
+      "label": "Method 4 Title",
+      "default": "DERMATOLOGIST SUPERVISED"
+    },
+    {
+      "type": "text",
+      "id": "method_4_description",
+      "label": "Method 4 Description",
+      "default": "Every test monitored by licensed professionals"
+    },
+    {
+      "type": "header",
+      "content": "Highlight Box"
+    },
+    {
+      "type": "richtext",
+      "id": "highlight_text",
+      "label": "Highlight Text",
+      "default": "<p>This is the same technology used in <strong>$500/jar luxury</strong> skincare. The difference? <strong>We don't charge you for it.</strong></p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_indigo",
+      "label": "Indigo / Text Color",
+      "default": "#3F27AE"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary / Card Top Background",
+      "default": "#3F27AE"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge / Highlight Background (Onahau)",
+      "default": "#D4F1FF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GoPure Standard"
+    }
+  ]
+}
+{% endschema %}

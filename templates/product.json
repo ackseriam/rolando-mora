@@ -488,6 +488,35 @@
         "disclaimer_color": "#666666"
       }
     },
+    "gopure_standard_Rt4xLn": {
+      "type": "gopure-standard",
+      "name": "GoPure Standard",
+      "settings": {
+        "badge_text": "Clinical Testing",
+        "heading_main": "THE GOPURE",
+        "heading_italic": "Standard",
+        "stat_1_title": "15 Versions Tested",
+        "stat_1_description": "Before any product touches your skin",
+        "stat_2_title": "1 Full Year",
+        "stat_2_description": "Of rigorous clinical trials per product",
+        "stat_3_title": "100+ HOURS",
+        "stat_3_description": "Of specialized training for our testing specialists",
+        "card_heading": "Real Science, Not Just Surveys",
+        "card_subtext": "While most brands rely only on 'consumer surveys' (aka opinions), we also invest in legitimate clinical research:",
+        "method_1_title": "VISIA® COMPLEXION ANALYSIS",
+        "method_1_description": "Medical-grade skin imaging technology",
+        "method_2_title": "CUTOMETER® TESTING",
+        "method_2_description": "Measures skin elasticity using precision vacuum technology",
+        "method_3_title": "BALLISTOMETER® ANALYSIS",
+        "method_3_description": "Cutting-edge technology measuring skin firmness",
+        "method_4_title": "DERMATOLOGIST SUPERVISED",
+        "method_4_description": "Every test monitored by licensed professionals",
+        "highlight_text": "<p>This is the same technology used in <strong>$500\/jar luxury<\/strong> skincare. The difference? <strong>We don't charge you for it.<\/strong><\/p>",
+        "color_indigo": "#3F27AE",
+        "color_primary": "#3F27AE",
+        "badge_bg_color": "#D4F1FF"
+      }
+    },
     "marquee_banner_Vq8mRz": {
       "type": "marquee-banner",
       "name": "Marquee Banner",
@@ -600,6 +629,7 @@
   },
   "order": [
     "main",
+    "gopure_standard_Rt4xLn",
     "marquee_banner_Vq8mRz",
     "comparison_table_KxRt7p",
     "product_recommendations_qggXJq",
