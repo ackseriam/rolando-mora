@@ -809,7 +809,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h4>Creamos cosas que funcionan mejor y duran más. Nuestros productos resuelven problemas reales con un diseño limpio y materiales honestos.</h4>",
+            "text": "<h2><em>real results</em></h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
