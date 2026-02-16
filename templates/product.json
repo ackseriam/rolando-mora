@@ -991,6 +991,17 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "custom_liquid_WxeBkh": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"yotpo yotpo-main-widget\"\n  data-product-id=\"{{ product.id }}\"\n  data-name=\"{{ product.title | escape }}\"\n  data-url=\"{{ shop.url }}{{ product.url }}\"\n  data-image-url=\"{{ product.featured_image | img_url: 'large' }}\"\n  data-description=\"{{ product.description | escape }}\">\n</div>",
+        "color_scheme": "",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1008,6 +1019,7 @@
     "section_C4wFwP",
     "section_n3RDLG",
     "section_title_subtitle_JegDxz",
-    "1771265211e35a021f"
+    "1771265211e35a021f",
+    "custom_liquid_WxeBkh"
   ]
 }
