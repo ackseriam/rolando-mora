@@ -1,0 +1,159 @@
+<style>
+  .marquee-banner {
+    background-color: {{ section.settings.background_color }};
+    padding: 0.7rem 0;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .marquee-banner__track {
+    display: flex;
+    width: fit-content;
+    animation: marquee-scroll {{ section.settings.scroll_speed }}s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-banner__group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .marquee-banner__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+  }
+
+  .marquee-banner__dot {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  .marquee-banner__text {
+    font-family: var(--font-heading--family, "Landour Regular Text", "Landour", sans-serif);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: {{ section.settings.text_color }};
+    letter-spacing: 0em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 990px) {
+    .marquee-banner__text {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<section class="marquee-banner" data-section-id="{{ section.id }}" aria-label="Scrolling banner">
+  <div class="marquee-banner__track">
+    {%- comment -%}
+      Duplicate the group twice so that when the first copy scrolls fully
+      off-screen the second copy is in exactly the same start position,
+      creating a seamless infinite loop (translateX -50%).
+    {%- endcomment -%}
+    {%- for i in (1..2) -%}
+      {%- comment -%}
+        Repeat the two items several times inside each group so the
+        track is wide enough to cover ultra-wide screens without gaps.
+      {%- endcomment -%}
+      <div class="marquee-banner__group">
+        {%- for j in (1..8) -%}
+          <span class="marquee-banner__item">
+            <span class="marquee-banner__dot" aria-hidden="true">
+              <svg fill="none" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                <circle cx="6" cy="6" r="6" fill="{{ section.settings.dot_color }}"></circle>
+              </svg>
+            </span>
+            <span class="marquee-banner__text">{{ section.settings.item_1_text }}</span>
+          </span>
+          <span class="marquee-banner__item">
+            <span class="marquee-banner__dot" aria-hidden="true">
+              <svg fill="none" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                <circle cx="6" cy="6" r="6" fill="{{ section.settings.dot_color }}"></circle>
+              </svg>
+            </span>
+            <span class="marquee-banner__text">{{ section.settings.item_2_text }}</span>
+          </span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "item_1_text",
+      "label": "Item 1 Text",
+      "default": "REAL SKIN BENEFITS"
+    },
+    {
+      "type": "text",
+      "id": "item_2_text",
+      "label": "Item 2 Text",
+      "default": "SCIENCE BACKED INGREDIENTS"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#DEF3FF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#C8A951"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#3F27AE"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll Speed (seconds)",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "default": 53,
+      "unit": "s"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Banner"
+    }
+  ]
+}
+{% endschema %}

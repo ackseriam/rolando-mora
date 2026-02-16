@@ -488,6 +488,18 @@
         "disclaimer_color": "#666666"
       }
     },
+    "marquee_banner_Vq8mRz": {
+      "type": "marquee-banner",
+      "name": "Marquee Banner",
+      "settings": {
+        "item_1_text": "REAL SKIN BENEFITS",
+        "item_2_text": "SCIENCE BACKED INGREDIENTS",
+        "background_color": "#DEF3FF",
+        "text_color": "#C8A951",
+        "dot_color": "#3F27AE",
+        "scroll_speed": 53
+      }
+    },
     "comparison_table_KxRt7p": {
       "type": "comparison-table",
       "blocks": {
@@ -588,6 +600,7 @@
   },
   "order": [
     "main",
+    "marquee_banner_Vq8mRz",
     "comparison_table_KxRt7p",
     "product_recommendations_qggXJq",
     "reviews_section_WErqrT",
