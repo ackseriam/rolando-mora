@@ -938,20 +938,18 @@
         "padding-block-end": 0
       }
     },
-    "821531f7fa36b074381f": {
-      "type": "apps",
-      "blocks": {
-        "cd9ed089-e360-4723-87ba-b34827a7074b": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "cd9ed089-e360-4723-87ba-b34827a7074b"
-      ],
-      "settings": {}
+    "section_title_subtitle_JegDxz": {
+      "type": "section-title-subtitle",
+      "name": "Title Subtitle",
+      "settings": {
+        "title": "REAL WOMEN",
+        "title_font_size": 56,
+        "subtitle": "real results",
+        "subtitle_font_size": 56,
+        "text_color": "#3F27AE",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -968,6 +966,6 @@
     "section_title_subtitle_tdQRAh",
     "section_C4wFwP",
     "section_n3RDLG",
-    "821531f7fa36b074381f"
+    "section_title_subtitle_JegDxz"
   ]
 }
