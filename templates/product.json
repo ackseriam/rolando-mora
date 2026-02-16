@@ -718,7 +718,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 20,
+        "gap": 97,
         "section_width": "full-width",
         "section_height": "custom",
         "section_height_custom": 14,
