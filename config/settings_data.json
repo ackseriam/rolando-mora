@@ -316,7 +316,7 @@
         "settings": {
           "background": "rgba(0,0,0,0)",
           "foreground_heading": "#3f27ae",
-          "foreground": "#000000",
+          "foreground": "#3f27ae",
           "primary": "#000000",
           "primary_hover": "#00000087",
           "border": "#e6e6e6",
