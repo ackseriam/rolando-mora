@@ -1,0 +1,454 @@
+<style>
+  /* ── Colors ── */
+  .derm-quote {
+    --dq-wisp: {{ section.settings.background_color }};
+    --dq-blush: {{ section.settings.quote_background_color }};
+    --dq-bluebell: {{ section.settings.image_frame_color }};
+    --dq-indigo: #3F27AE;
+    --dq-deep-purple: #4834d4;
+  }
+
+  /* ── Section ── */
+  .derm-quote {
+    background-color: var(--dq-wisp);
+    padding: 3rem 0;
+    overflow: visible;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote {
+      padding: 5rem 0;
+    }
+  }
+
+  .derm-quote__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Grid ── */
+  .derm-quote__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__grid {
+      grid-template-columns: 6fr 1fr 5fr;
+      gap: 0;
+    }
+  }
+
+  /* ── LEFT COLUMN ── */
+  .derm-quote__left {
+    text-align: center;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__left {
+      text-align: left;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Heading */
+  .derm-quote__heading {
+    margin: 0 0 2rem;
+    line-height: 1.15;
+  }
+
+  .derm-quote__heading-italic {
+    display: block;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.75rem;
+    color: var(--dq-deep-purple);
+    line-height: 1.2;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__heading-italic {
+      font-size: 2.25rem;
+    }
+  }
+
+  .derm-quote__heading-main {
+    display: block;
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    color: var(--dq-deep-purple);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__heading-main {
+      font-size: 3rem;
+    }
+  }
+
+  /* Blockquote (shared) */
+  .derm-quote__blockquote {
+    position: relative;
+    background-color: var(--dq-blush);
+    border-radius: 1rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(72, 52, 212, 0.08);
+    margin: 0;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__blockquote {
+      padding: 2rem 2.5rem 2rem 3.5rem;
+    }
+  }
+
+  .derm-quote__blockquote::before {
+    content: "\201C";
+    position: absolute;
+    top: -0.1em;
+    left: 0.4rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--dq-deep-purple);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__blockquote::before {
+      left: 0.75rem;
+      font-size: 6rem;
+    }
+  }
+
+  .derm-quote__blockquote-text {
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dq-deep-purple);
+    margin: 0;
+    font-style: italic;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__blockquote-text {
+      font-size: 1.0625rem;
+    }
+  }
+
+  /* Desktop-only / Mobile-only */
+  .derm-quote__blockquote--desktop {
+    display: none;
+  }
+
+  .derm-quote__blockquote--mobile {
+    display: block;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__blockquote--desktop {
+      display: block;
+    }
+    .derm-quote__blockquote--mobile {
+      display: none;
+    }
+  }
+
+  /* ── SPACER (desktop only) ── */
+  .derm-quote__spacer {
+    display: none;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__spacer {
+      display: block;
+    }
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .derm-quote__right {
+    position: relative;
+  }
+
+  /* Circular badge SVG */
+  .derm-quote__badge {
+    position: absolute;
+    top: -28px;
+    left: -20px;
+    z-index: 2;
+    width: 120px;
+    height: 120px;
+    animation: derm-badge-spin 18s linear infinite;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__badge {
+      top: -36px;
+      left: -36px;
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @keyframes derm-badge-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Image frame */
+  .derm-quote__image-frame {
+    position: relative;
+    background-color: var(--dq-bluebell);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .derm-quote__image {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 990px) {
+    .derm-quote__image {
+      max-width: 600px;
+    }
+  }
+
+  /* Doctor details overlay */
+  .derm-quote__doctor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(to top, rgba(63, 39, 174, 0.85) 0%, rgba(63, 39, 174, 0.6) 60%, transparent 100%);
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  .derm-quote__doctor-name {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #ffffff;
+    line-height: 1;
+    margin: 0 0 0.2rem;
+  }
+
+  .derm-quote__doctor-title {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  /* Mobile reorder: heading, then image, then quote */
+  @media (max-width: 989px) {
+    .derm-quote__grid {
+      grid-template-areas:
+        "left"
+        "right"
+        "mobile-quote";
+    }
+    .derm-quote__left {
+      grid-area: left;
+    }
+    .derm-quote__right {
+      grid-area: right;
+    }
+    .derm-quote__mobile-quote-area {
+      grid-area: mobile-quote;
+    }
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;600;700&display=swap">
+
+<section class="derm-quote" data-section-id="{{ section.id }}">
+  <div class="derm-quote__container">
+    <div class="derm-quote__grid">
+
+      <!-- LEFT COLUMN — Heading + Desktop Blockquote -->
+      <div class="derm-quote__left">
+        <h2 class="derm-quote__heading">
+          <span class="derm-quote__heading-italic">{{ section.settings.heading_italic }}</span>
+          <span class="derm-quote__heading-main">{{ section.settings.heading_main }}</span>
+        </h2>
+
+        <!-- Desktop blockquote -->
+        <blockquote class="derm-quote__blockquote derm-quote__blockquote--desktop">
+          <p class="derm-quote__blockquote-text">"{{ section.settings.quote_text }}"</p>
+        </blockquote>
+      </div>
+
+      <!-- SPACER (desktop only) -->
+      <div class="derm-quote__spacer"></div>
+
+      <!-- RIGHT COLUMN — Badge + Image + Doctor Details -->
+      <div class="derm-quote__right">
+        <!-- Decorative circular badge SVG -->
+        <div class="derm-quote__badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="badge-shadow-{{ section.id }}" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(63,39,174,0.25)" />
+              </filter>
+            </defs>
+            <!-- Outer circle with shadow -->
+            <circle cx="100" cy="100" r="92" fill="#ffffff" filter="url(#badge-shadow-{{ section.id }})" />
+            <!-- Inner ring -->
+            <circle cx="100" cy="100" r="82" fill="none" stroke="#3F27AE" stroke-width="1.5" />
+            <!-- Inner solid circle -->
+            <circle cx="100" cy="100" r="58" fill="#3F27AE" />
+            <!-- Checkmark -->
+            <path d="M78 100 L93 115 L122 82" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- Circular text path -->
+            <path id="derm-text-path-{{ section.id }}" d="M100,18 a82,82 0 1,1 -0.01,0" fill="none" />
+            <text font-family="'Montserrat', var(--font-heading--family, sans-serif)" font-size="11" font-weight="600" fill="#3F27AE" letter-spacing="3.5">
+              <textPath href="#derm-text-path-{{ section.id }}" startOffset="0%">DERMATOLOGIST &#x2022; RECOMMENDED &#x2022;</textPath>
+            </text>
+          </svg>
+        </div>
+
+        <!-- Image frame -->
+        <div class="derm-quote__image-frame">
+          {%- if section.settings.doctor_image != blank -%}
+            <img
+              class="derm-quote__image"
+              src="{{ section.settings.doctor_image | image_url: width: 1200 }}"
+              alt="{{ section.settings.doctor_name }}, {{ section.settings.doctor_title }} holding Tighten & Lift Neck Cream"
+              width="600"
+              height="600"
+              loading="lazy"
+              srcset="{{ section.settings.doctor_image | image_url: width: 350 }} 350w,
+                      {{ section.settings.doctor_image | image_url: width: 600 }} 600w,
+                      {{ section.settings.doctor_image | image_url: width: 1200 }} 1200w"
+              sizes="(max-width: 989px) 350px, 600px"
+            >
+          {%- else -%}
+            <img
+              class="derm-quote__image"
+              src="https://cdn.shopify.com/s/files/1/0743/0383/files/dermatologist-holding-skincare-product-tighten-lift-cream.png?v=1754331667"
+              alt="{{ section.settings.doctor_name }}, {{ section.settings.doctor_title }} holding Tighten & Lift Neck Cream"
+              width="600"
+              height="600"
+              loading="lazy"
+            >
+          {%- endif -%}
+
+          <!-- Doctor details overlay -->
+          <div class="derm-quote__doctor">
+            <p class="derm-quote__doctor-name">{{ section.settings.doctor_name }}</p>
+            <p class="derm-quote__doctor-title">{{ section.settings.doctor_title }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE BLOCKQUOTE (below image) -->
+      <div class="derm-quote__mobile-quote-area">
+        <blockquote class="derm-quote__blockquote derm-quote__blockquote--mobile">
+          <p class="derm-quote__blockquote-text">"{{ section.settings.quote_text }}"</p>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dermatologist Quote",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Line)",
+      "default": "What Our Dermatologist"
+    },
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "Heading (Bold Uppercase Line)",
+      "default": "has to say"
+    },
+    {
+      "type": "header",
+      "content": "Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "With consistent use, the formulation will diminish the look of sagging skin, fine lines, and wrinkles on the neck."
+    },
+    {
+      "type": "header",
+      "content": "Doctor"
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image",
+      "label": "Doctor Image"
+    },
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Doctor Name",
+      "default": "Dr. Jessica Kaprive"
+    },
+    {
+      "type": "text",
+      "id": "doctor_title",
+      "label": "Doctor Title",
+      "default": "goPure Dermatology Advisor"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background (Wisp)",
+      "default": "#f3f0ff"
+    },
+    {
+      "type": "color",
+      "id": "quote_background_color",
+      "label": "Quote Card Background (Blush)",
+      "default": "#fff5f7"
+    },
+    {
+      "type": "color",
+      "id": "image_frame_color",
+      "label": "Image Frame Background (Bluebell)",
+      "default": "#dde4f6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dermatologist Quote"
+    }
+  ]
+}
+{% endschema %}

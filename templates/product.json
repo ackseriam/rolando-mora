@@ -488,6 +488,20 @@
         "disclaimer_color": "#666666"
       }
     },
+    "dermatologist_quote_Kx9mTp": {
+      "type": "dermatologist-quote",
+      "name": "Dermatologist Quote",
+      "settings": {
+        "heading_italic": "What Our Dermatologist",
+        "heading_main": "has to say",
+        "quote_text": "With consistent use, the formulation will diminish the look of sagging skin, fine lines, and wrinkles on the neck.",
+        "doctor_name": "Dr. Jessica Kaprive",
+        "doctor_title": "goPure Dermatology Advisor",
+        "background_color": "#f3f0ff",
+        "quote_background_color": "#fff5f7",
+        "image_frame_color": "#dde4f6"
+      }
+    },
     "gopure_standard_Rt4xLn": {
       "type": "gopure-standard",
       "name": "GoPure Standard",
@@ -634,6 +648,7 @@
     "comparison_table_KxRt7p",
     "product_recommendations_qggXJq",
     "reviews_section_WErqrT",
-    "consumer_approved_DWcCmL"
+    "consumer_approved_DWcCmL",
+    "dermatologist_quote_Kx9mTp"
   ]
 }
