@@ -354,8 +354,8 @@
       "scheme-5fe58a33-8d0d-40e1-9643-766484416f9a": {
         "settings": {
           "background": "#3f27ae",
-          "foreground_heading": "#000000",
-          "foreground": "#000000cf",
+          "foreground_heading": "#ffffff",
+          "foreground": "#ffffff",
           "primary": "#000000cf",
           "primary_hover": "#000000",
           "border": "#0000000f",
