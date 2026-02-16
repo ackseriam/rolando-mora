@@ -620,6 +620,18 @@
         "cta_bg_color": "#3f27ae"
       }
     },
+    "marquee_banner_XYiyFi": {
+      "type": "marquee-banner",
+      "name": "Marquee Banner",
+      "settings": {
+        "item_1_text": "REAL SKIN BENEFITS",
+        "item_2_text": "SCIENCE BACKED INGREDIENTS",
+        "background_color": "#DEF3FF",
+        "text_color": "#C8A951",
+        "dot_color": "#3F27AE",
+        "scroll_speed": 53
+      }
+    },
     "hero_jwzzDB": {
       "type": "hero",
       "name": "t:names.hero",
@@ -663,6 +675,7 @@
     "consumer_approved_DWcCmL",
     "what_to_expect_QGHJcG",
     "comparison_table_C3bQFn",
+    "marquee_banner_XYiyFi",
     "hero_jwzzDB"
   ]
 }
