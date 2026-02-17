@@ -267,55 +267,16 @@
                 "type_preset": "h6",
                 "inherit_color_scheme": true,
                 "color_scheme": "",
-                "border": "none",
+                "border": "solid",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 16,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {
-                "accordion_row_JPtmph": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Política de devoluciones",
-                    "open_by_default": true,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_UiQPPy": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Nuestro objetivo es que cada cliente quede totalmente satisfecho con su  compra. Si no es así, cuéntanoslo y haremos todo lo posible para solucionarlo.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_UiQPPy"
-                  ]
-                },
                 "accordion_row_3DMjfk": {
                   "type": "_accordion-row",
                   "settings": {
@@ -354,20 +315,44 @@
                   "block_order": [
                     "text_KznY6H"
                   ]
-                },
-                "accordion_row_3cRXg4": {
+                }
+              },
+              "block_order": [
+                "accordion_row_3DMjfk"
+              ]
+            },
+            "accordion_nrWwyi": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "type_preset": "h6",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 16,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "accordion_row_3tFVPi": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Fabricación",
-                    "open_by_default": false,
+                    "heading": "Política de devoluciones",
+                    "open_by_default": true,
                     "icon": "none",
                     "width": 20
                   },
                   "blocks": {
-                    "text_YTGEJy": {
+                    "text_VCGmmm": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Nuestros productos se fabrican tanto localmente como globalmente. Seleccionamos cuidadosamente a nuestros socios de fabricación para garantizar alta calidad y un precio justo.</p>",
+                        "text": "<p>Nuestro objetivo es que cada cliente quede totalmente satisfecho con su  compra. Si no es así, cuéntanoslo y haremos todo lo posible para solucionarlo.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -391,14 +376,12 @@
                     }
                   },
                   "block_order": [
-                    "text_YTGEJy"
+                    "text_VCGmmm"
                   ]
                 }
               },
               "block_order": [
-                "accordion_row_JPtmph",
-                "accordion_row_3DMjfk",
-                "accordion_row_3cRXg4"
+                "accordion_row_3tFVPi"
               ]
             }
           },
@@ -407,7 +390,8 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "accordion_w94eGY"
+            "accordion_w94eGY",
+            "accordion_nrWwyi"
           ]
         }
       },
