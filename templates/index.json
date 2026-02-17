@@ -295,11 +295,94 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "section_title_subtitle_YaQUAm": {
+      "type": "section-title-subtitle",
+      "name": "Title Subtitle",
+      "settings": {
+        "title": "REAL WOMEN",
+        "title_font_size": 14,
+        "subtitle": "real results",
+        "subtitle_font_size": 14,
+        "text_color": "#3F27AE",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "reviews_section_VghEyX": {
+      "type": "reviews-section",
+      "blocks": {
+        "review_r7y7HP": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_EJfJqk": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_wWXxdd": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_iYr86N": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        },
+        "review_7At3cK": {
+          "type": "review",
+          "settings": {
+            "duration": "8 Weeks",
+            "quote": "The glow is actually insane.",
+            "author_name": "Sarah J.",
+            "concern": "Dullness"
+          }
+        }
+      },
+      "block_order": [
+        "review_r7y7HP",
+        "review_EJfJqk",
+        "review_wWXxdd",
+        "review_iYr86N",
+        "review_7At3cK"
+      ],
+      "name": "GoPure Stylized Reviews",
+      "settings": {
+        "title": "CUSTOMERS",
+        "subtitle": "can't get enough",
+        "bg_color": "#f3f0ff",
+        "card_bg_color": "#fff5f7",
+        "badge_bg_color": "#e0d7ff",
+        "text_color": "#4834d4",
+        "button_label": "See All Reviews",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "marquee_banner_4fimCy",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "section_title_subtitle_YaQUAm",
+    "reviews_section_VghEyX"
   ]
 }
