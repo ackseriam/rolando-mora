@@ -443,11 +443,91 @@
                         "custom_liquid_nrtUNW",
                         "text_rPcdgV"
                       ]
+                    },
+                    "group_8LCgQE": {
+                      "type": "group",
+                      "name": "t:names.group",
+                      "settings": {
+                        "content_direction": "row",
+                        "vertical_on_mobile": true,
+                        "horizontal_alignment": "flex-start",
+                        "vertical_alignment": "center",
+                        "align_baseline": false,
+                        "horizontal_alignment_flex_direction_column": "flex-start",
+                        "vertical_alignment_flex_direction_column": "center",
+                        "gap": 12,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "inherit_color_scheme": true,
+                        "color_scheme": "",
+                        "background_media": "none",
+                        "video_position": "cover",
+                        "background_image_position": "cover",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "toggle_overlay": false,
+                        "overlay_color": "#00000026",
+                        "overlay_style": "solid",
+                        "gradient_direction": "to top",
+                        "link": "",
+                        "open_in_new_tab": false,
+                        "placeholder": "",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "custom_liquid_FLJaf4": {
+                          "type": "custom-liquid",
+                          "name": "t:names.custom_liquid",
+                          "settings": {
+                            "custom_liquid": "<svg class=\"collapsible-key-benefits__check-svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" focusable=\"false\">\n        <path d=\"M16 0L19.03 3.34L23.3 2.48L24.1 6.78L28.42 7.58L27.52 11.85L30.86 14.97L27.52 18.09L28.42 22.36L24.1 23.16L23.3 27.46L19.03 26.6L16 29.94L12.97 26.6L8.7 27.46L7.9 23.16L3.58 22.36L4.48 18.09L1.14 14.97L4.48 11.85L3.58 7.58L7.9 6.78L8.7 2.48L12.97 3.34L16 0Z\" fill=\"currentColor\"></path>\n        <path d=\"M13.9 20.4L9.7 16.2L11.3 14.6L13.9 17.2L20.7 10.4L22.3 12L13.9 20.4Z\" fill=\"#FFFFFF\"></path>\n      </svg>"
+                          },
+                          "blocks": {}
+                        },
+                        "text_BmmDr3": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p><strong>Smooths</strong><br/><strong>Plumps the look of deep wrinkles</strong></p>",
+                            "width": "100%",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "custom_liquid_FLJaf4",
+                        "text_BmmDr3"
+                      ]
                     }
                   },
                   "block_order": [
                     "group_g8WKaa",
-                    "group_TpUC3Y"
+                    "group_TpUC3Y",
+                    "group_8LCgQE"
                   ]
                 }
               },
@@ -477,7 +557,7 @@
                 "accordion_row_MxNmDP": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Key Benefits",
+                    "heading": "Ingredients",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
