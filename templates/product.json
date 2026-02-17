@@ -393,8 +393,17 @@
             "accordion_w94eGY",
             "accordion_nrWwyi"
           ]
+        },
+        "f62da4cf-6ad4-48f1-8be7-03450e5f9580": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
         }
       },
+      "block_order": [
+        "f62da4cf-6ad4-48f1-8be7-03450e5f9580"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
