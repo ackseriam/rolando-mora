@@ -321,38 +321,38 @@
                 "accordion_row_3DMjfk"
               ]
             },
-            "accordion_nrWwyi": {
+            "accordion_TNahqV": {
               "type": "accordion",
               "name": "t:names.accordion",
               "settings": {
-                "icon": "caret",
+                "icon": "plus",
                 "dividers": true,
-                "type_preset": "h6",
+                "type_preset": "h5",
                 "inherit_color_scheme": true,
                 "color_scheme": "",
                 "border": "solid",
-                "border_width": 1,
+                "border_width": 2,
                 "border_opacity": 100,
                 "border_radius": 16,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-block-start": 8,
+                "padding-block-end": 9,
+                "padding-inline-start": 13,
+                "padding-inline-end": 11
               },
               "blocks": {
-                "accordion_row_3tFVPi": {
+                "accordion_row_MxNmDP": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Política de devoluciones",
-                    "open_by_default": true,
+                    "heading": "Key Benefits",
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
                   "blocks": {
-                    "text_VCGmmm": {
+                    "text_fx7nwz": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Nuestro objetivo es que cada cliente quede totalmente satisfecho con su  compra. Si no es así, cuéntanoslo y haremos todo lo posible para solucionarlo.</p>",
+                        "text": "<p>Trabajaremos para enviar tu pedido lo antes posible. Cuando se envíe, recibirás un correo electrónico con más información. Los tiempos de entrega varían según tu ubicación.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -376,12 +376,75 @@
                     }
                   },
                   "block_order": [
-                    "text_VCGmmm"
+                    "text_fx7nwz"
                   ]
                 }
               },
               "block_order": [
-                "accordion_row_3tFVPi"
+                "accordion_row_MxNmDP"
+              ]
+            },
+            "accordion_nUaHrn": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "plus",
+                "dividers": true,
+                "type_preset": "h5",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "solid",
+                "border_width": 2,
+                "border_opacity": 100,
+                "border_radius": 16,
+                "padding-block-start": 8,
+                "padding-block-end": 9,
+                "padding-inline-start": 13,
+                "padding-inline-end": 11
+              },
+              "blocks": {
+                "accordion_row_PrdCk4": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Key Benefits",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_Ty7NEz": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Trabajaremos para enviar tu pedido lo antes posible. Cuando se envíe, recibirás un correo electrónico con más información. Los tiempos de entrega varían según tu ubicación.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_Ty7NEz"
+                  ]
+                }
+              },
+              "block_order": [
+                "accordion_row_PrdCk4"
               ]
             }
           },
@@ -391,7 +454,8 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "accordion_w94eGY",
-            "accordion_nrWwyi"
+            "accordion_TNahqV",
+            "accordion_nUaHrn"
           ]
         }
       },
