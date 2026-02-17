@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -65,6 +66,7 @@
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -86,6 +88,18 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
+      }
+    },
+    "marquee_banner_4fimCy": {
+      "type": "marquee-banner",
+      "name": "Marquee Banner",
+      "settings": {
+        "item_1_text": "REAL SKIN BENEFITS",
+        "item_2_text": "SCIENCE BACKED INGREDIENTS",
+        "background_color": "#DEF3FF",
+        "text_color": "#3f27ae",
+        "dot_color": "#3F27AE",
+        "scroll_speed": 53
       }
     },
     "product_list_fa6P9H": {
@@ -285,6 +299,7 @@
   },
   "order": [
     "hero_jVaWmY",
+    "marquee_banner_4fimCy",
     "product_list_fa6P9H"
   ]
 }
