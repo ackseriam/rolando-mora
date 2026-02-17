@@ -290,7 +290,7 @@
                       "type": "group",
                       "name": "t:names.group",
                       "settings": {
-                        "content_direction": "column",
+                        "content_direction": "row",
                         "vertical_on_mobile": true,
                         "horizontal_alignment": "flex-start",
                         "vertical_alignment": "center",
@@ -337,7 +337,7 @@
                         "text_7rditr": {
                           "type": "text",
                           "settings": {
-                            "text": "<ul><li><strong>Tightens</strong><br/><strong>Lifts the look of sagging skin</strong></li></ul>",
+                            "text": "<p><strong>Tightens</strong><br/><strong>Lifts the look of sagging skin</strong></p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
