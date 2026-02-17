@@ -334,21 +334,10 @@
                           },
                           "blocks": {}
                         },
-                        "icon_g4U8Fp": {
-                          "type": "icon",
-                          "name": "t:names.icon",
-                          "settings": {
-                            "icon": "price_tag",
-                            "width": 24,
-                            "link": "",
-                            "open_in_new_tab": false
-                          },
-                          "blocks": {}
-                        },
                         "text_7rditr": {
                           "type": "text",
                           "settings": {
-                            "text": "<ul><li><strong>Tightens</strong><br/><strong>Lifts the look of sagging skin</strong></li><li><strong>Smooths</strong><br/><strong>Plumps the look of deep wrinkles</strong></li><li><strong>Firms</strong><br/><strong>Minimizes the look of crepey skin</strong></li></ul>",
+                            "text": "<ul><li><strong>Tightens</strong><br/><strong>Lifts the look of sagging skin</strong></li></ul>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -373,7 +362,6 @@
                       },
                       "block_order": [
                         "custom_liquid_X3bhdB",
-                        "icon_g4U8Fp",
                         "text_7rditr"
                       ]
                     }
