@@ -188,6 +188,27 @@
               },
               "blocks": {}
             },
+            "review_jDbBgB": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "single",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_HVKxm8": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": ""
+              },
+              "blocks": {}
+            },
             "price_JQzVV4": {
               "type": "price",
               "name": "t:names.product_price",
@@ -215,6 +236,8 @@
           "block_order": [
             "product_card_gallery_677WP3",
             "product_title_YXxMTj",
+            "review_jDbBgB",
+            "custom_liquid_HVKxm8",
             "price_JQzVV4"
           ]
         }
@@ -365,11 +388,24 @@
             "cta_text": "SHOP NOW",
             "cta_url": ""
           }
+        },
+        "dermatologist_gFde4A": {
+          "type": "dermatologist",
+          "settings": {
+            "image": "shopify://shop_images/dr-trisha-khanna-dermatology-expert-image.webp",
+            "name": "Dr. Edward Chen",
+            "credentials": "GOPURE Dermatology Advisor",
+            "category": "Toning",
+            "bio": "",
+            "cta_text": "SHOP NOW",
+            "cta_url": ""
+          }
         }
       },
       "block_order": [
         "dermatologist_hMMVCb",
-        "dermatologist_rTgiqn"
+        "dermatologist_rTgiqn",
+        "dermatologist_gFde4A"
       ],
       "name": "Meet Dermatologists",
       "settings": {
