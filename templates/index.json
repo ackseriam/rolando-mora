@@ -312,15 +312,8 @@
         "review_EJfJqk": {
           "type": "review",
           "settings": {
-            "duration": "8 Weeks",
-            "quote": "The glow is actually insane.",
-            "author_name": "Sarah J.",
-            "concern": "Dullness"
-          }
-        },
-        "review_wWXxdd": {
-          "type": "review",
-          "settings": {
+            "image_before": "shopify://shop_images/before-and-after-arm-image.webp",
+            "image_after": "shopify://shop_images/after-8-weeks-arm-transformation-image.webp",
             "duration": "8 Weeks",
             "quote": "The glow is actually insane.",
             "author_name": "Sarah J.",
@@ -349,7 +342,6 @@
       "block_order": [
         "review_r7y7HP",
         "review_EJfJqk",
-        "review_wWXxdd",
         "review_iYr86N",
         "review_7At3cK"
       ],
