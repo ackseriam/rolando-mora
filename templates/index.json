@@ -464,12 +464,24 @@
             "badge": "Best Seller",
             "cta_text": "Learn More"
           }
+        },
+        "product_Q73jKw": {
+          "type": "product",
+          "settings": {
+            "product": "tighten-lift-neck-cream",
+            "caption": "Save 42%",
+            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
+            "hover_image_alt": "",
+            "badge": "Best Seller",
+            "cta_text": "Learn More"
+          }
         }
       },
       "block_order": [
         "product_rziVcc",
         "product_y6hNzJ",
-        "product_pTmNid"
+        "product_pTmNid",
+        "product_Q73jKw"
       ],
       "name": "Bundles Carousel",
       "settings": {
