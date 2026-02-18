@@ -1,0 +1,557 @@
+<style>
+  /* =========================================================
+     Hero Banner Section – exact replica of goPure Beauty
+     Source:  https://gopurebeauty.com
+     Original: <section class="_wrapper_2gmz6_1" data-testid="hero-banner">
+     ========================================================= */
+
+  /* ── Section wrapper ─────────────────────────────────── */
+  .hero-banner-section {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  /* ── Media container  (_media_2gmz6_9) ──────────────── */
+  .hero-banner-media {
+    display: block;
+    width: 100%;
+    line-height: 0; /* kill inline-block gap */
+  }
+
+  .hero-banner-media picture {
+    display: block;
+    width: 100%;
+  }
+
+  /* Mobile image fills full width; desktop shows separate landscape image */
+  .hero-banner-media img.fill {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* ── Header / content overlay (_header_p5roc_1) ─────── */
+  /*
+   * The original uses absolute positioning so the text/CTA sits
+   * over the hero image.  On mobile the content sits below the image
+   * in a stacked layout; on desktop it overlays at the image center.
+   */
+  .hero-banner-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px 40px;
+    z-index: 2;
+    background-color: {{ section.settings.header_background_color }};
+  }
+
+  /* ── Headlines container (_container_64vy8_1) ──────── */
+  /*
+   * The _reverse_64vy8_5 class applies flex-direction: column-reverse
+   * so that although the subtitle span comes first in the DOM,
+   * the title appears on top visually and the subtitle below.
+   */
+  .hero-banner-headlines {
+    display: inline-flex;
+    flex-direction: column-reverse; /* _reverse_64vy8_5 */
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  /* ── Subtitle (_subtitle_64vy8_22) ──────────────────── */
+  /* font-heading-secondary italic weight-400 text-center */
+  .hero-banner-subtitle {
+    display: block;
+    font-family: var(--font-accent--family, Georgia, serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: {{ section.settings.subtitle_color }};
+    text-align: center;
+  }
+
+  /* ── Title (_title_64vy8_9) ─────────────────────────── */
+  /* font-heading weight-600 uppercase text-center */
+  .hero-banner-title {
+    display: block;
+    font-family: var(--font-heading--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: {{ section.settings.title_color }};
+    text-align: center;
+  }
+
+  /* ── CTA button (_link_p5roc_27) ─────────────────────── */
+  /* Uses existing theme classes btn btn--secondary */
+  .hero-banner-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid {{ section.settings.cta_border_color }};
+    color: {{ section.settings.cta_text_color }};
+    background-color: {{ section.settings.cta_background_color }};
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-banner-cta-btn:hover {
+    background-color: {{ section.settings.cta_hover_background_color }};
+    color: {{ section.settings.cta_hover_text_color }};
+    border-color: {{ section.settings.cta_hover_background_color }};
+  }
+
+  /* ── Header overlay link (_headerOverlay_p5roc_68) ──── */
+  /* Transparent full-header clickable overlay */
+  .hero-banner-header-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    cursor: pointer;
+  }
+
+  /* ── Target retail badge (_targetBadge_p5roc_44) ─────── */
+  .hero-banner-target-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 4;
+    max-width: 120px;
+    line-height: 0;
+  }
+
+  .hero-banner-target-badge img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Full-section overlay link (_overlay_p5roc_67) ───── */
+  .hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    cursor: pointer;
+  }
+
+  /* ── Desktop layout (≥ 992px) ────────────────────────── */
+  /*
+   * On desktop the image fills the full section and the header
+   * is absolutely positioned in the lower-center of the image.
+   */
+  @media screen and (min-width: 992px) {
+    .hero-banner-section {
+      min-height: 560px;
+    }
+
+    .hero-banner-media img.fill {
+      height: 100%;
+      min-height: 560px;
+    }
+
+    .hero-banner-header {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 48px 40px 56px;
+      background-color: transparent;
+    }
+
+    .hero-banner-subtitle {
+      font-size: 22px;
+    }
+
+    .hero-banner-title {
+      font-size: 52px;
+    }
+
+    .hero-banner-target-badge {
+      bottom: 32px;
+      right: 32px;
+      max-width: 160px;
+    }
+  }
+
+  /* ── Large desktop (≥ 1280px) ───────────────────────── */
+  @media screen and (min-width: 1280px) {
+    .hero-banner-title {
+      font-size: 64px;
+    }
+
+    .hero-banner-subtitle {
+      font-size: 26px;
+    }
+  }
+</style>
+
+{%- comment -%}
+  ============================================================
+  Hero Banner Section – goPure Beauty replica
+  Original: <section class="_wrapper_2gmz6_1" data-testid="hero-banner">
+
+  Actual source content:
+    Subtitle : "Bikini season is coming."
+    Title    : "WILL YOU BE READY?"
+    CTA      : "SHOP BELLY CREAM" → /products/tighten-smooth-belly-cream
+    Badge    : "Now at Target" logo
+    Desktop img : gopure-tighten-smooth-belly-cream-skincare-product.png
+    Mobile img  : gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.png
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign cta_url   = section.settings.cta_link   | default: '/products/tighten-smooth-belly-cream'
+  assign cta_label = section.settings.cta_text   | default: 'SHOP BELLY CREAM'
+  assign cta_aria  = section.settings.cta_aria_label | default: 'Shop Tighten & Smooth Belly Cream'
+-%}
+
+<section
+  class="hero-banner-section"
+  data-section-id="{{ section.id }}"
+  data-testid="hero-banner"
+>
+
+  {%- comment -%} ── Media (_media_2gmz6_9) ──────────────── {%- endcomment -%}
+  <div class="hero-banner-media">
+    <picture>
+      {%- comment -%} Desktop image source (min-width: 992px) {%- endcomment -%}
+      {%- if section.settings.image_desktop != blank -%}
+        <source
+          media="(min-width: 992px)"
+          srcset="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+        >
+      {%- else -%}
+        <source
+          media="(min-width: 992px)"
+          srcset="{{ 'gopure-tighten-smooth-belly-cream-skincare-product.png' | file_url }}"
+        >
+      {%- endif -%}
+
+      {%- comment -%} Mobile image (default src with WebP srcset) {%- endcomment -%}
+      {%- if section.settings.image_mobile != blank -%}
+        <img
+          src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+          srcset="
+            {{ section.settings.image_mobile | image_url: width: 100  }} 100w,
+            {{ section.settings.image_mobile | image_url: width: 200  }} 200w,
+            {{ section.settings.image_mobile | image_url: width: 400  }} 400w,
+            {{ section.settings.image_mobile | image_url: width: 600  }} 600w,
+            {{ section.settings.image_mobile | image_url: width: 800  }} 800w,
+            {{ section.settings.image_mobile | image_url: width: 1000 }} 1000w,
+            {{ section.settings.image_mobile | image_url: width: 1200 }} 1200w,
+            {{ section.settings.image_mobile | image_url: width: 1400 }} 1400w
+          "
+          sizes="(min-width: 992px) 52vw, 100vw"
+          alt="{{ section.settings.image_alt | escape }}"
+          width="{{ section.settings.image_mobile.width }}"
+          height="{{ section.settings.image_mobile.height }}"
+          class="fill"
+          loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+          decoding="async"
+          fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        >
+      {%- elsif section.settings.image_desktop != blank -%}
+        <img
+          src="{{ section.settings.image_desktop | image_url: width: 1400 }}"
+          srcset="
+            {{ section.settings.image_desktop | image_url: width: 600  }} 600w,
+            {{ section.settings.image_desktop | image_url: width: 1000 }} 1000w,
+            {{ section.settings.image_desktop | image_url: width: 1400 }} 1400w,
+            {{ section.settings.image_desktop | image_url: width: 2000 }} 2000w
+          "
+          sizes="100vw"
+          alt="{{ section.settings.image_alt | escape }}"
+          width="{{ section.settings.image_desktop.width }}"
+          height="{{ section.settings.image_desktop.height }}"
+          class="fill"
+          loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+          decoding="async"
+          fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'fill' }}
+      {%- endif -%}
+    </picture>
+  </div>
+  {%- comment -%} /.hero-banner-media {%- endcomment -%}
+
+  {%- comment -%} ── Header (_header_p5roc_1) ─────────────── {%- endcomment -%}
+  <header class="hero-banner-header" data-testid="hero-header">
+
+    {%- comment -%}
+      Headlines container (_container_64vy8_1 _isTwoLines_64vy8_17 _reverse_64vy8_5)
+      CSS flex-direction: column-reverse → title (DOM: last) appears on top visually,
+      subtitle (DOM: first) appears below.
+    {%- endcomment -%}
+    <span class="hero-banner-headlines" data-testid="hero-headlines">
+      <span class="hero-banner-subtitle">
+        {{- section.settings.subtitle | default: 'Bikini season is coming.' | escape -}}
+      </span>
+      <br>
+      <span class="hero-banner-title">
+        {{- section.settings.title | default: 'WILL YOU BE READY?' | escape -}}
+      </span>
+    </span>
+
+    <a
+      class="hero-banner-cta-btn btn btn--secondary"
+      data-testid="hero-cta-button"
+      href="{{ cta_url }}"
+    >
+      {{- cta_label | escape -}}
+    </a>
+
+    {%- comment -%} Transparent overlay that makes the entire header clickable {%- endcomment -%}
+    <a
+      class="hero-banner-header-overlay"
+      aria-label="{{ cta_aria | escape }}"
+      href="{{ cta_url }}"
+      tabindex="-1"
+    ></a>
+
+  </header>
+  {%- comment -%} /.hero-banner-header {%- endcomment -%}
+
+  {%- comment -%} ── Target retail badge (_targetBadge_p5roc_44) ─── {%- endcomment -%}
+  {%- if section.settings.show_retail_badge -%}
+    <div class="hero-banner-target-badge" data-testid="hero-target-badge">
+      {%- if section.settings.retail_badge_image != blank -%}
+        <img
+          src="{{ section.settings.retail_badge_image | image_url: width: 320 }}"
+          srcset="
+            {{ section.settings.retail_badge_image | image_url: width: 100 }} 100w,
+            {{ section.settings.retail_badge_image | image_url: width: 200 }} 200w,
+            {{ section.settings.retail_badge_image | image_url: width: 320 }} 320w
+          "
+          alt="{{ section.settings.retail_badge_alt | default: 'Now at Target' | escape }}"
+          width="160"
+          height="40"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- comment -%} Fallback: reference the CDN file by name if uploaded to theme assets {%- endcomment -%}
+        <img
+          src="{{ 'now-at-target-logo.png' | file_url }}"
+          alt="Now at Target"
+          width="160"
+          height="40"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Full-section overlay link (_overlay_p5roc_67) ── {%- endcomment -%}
+  <a
+    class="hero-banner-overlay"
+    aria-label="{{ cta_aria | escape }}"
+    href="{{ cta_url }}"
+    tabindex="-1"
+  ></a>
+
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "section-hero-banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image",
+      "info": "Upload: gopure-tighten-smooth-belly-cream-skincare-product.png. Shown at ≥992px."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image",
+      "info": "Upload: gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.png. Original size: 1560×2192px."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Three bottles of goPure Tighten & Smooth Belly Cream against a soft purple background"
+    },
+    {
+      "type": "header",
+      "content": "Headline Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (large, uppercase)",
+      "default": "WILL YOU BE READY?",
+      "info": "Displays on top. Uses primary heading font, uppercase, weight 600."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (italic, below title)",
+      "default": "Bikini season is coming.",
+      "info": "Displays below the title. Uses secondary/accent font, italic, weight 400."
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Label",
+      "default": "SHOP BELLY CREAM"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link",
+      "info": "Default: /products/tighten-smooth-belly-cream"
+    },
+    {
+      "type": "text",
+      "id": "cta_aria_label",
+      "label": "Accessible Label (aria-label)",
+      "default": "Shop Tighten & Smooth Belly Cream"
+    },
+    {
+      "type": "header",
+      "content": "Retail Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_retail_badge",
+      "label": "Show Retail Badge",
+      "default": true,
+      "info": "Displays the 'Now at Target' badge in the bottom-right corner."
+    },
+    {
+      "type": "image_picker",
+      "id": "retail_badge_image",
+      "label": "Badge Image",
+      "info": "Upload: now-at-target-logo.png (776×191px). Leave blank to use theme asset file."
+    },
+    {
+      "type": "text",
+      "id": "retail_badge_alt",
+      "label": "Badge Alt Text",
+      "default": "Now at Target"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#F4F0F8",
+      "info": "Visible while image loads. Match the soft purple background of the product image."
+    },
+    {
+      "type": "color",
+      "id": "header_background_color",
+      "label": "Header Background (mobile)",
+      "default": "#F4F0F8",
+      "info": "On mobile the header is stacked below the image. On desktop it overlays transparently."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_background_color",
+      "label": "Button Background",
+      "default": "rgba(0,0,0,0)",
+      "info": "The original uses btn--secondary which is typically transparent/outlined."
+    },
+    {
+      "type": "color",
+      "id": "cta_border_color",
+      "label": "Button Border",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button Text",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_background_color",
+      "label": "Button Hover Background",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_text_color",
+      "label": "Button Hover Text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Hero",
+      "settings": {
+        "title": "WILL YOU BE READY?",
+        "subtitle": "Bikini season is coming.",
+        "cta_text": "SHOP BELLY CREAM",
+        "show_retail_badge": true,
+        "background_color": "#F4F0F8",
+        "header_background_color": "#F4F0F8",
+        "title_color": "#1A1A2E",
+        "subtitle_color": "#1A1A2E",
+        "cta_border_color": "#1A1A2E",
+        "cta_text_color": "#1A1A2E",
+        "cta_hover_background_color": "#1A1A2E",
+        "cta_hover_text_color": "#FFFFFF"
+      }
+    }
+  ]
+}
+{% endschema %}
