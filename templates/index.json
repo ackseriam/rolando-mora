@@ -245,6 +245,7 @@
       "name": "Mission Statement",
       "settings": {
         "show_background_texture": true,
+        "background_desktop": "shopify://shop_images/soft-gray-background-light-rays.webp",
         "pre_heading": "We believe that",
         "heading": "<p>Feeling <em>beautiful</em> & <em>confident</em> should be within reach <em>for everyone</em></p>",
         "byline": "–Co-founders Alex & Erin",
