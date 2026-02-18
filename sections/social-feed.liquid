@@ -1,0 +1,1066 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap">
+
+<style>
+  /* =============================================================
+     Social Feed Section – goPure Beauty replica
+     Source:  https://gopurebeauty.com (data-testid not set on wrapper)
+     Original: <div class="_wrapper_1uj9d_1">
+     ============================================================= */
+
+  /* ── Brand token references (extracted from existing theme sections) ──
+     color-primary : #4834d4  (from marquee dot_color / consumer-approved)
+     bg-light       : #F3F0FF  (from consumer-approved background)
+     font-heading   : var(--font-heading--family, "Landour Regular Text", sans-serif)
+     font-script    : 'Playfair Display', Georgia, serif
+     weight-500     : 500
+     lh-100         : line-height: 1
+     pt-s           : padding-top: 0.5rem
+     spacing-normal : letter-spacing: 0.05em
+  ───────────────────────────────────────────────────────────────── */
+
+  /* ── Wrapper (_wrapper_1uj9d_1) ──────────────────────────────── */
+  .sf-section {
+    background-color: {{ section.settings.background_color }};
+    padding-block: 48px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 992px) {
+    .sf-section {
+      padding-block: 72px;
+    }
+  }
+
+  .sf-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  @media screen and (min-width: 992px) {
+    .sf-inner {
+      padding-inline: 40px;
+    }
+  }
+
+  /* ── Header (flex) ───────────────────────────────────────────── */
+  .sf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 992px) {
+    .sf-header {
+      margin-bottom: 40px;
+    }
+  }
+
+  /* ── Heading ─────────────────────────────────────────────────── */
+  /* font-heading-secondary italic text-center on small screens */
+  .sf-heading {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  @media screen and (min-width: 992px) {
+    .sf-heading {
+      font-size: 2.75rem;
+    }
+  }
+
+  /* ── Social Links (_socialLinks_17jut_1) ─────────────────────── */
+  /* hide-desktop: visible on mobile only */
+  .sf-social-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  /* Hidden on desktop (hide-desktop) */
+  @media screen and (min-width: 992px) {
+    .sf-social-links {
+      display: none;
+    }
+  }
+
+  /* ── Social Item (_socialItem_tzef6_1) ───────────────────────── */
+  /* font-heading weight-500 lh-100 color-primary uppercase pt-s spacing-normal */
+  .sf-social-item {
+    font-family: var(--font-heading--family, 'Montserrat', 'Landour Regular Text', 'Landour', sans-serif);
+    font-weight: 500;
+    line-height: 1;
+    color: {{ section.settings.primary_color }};
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 0.5rem;
+    font-size: 10px;
+  }
+
+  /* ── Social Link (_socialLink_tzef6_12) ──────────────────────── */
+  .sf-social-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .sf-social-link:hover {
+    opacity: 0.7;
+  }
+
+  /* ── Link Icon (_linkIcon_tzef6_17) ──────────────────────────── */
+  .sf-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .sf-link-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    display: block;
+  }
+
+  /* ── Link Label (_linkLabel_tzef6_26) ────────────────────────── */
+  /* @GOPUREBEAUTY handle text */
+  .sf-link-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Link Label Visible (_linkLabelVisible_tzef6_39) ──────────── */
+  /* INSTAGRAM / FACEBOOK / TIKTOK / YOUTUBE text labels */
+  .sf-link-label-visible {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Handle item (distinct from icon items) ──────────────────── */
+  .sf-social-item--handle .sf-link-label {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ── Feed wrapper ─────────────────────────────────────────────── */
+  .sf-feed-wrapper {
+    position: relative;
+    /* Side arrows overflow slightly, clip to this container */
+    margin-inline: -20px;
+
+    @media screen and (min-width: 992px) {
+      margin-inline: -40px;
+    }
+  }
+
+  /* ── Carousel track ──────────────────────────────────────────── */
+  .sf-track-outer {
+    overflow: hidden;
+    padding-inline: 20px;
+
+    @media screen and (min-width: 992px) {
+      padding-inline: 40px;
+    }
+  }
+
+  .sf-track {
+    display: flex;
+    gap: {{ section.settings.post_gap }}px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    /* Touch scroll as fallback */
+    touch-action: pan-x;
+  }
+
+  /* ── Post tile ────────────────────────────────────────────────── */
+  .sf-post {
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #E8E4F0;
+    /* Width set via JS / CSS custom property */
+    width: var(--sf-tile-width, 280px);
+  }
+
+  /* Square aspect ratio */
+  .sf-post::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  .sf-post-inner {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  /* ── Post image ────────────────────────────────────────────────── */
+  .sf-post-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.4s ease;
+  }
+
+  .sf-post:hover .sf-post-image {
+    transform: scale(1.04);
+  }
+
+  /* ── Video overlay ─────────────────────────────────────────────── */
+  .sf-video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .sf-video-play__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+  }
+
+  .sf-video-play__btn svg {
+    width: 20px;
+    height: 20px;
+    fill: {{ section.settings.primary_color }};
+    /* nudge the triangle optically */
+    transform: translateX(2px);
+  }
+
+  /* Video camera indicator (top-right corner) */
+  .sf-video-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+  }
+
+  .sf-video-indicator svg {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+    display: block;
+  }
+
+  /* ── Before/After labels ───────────────────────────────────────── */
+  .sf-ba-labels {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 12px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .sf-ba-label {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a2e;
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 4px 8px;
+    border-radius: 2px;
+    line-height: 1;
+  }
+
+  /* ── Text/quote overlay ────────────────────────────────────────── */
+  .sf-post-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    padding: 40px 14px 14px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .sf-overlay-text {
+    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── Full-post overlay link ─────────────────────────────────────── */
+  .sf-post-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: block;
+  }
+
+  /* Bring interactive play button above the link */
+  .sf-video-play {
+    z-index: 5;
+  }
+
+  /* ── Navigation arrows ──────────────────────────────────────────── */
+  .sf-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    color: {{ section.settings.primary_color }};
+  }
+
+  .sf-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+  }
+
+  .sf-arrow:hover {
+    background-color: {{ section.settings.primary_color }};
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(72, 52, 212, 0.35);
+  }
+
+  .sf-arrow[disabled],
+  .sf-arrow[aria-disabled="true"] {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .sf-arrow--prev {
+    left: 0;
+  }
+
+  .sf-arrow--next {
+    right: 0;
+  }
+
+  /* Hide arrows when all posts fit in the viewport */
+  .sf-feed-wrapper.sf-no-overflow .sf-arrow {
+    display: none;
+  }
+</style>
+
+{%- comment -%}
+  ============================================================
+  Social Feed Section – goPure Beauty replica
+  Original: <div class="_wrapper_1uj9d_1">
+            <header class="flex"><h3>follow & tag us</h3>
+
+  Extracted from source:
+    • Heading: "follow & tag us" (italic/script font)
+    • Handle: @GOPUREBEAUTY (mobile only)
+    • Icons:  Instagram · Facebook · TikTok · YouTube
+    • Feed:   Horizontal carousel, mix of video/image/before-after posts
+    • Arrows: circular prev/next navigation buttons
+    • Layout: posts_desktop tiles visible on desktop; posts_mobile on mobile
+  ============================================================
+{%- endcomment -%}
+
+<section
+  class="sf-section"
+  data-section-id="{{ section.id }}"
+  id="sf-{{ section.id }}"
+>
+  <div class="sf-inner">
+
+    {%- comment -%} ── Header ─────────────────────────────────────── {%- endcomment -%}
+    <header class="sf-header">
+
+      {%- if section.settings.heading != blank -%}
+        <h3 class="sf-heading">{{ section.settings.heading | escape }}</h3>
+      {%- endif -%}
+
+      {%- comment -%} Social Links – mobile only (hide-desktop) {%- endcomment -%}
+      <nav aria-label="Social media links">
+        <ul class="sf-social-links" role="list">
+
+          {%- comment -%} @GOPUREBEAUTY handle {%- endcomment -%}
+          {%- if section.settings.instagram_handle != blank and section.settings.instagram_url != blank -%}
+            <li class="sf-social-item sf-social-item--handle">
+              <a
+                href="{{ section.settings.instagram_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sf-social-link"
+                aria-label="Visit {{ section.settings.instagram_handle }} on Instagram (opens in a new tab)"
+              >
+                <span class="sf-link-label">{{ section.settings.instagram_handle | escape }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+
+          {%- comment -%} Instagram icon {%- endcomment -%}
+          {%- if section.settings.instagram_url != blank -%}
+            <li class="sf-social-item">
+              <a
+                href="{{ section.settings.instagram_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sf-social-link"
+                aria-label="Visit Instagram (opens in a new tab)"
+              >
+                <span class="sf-link-icon" aria-hidden="true">
+                  {%- comment -%} Instagram SVG – extracted from source (viewBox 0 0 28 30) {%- endcomment -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 30" fill="none">
+                    <path d="M19.8515 0C21.8765 0 23.8185 0.804419 25.2504 2.23629C26.6823 3.66817 27.4867 5.61021 27.4867 7.63519V19.8515C27.4867 21.8765 26.6823 23.8185 25.2504 25.2504C23.8185 26.6823 21.8765 27.4867 19.8515 27.4867H7.63519C5.61021 27.4867 3.66817 26.6823 2.23629 25.2504C0.804419 23.8185 0 21.8765 0 19.8515V7.63519C0 5.61021 0.804419 3.66817 2.23629 2.23629C3.66817 0.804419 5.61021 0 7.63519 0H19.8515ZM13.7433 7.63519C12.1234 7.63519 10.5697 8.27872 9.42422 9.42422C8.27872 10.5697 7.63519 12.1234 7.63519 13.7433C7.63519 15.3633 8.27872 16.917 9.42422 18.0625C10.5697 19.208 12.1234 19.8515 13.7433 19.8515C15.3633 19.8515 16.917 19.208 18.0625 18.0625C19.208 16.917 19.8515 15.3633 19.8515 13.7433C19.8515 12.1234 19.208 10.5697 18.0625 9.42422C16.917 8.27872 15.3633 7.63519 13.7433 7.63519ZM13.7433 10.6893C14.5533 10.6893 15.3301 11.011 15.9029 11.5838C16.4756 12.1565 16.7974 12.9333 16.7974 13.7433C16.7974 14.5533 16.4756 15.3301 15.9029 15.9029C15.3301 16.4756 14.5533 16.7974 13.7433 16.7974C12.9333 16.7974 12.1565 16.4756 11.5838 15.9029C11.011 15.3301 10.6893 14.5533 10.6893 13.7433C10.6893 12.9333 11.011 12.1565 11.5838 11.5838C12.1565 11.011 12.9333 10.6893 13.7433 10.6893Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="sf-link-label-visible">INSTAGRAM</span>
+              </a>
+            </li>
+          {%- endif -%}
+
+          {%- comment -%} Facebook icon {%- endcomment -%}
+          {%- if section.settings.facebook_url != blank -%}
+            <li class="sf-social-item">
+              <a
+                href="{{ section.settings.facebook_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sf-social-link"
+                aria-label="Visit Facebook (opens in a new tab)"
+              >
+                <span class="sf-link-icon" aria-hidden="true">
+                  {%- comment -%} Facebook SVG – standard rounded-rect F icon {%- endcomment -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+                    <path d="M28 14.091C28 6.308 21.732 0 14 0S0 6.308 0 14.091C0 21.122 5.12 26.938 11.813 28V18.18H8.258v-4.09h3.555v-3.118c0-3.52 2.088-5.465 5.281-5.465 1.53 0 3.129.274 3.129.274v3.455h-1.762c-1.737 0-2.277 1.083-2.277 2.194v2.66h3.875l-.619 4.09h-3.256V28C22.88 26.938 28 21.122 28 14.091z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="sf-link-label-visible">FACEBOOK</span>
+              </a>
+            </li>
+          {%- endif -%}
+
+          {%- comment -%} TikTok icon {%- endcomment -%}
+          {%- if section.settings.tiktok_url != blank -%}
+            <li class="sf-social-item">
+              <a
+                href="{{ section.settings.tiktok_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sf-social-link"
+                aria-label="Visit TikTok (opens in a new tab)"
+              >
+                <span class="sf-link-icon" aria-hidden="true">
+                  {%- comment -%} TikTok SVG – music note / musical.ly style {%- endcomment -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+                    <path d="M22.465 7.98a8.198 8.198 0 0 1-4.781-1.516v6.893c0 4.413-3.587 7.99-8.01 7.99a7.968 7.968 0 0 1-4.57-1.43A7.99 7.99 0 0 0 9.674 26a7.993 7.993 0 0 0 7.99-7.99V11.12a12.453 12.453 0 0 0 7.272 2.327V7.863a8.22 8.22 0 0 1-2.471.116zM9.673 18.9a3.56 3.56 0 0 1-3.554-3.554 3.56 3.56 0 0 1 3.554-3.555c.354 0 .695.054 1.02.148V6.25a7.934 7.934 0 0 0-1.02-.066 7.99 7.99 0 0 0-7.99 7.99 7.99 7.99 0 0 0 7.99 7.99 7.99 7.99 0 0 0 6.977-4.117 3.544 3.544 0 0 1-6.977-.147z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="sf-link-label-visible">TIKTOK</span>
+              </a>
+            </li>
+          {%- endif -%}
+
+          {%- comment -%} YouTube icon {%- endcomment -%}
+          {%- if section.settings.youtube_url != blank -%}
+            <li class="sf-social-item">
+              <a
+                href="{{ section.settings.youtube_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="sf-social-link"
+                aria-label="Visit YouTube (opens in a new tab)"
+              >
+                <span class="sf-link-icon" aria-hidden="true">
+                  {%- comment -%} YouTube SVG – play button in rounded rect {%- endcomment -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" fill="none">
+                    <path d="M27.416 3.127a3.517 3.517 0 0 0-2.473-2.494C22.761 0 14 0 14 0S5.238 0 3.057.633A3.517 3.517 0 0 0 .584 3.127 36.957 36.957 0 0 0 0 10a36.957 36.957 0 0 0 .584 6.873 3.517 3.517 0 0 0 2.473 2.494C5.238 20 14 20 14 20s8.761 0 10.943-.633a3.517 3.517 0 0 0 2.473-2.494A36.957 36.957 0 0 0 28 10a36.957 36.957 0 0 0-.584-6.873zM11.2 14.286V5.714L18.444 10 11.2 14.286z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="sf-link-label-visible">YOUTUBE</span>
+              </a>
+            </li>
+          {%- endif -%}
+
+        </ul>
+      </nav>
+
+    </header>
+    {%- comment -%} /.sf-header {%- endcomment -%}
+
+    {%- comment -%} ── Instagram Feed Carousel ─────────────────────── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div
+        class="sf-feed-wrapper"
+        id="sf-feed-{{ section.id }}"
+        data-posts-desktop="{{ section.settings.posts_desktop }}"
+        data-posts-mobile="{{ section.settings.posts_mobile }}"
+        data-gap="{{ section.settings.post_gap }}"
+      >
+
+        {%- comment -%} Previous arrow {%- endcomment -%}
+        <button
+          type="button"
+          class="sf-arrow sf-arrow--prev"
+          aria-label="Previous posts"
+          aria-controls="sf-track-{{ section.id }}"
+          id="sf-prev-{{ section.id }}"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        {%- comment -%} Next arrow {%- endcomment -%}
+        <button
+          type="button"
+          class="sf-arrow sf-arrow--next"
+          aria-label="Next posts"
+          aria-controls="sf-track-{{ section.id }}"
+          id="sf-next-{{ section.id }}"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="sf-track-outer">
+          <div
+            class="sf-track"
+            id="sf-track-{{ section.id }}"
+            role="list"
+            aria-label="Instagram posts"
+          >
+
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'post' -%}
+
+                <article
+                  class="sf-post"
+                  role="listitem"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="sf-post-inner">
+
+                    {%- comment -%} ── Video Post ───────────────────── {%- endcomment -%}
+                    {%- if block.settings.post_type == 'video' -%}
+
+                      {%- if block.settings.thumbnail != blank -%}
+                        <img
+                          class="sf-post-image"
+                          src="{{ block.settings.thumbnail | image_url: width: 800 }}"
+                          srcset="{{ block.settings.thumbnail | image_url: width: 400 }} 400w, {{ block.settings.thumbnail | image_url: width: 800 }} 800w"
+                          sizes="(min-width: 992px) 280px, 50vw"
+                          alt="{{ block.settings.alt_text | escape }}"
+                          loading="lazy"
+                          width="{{ block.settings.thumbnail.width }}"
+                          height="{{ block.settings.thumbnail.height }}"
+                        >
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'sf-post-image' }}
+                      {%- endif -%}
+
+                      {%- comment -%} Play button overlay {%- endcomment -%}
+                      <div class="sf-video-play" aria-hidden="true">
+                        <span class="sf-video-play__btn">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3l14 9-14 9V3z"/>
+                          </svg>
+                        </span>
+                      </div>
+
+                      {%- comment -%} Video camera indicator (top-right) {%- endcomment -%}
+                      <span class="sf-video-indicator" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.882v6.236a1 1 0 0 1-1.447.894L15 14v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1z" fill="white"/>
+                        </svg>
+                      </span>
+
+                    {%- comment -%} ── Before/After Post ─────────────── {%- endcomment -%}
+                    {%- elsif block.settings.post_type == 'before_after' -%}
+
+                      {%- if block.settings.image != blank -%}
+                        <img
+                          class="sf-post-image"
+                          src="{{ block.settings.image | image_url: width: 800 }}"
+                          srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 800 }} 800w"
+                          sizes="(min-width: 992px) 280px, 50vw"
+                          alt="{{ block.settings.alt_text | escape }}"
+                          loading="lazy"
+                          width="{{ block.settings.image.width }}"
+                          height="{{ block.settings.image.height }}"
+                        >
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'sf-post-image' }}
+                      {%- endif -%}
+
+                      {%- if block.settings.show_labels -%}
+                        <div class="sf-ba-labels" aria-hidden="true">
+                          <span class="sf-ba-label">BEFORE</span>
+                          <span class="sf-ba-label">AFTER</span>
+                        </div>
+                      {%- endif -%}
+
+                    {%- comment -%} ── Standard Image Post ──────────── {%- endcomment -%}
+                    {%- else -%}
+
+                      {%- if block.settings.image != blank -%}
+                        <img
+                          class="sf-post-image"
+                          src="{{ block.settings.image | image_url: width: 800 }}"
+                          srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 800 }} 800w"
+                          sizes="(min-width: 992px) 280px, 50vw"
+                          alt="{{ block.settings.alt_text | escape }}"
+                          loading="lazy"
+                          width="{{ block.settings.image.width }}"
+                          height="{{ block.settings.image.height }}"
+                        >
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'sf-post-image' }}
+                      {%- endif -%}
+
+                    {%- endif -%}
+
+                    {%- comment -%} Text / testimonial overlay {%- endcomment -%}
+                    {%- if block.settings.overlay_text != blank -%}
+                      <div class="sf-post-overlay" aria-hidden="true">
+                        <p class="sf-overlay-text">{{ block.settings.overlay_text | escape }}</p>
+                      </div>
+                    {%- endif -%}
+
+                    {%- comment -%} Full-post link overlay {%- endcomment -%}
+                    {%- if block.settings.post_url != blank -%}
+                      <a
+                        href="{{ block.settings.post_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="sf-post-link"
+                        aria-label="{{ block.settings.alt_text | default: 'View post on Instagram' | escape }} (opens in a new tab)"
+                      ></a>
+                    {%- endif -%}
+
+                  </div>
+                </article>
+
+              {%- endif -%}
+            {%- endfor -%}
+
+          </div>
+          {%- comment -%} /.sf-track {%- endcomment -%}
+        </div>
+        {%- comment -%} /.sf-track-outer {%- endcomment -%}
+
+      </div>
+      {%- comment -%} /.sf-feed-wrapper {%- endcomment -%}
+    {%- endif -%}
+
+  </div>
+  {%- comment -%} /.sf-inner {%- endcomment -%}
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  var sectionId   = '{{ section.id }}';
+  var wrapper     = document.getElementById('sf-feed-' + sectionId);
+  if (!wrapper) return;
+
+  var track       = document.getElementById('sf-track-' + sectionId);
+  var btnPrev     = document.getElementById('sf-prev-' + sectionId);
+  var btnNext     = document.getElementById('sf-next-' + sectionId);
+  var tiles       = Array.prototype.slice.call(track.querySelectorAll('.sf-post'));
+
+  var desktopCount = parseInt(wrapper.getAttribute('data-posts-desktop') || '5', 10);
+  var mobileCount  = parseInt(wrapper.getAttribute('data-posts-mobile')  || '2', 10);
+  var gap          = parseInt(wrapper.getAttribute('data-gap')            || '8',  10);
+
+  var currentIndex = 0;
+  var visibleCount = 0;
+  var tileWidth    = 0;
+
+  /* ── Calculate tile width based on viewport ─────────────────── */
+  function recalc () {
+    var isMobile    = window.matchMedia('(max-width: 991px)').matches;
+    visibleCount    = isMobile ? mobileCount : desktopCount;
+    var outerWidth  = track.parentElement.clientWidth;
+    tileWidth       = Math.floor((outerWidth - gap * (visibleCount - 1)) / visibleCount);
+
+    tiles.forEach(function (tile) {
+      tile.style.setProperty('--sf-tile-width', tileWidth + 'px');
+      tile.style.width = tileWidth + 'px';
+    });
+
+    /* Clamp currentIndex so it never shows empty space */
+    var maxIndex = Math.max(0, tiles.length - visibleCount);
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+    goTo(currentIndex, false);
+    updateArrows();
+    toggleOverflow();
+  }
+
+  /* ── Slide to index ─────────────────────────────────────────── */
+  function goTo (index, animate) {
+    if (animate === undefined) animate = true;
+    var maxIndex = Math.max(0, tiles.length - visibleCount);
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+    if (!animate) {
+      track.style.transition = 'none';
+    } else {
+      track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+
+    var offset = currentIndex * (tileWidth + gap);
+    track.style.transform = 'translateX(-' + offset + 'px)';
+
+    if (!animate) {
+      /* Force repaint then restore transition */
+      void track.offsetHeight;
+      track.style.transition = '';
+    }
+
+    updateArrows();
+  }
+
+  /* ── Update arrow disabled state ───────────────────────────── */
+  function updateArrows () {
+    var maxIndex = Math.max(0, tiles.length - visibleCount);
+    btnPrev.setAttribute('aria-disabled', currentIndex === 0 ? 'true' : 'false');
+    btnNext.setAttribute('aria-disabled', currentIndex >= maxIndex ? 'true' : 'false');
+    btnPrev.disabled = currentIndex === 0;
+    btnNext.disabled = currentIndex >= maxIndex;
+  }
+
+  /* ── Toggle overflow class when all posts fit ───────────────── */
+  function toggleOverflow () {
+    if (tiles.length <= visibleCount) {
+      wrapper.classList.add('sf-no-overflow');
+    } else {
+      wrapper.classList.remove('sf-no-overflow');
+    }
+  }
+
+  /* ── Arrow click handlers ───────────────────────────────────── */
+  btnPrev.addEventListener('click', function () {
+    goTo(currentIndex - 1);
+  });
+
+  btnNext.addEventListener('click', function () {
+    goTo(currentIndex + 1);
+  });
+
+  /* ── Keyboard navigation (left/right arrow keys) ────────────── */
+  wrapper.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(currentIndex - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex + 1); }
+  });
+
+  /* ── Touch / pointer drag support ──────────────────────────── */
+  var dragStartX   = 0;
+  var isDragging   = false;
+  var dragThreshold = 40; /* px to count as a swipe */
+
+  function onDragStart (clientX) {
+    dragStartX = clientX;
+    isDragging = true;
+  }
+
+  function onDragEnd (clientX) {
+    if (!isDragging) return;
+    isDragging = false;
+    var diff = dragStartX - clientX;
+    if (Math.abs(diff) >= dragThreshold) {
+      goTo(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+    }
+  }
+
+  /* Touch events */
+  track.addEventListener('touchstart', function (e) {
+    onDragStart(e.touches[0].clientX);
+  }, { passive: true });
+
+  track.addEventListener('touchend', function (e) {
+    onDragEnd(e.changedTouches[0].clientX);
+  }, { passive: true });
+
+  /* Mouse events (desktop drag) */
+  track.addEventListener('mousedown', function (e) {
+    onDragStart(e.clientX);
+    e.preventDefault();
+  });
+
+  window.addEventListener('mouseup', function (e) {
+    onDragEnd(e.clientX);
+  });
+
+  /* ── Resize handler ─────────────────────────────────────────── */
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(recalc, 100);
+  });
+
+  /* ── Init ───────────────────────────────────────────────────── */
+  recalc();
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Social Feed",
+  "tag": "section",
+  "class": "section-social-feed",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "follow & tag us"
+    },
+    {
+      "type": "header",
+      "content": "Social Links (shown on mobile only)"
+    },
+    {
+      "type": "text",
+      "id": "instagram_handle",
+      "label": "Instagram Handle",
+      "default": "@GOPUREBEAUTY",
+      "info": "Displayed as a text link on mobile"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "header",
+      "content": "Feed Layout"
+    },
+    {
+      "type": "range",
+      "id": "posts_desktop",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "label": "Visible Posts – Desktop",
+      "default": 5,
+      "info": "Number of posts visible at once on desktop (≥992px)"
+    },
+    {
+      "type": "range",
+      "id": "posts_mobile",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Visible Posts – Mobile",
+      "default": 2,
+      "info": "Number of posts visible at once on mobile (<992px)"
+    },
+    {
+      "type": "range",
+      "id": "post_gap",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "label": "Gap Between Posts",
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#F3F0FF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#4834d4"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary / Accent Color",
+      "default": "#4834d4",
+      "info": "Used for social link text, arrow icons, play button fill"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Instagram Post",
+      "settings": [
+        {
+          "type": "select",
+          "id": "post_type",
+          "label": "Post Type",
+          "options": [
+            { "value": "image",        "label": "Image" },
+            { "value": "video",        "label": "Video" },
+            { "value": "before_after", "label": "Before / After" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Used for image and before/after posts"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Video Thumbnail",
+          "info": "Used only for video posts (still frame)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "info": "Describe the image for accessibility"
+        },
+        {
+          "type": "url",
+          "id": "post_url",
+          "label": "Instagram Post URL",
+          "info": "Links the entire tile to the original Instagram post"
+        },
+        {
+          "type": "textarea",
+          "id": "overlay_text",
+          "label": "Overlay Text (optional)",
+          "info": "User quote or testimonial shown at the bottom of the post"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_labels",
+          "label": "Show Before / After Labels",
+          "default": true,
+          "info": "Only applies to 'Before / After' post type"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Feed",
+      "category": "Social",
+      "settings": {
+        "heading": "follow & tag us",
+        "instagram_handle": "@GOPUREBEAUTY",
+        "posts_desktop": 5,
+        "posts_mobile": 2,
+        "post_gap": 8,
+        "background_color": "#F3F0FF",
+        "heading_color": "#4834d4",
+        "primary_color": "#4834d4"
+      },
+      "blocks": [
+        { "type": "post", "settings": { "post_type": "image" } },
+        { "type": "post", "settings": { "post_type": "video" } },
+        { "type": "post", "settings": { "post_type": "image" } },
+        { "type": "post", "settings": { "post_type": "before_after", "show_labels": true } },
+        { "type": "post", "settings": { "post_type": "video" } },
+        { "type": "post", "settings": { "post_type": "image" } },
+        { "type": "post", "settings": { "post_type": "image" } },
+        { "type": "post", "settings": { "post_type": "before_after", "show_labels": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}
