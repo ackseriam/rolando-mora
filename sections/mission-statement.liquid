@@ -23,6 +23,8 @@
     #shopify-section-{{ section.id }} .mission-statement-wrapper {
       padding-top: {{ section.settings.padding_top_desktop | default: 112 }}px;
       padding-bottom: {{ section.settings.padding_bottom_desktop | default: 112 }}px;
+      z-index: 0;
+    background: #eae5ff70;
     }
   }
 
@@ -138,6 +140,13 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+  #shopify-section-{{ section.id }} .mission-cta-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    margin-right: 20px;
+  }
+
 </style>
 
 <section class="mission-statement-wrapper section-mission-statement" data-section-id="{{ section.id }}" aria-labelledby="mission-heading-{{ section.id }}">
@@ -178,17 +187,18 @@
     {%- if section.settings.byline != blank -%}
       <p class="mission-byline">{{ section.settings.byline | escape }}</p>
     {%- endif -%}
-
-    {%- if section.settings.button_text != blank -%}
-      <a
-        href="{{ section.settings.button_link | default: '#' }}"
-        class="mission-cta button button-secondary"
-        {% if section.settings.button_link == blank %}aria-disabled="true"{% endif %}
-      >
-        {{ section.settings.button_text | escape }}
-      </a>
-    {%- endif -%}
   </div>
+  {%- if section.settings.button_text != blank -%}
+    <div class="mission-cta-wrapper">
+    <a
+      href="{{ section.settings.button_link | default: '#' }}"
+      class="mission-cta button button-secondary"
+      {% if section.settings.button_link == blank %}aria-disabled="true"{% endif %}
+    >
+      {{ section.settings.button_text | escape }}
+    </a>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
