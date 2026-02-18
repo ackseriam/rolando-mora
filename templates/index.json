@@ -279,7 +279,7 @@
             "cta_text": "Learn More"
           }
         },
-        "product_LDAKz9": {
+        "product_ctJTXf": {
           "type": "product",
           "settings": {
             "product": "tighten-lift-neck-cream",
@@ -291,7 +291,7 @@
             "cta_text": "Learn More"
           }
         },
-        "product_4mxz6K": {
+        "product_zMnG6Y": {
           "type": "product",
           "settings": {
             "product": "tighten-lift-neck-cream",
@@ -306,8 +306,8 @@
       },
       "block_order": [
         "product_6mLGXT",
-        "product_LDAKz9",
-        "product_4mxz6K"
+        "product_ctJTXf",
+        "product_zMnG6Y"
       ],
       "name": "Bundles Carousel",
       "settings": {
