@@ -9,85 +9,27 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
-      "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+    "hero_banner_Wyjiik": {
+      "type": "hero-banner",
+      "name": "Hero Banner",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "image_alt": "Three bottles of goPure Tighten & Smooth Belly Cream against a soft purple background",
+        "title": "WILL YOU BE READY?",
+        "subtitle": "Bikini season is coming.",
+        "cta_text": "SHOP BELLY CREAM",
+        "cta_link": "",
+        "cta_aria_label": "Shop Tighten & Smooth Belly Cream",
+        "show_retail_badge": true,
+        "retail_badge_alt": "Now at Target",
+        "background_color": "#f4f0f8",
+        "header_background_color": "#f4f0f8",
+        "title_color": "#1a1a2e",
+        "subtitle_color": "#1a1a2e",
+        "cta_background_color": "rgba(0,0,0,0)",
+        "cta_border_color": "#1a1a2e",
+        "cta_text_color": "#1a1a2e",
+        "cta_hover_background_color": "#1a1a2e",
+        "cta_hover_text_color": "#ffffff"
       }
     },
     "marquee_banner_4fimCy": {
@@ -96,9 +38,9 @@
       "settings": {
         "item_1_text": "REAL SKIN BENEFITS",
         "item_2_text": "SCIENCE BACKED INGREDIENTS",
-        "background_color": "#DEF3FF",
+        "background_color": "#def3ff",
         "text_color": "#3f27ae",
-        "dot_color": "#3F27AE",
+        "dot_color": "#3f27ae",
         "scroll_speed": 53
       }
     },
@@ -304,7 +246,7 @@
         "title_font_size": 14,
         "subtitle": "real results",
         "subtitle_font_size": 14,
-        "text_color": "#3F27AE",
+        "text_color": "#3f27ae",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -379,7 +321,7 @@
     }
   },
   "order": [
-    "hero_jVaWmY",
+    "hero_banner_Wyjiik",
     "marquee_banner_4fimCy",
     "product_list_fa6P9H",
     "section_title_subtitle_YaQUAm",
