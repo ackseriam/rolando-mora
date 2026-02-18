@@ -421,56 +421,17 @@
           "type": "product",
           "settings": {
             "product": "tighten-lift-neck-cream",
-            "caption": "Save 42%",
+            "caption": "",
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
             "badge": "Best Seller",
             "badge_secondary": "Save 42%",
             "cta_text": "Learn More"
           }
-        },
-        "product_y6hNzJ": {
-          "type": "product",
-          "settings": {
-            "product": "tighten-lift-neck-cream",
-            "caption": "Save 42%",
-            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
-            "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "",
-            "cta_text": "Learn More"
-          }
-        },
-        "product_pTmNid": {
-          "type": "product",
-          "settings": {
-            "product": "tighten-lift-neck-cream",
-            "caption": "Save 42%",
-            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
-            "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "",
-            "cta_text": "Learn More"
-          }
-        },
-        "product_Q73jKw": {
-          "type": "product",
-          "settings": {
-            "product": "tighten-lift-neck-cream",
-            "caption": "Save 42%",
-            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
-            "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "",
-            "cta_text": "Learn More"
-          }
         }
       },
       "block_order": [
-        "product_rziVcc",
-        "product_y6hNzJ",
-        "product_pTmNid",
-        "product_Q73jKw"
+        "product_rziVcc"
       ],
       "name": "Bundles Carousel",
       "settings": {
@@ -479,6 +440,7 @@
         "pre_heading": "shop",
         "pre_heading_color": "#4a3f6d",
         "heading": "Bundles",
+        "yotpo_instance_id": "1285830",
         "slides_desktop": 3,
         "slides_tablet": 2,
         "slides_mobile": 1,
@@ -486,6 +448,7 @@
         "speed": 300,
         "background_color": "#ffffff",
         "card_background_color": "#ffffff",
+        "caption_color": "#555555",
         "image_area_background": "#fcf8f6",
         "hover_overlay_color": "#9370db40",
         "learn_more_bg": "#ffffff",
