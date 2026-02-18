@@ -30,7 +30,7 @@
     text-transform: uppercase;
     font-size: var(--font-size--xl, 1.25rem);
     line-height: 1;
-    color: var(--color-black, #000000);
+    color: var({{ section.settings.heading_color }});
     margin: 0 0 var(--margin-5xl, 3rem);
   }
 
@@ -338,8 +338,8 @@
     }
   }
   .yotpo-bottom-line-scroll-panel .yotpo-sr-bottom-line-button{
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
   }
 </style>
 
