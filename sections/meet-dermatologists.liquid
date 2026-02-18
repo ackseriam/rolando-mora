@@ -67,7 +67,7 @@
     font-style: italic;
     font-size: var(--font-size--2xl, 1.5rem);
     line-height: 1;
-    color: var(--color-black, #000000);
+    color: {{ section.settings.script_heading_color }};
   }
 
   @media (min-width: 992px) {
@@ -80,6 +80,14 @@
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
+  }
+
+  .meet-dermatologists-heading__image-wrap--tilt {
+    transform: rotate(-8deg);
+  }
+
+  .meet-dermatologists-heading__image-wrap--tilt-right {
+    transform: rotate(6deg);
   }
 
   .meet-dermatologists-heading__inline-image {
@@ -130,24 +138,52 @@
 
   @media (min-width: 992px) {
     .meet-dermatologists-grid {
-      gap: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
   }
 
   .meet-dermatologists-card {
     background-color: {{ section.settings.card_background_color }};
     border-radius: var(--style-border-radius-lg, 1rem);
-    overflow: hidden;
+    overflow: visible;
     text-align: center;
-    padding-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem 1.25rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .meet-dermatologists-card__name-wrap {
+    margin-bottom: 0.5rem;
   }
 
   .meet-dermatologists-card__image-wrap {
     position: relative;
-    margin-bottom: 1.25rem;
-    aspect-ratio: 1;
+    margin-bottom: 0;
+    aspect-ratio: 16/10;
     overflow: hidden;
+    border-radius: var(--style-border-radius-sm, 0.6rem);
+  }
+
+  .meet-dermatologists-card__play-overlay {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .meet-dermatologists-card__play-overlay svg {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    fill: currentColor;
+    color: #333;
   }
 
   .meet-dermatologists-card__image {
@@ -157,57 +193,86 @@
     object-fit: cover;
   }
 
+  .meet-dermatologists-card__tag {
+    display: inline-block;
+    background-color: {{ section.settings.tag_background_color }};
+    color: {{ section.settings.tag_text_color }};
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    border-radius: 2px;
+    margin-top: -0.75rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .meet-dermatologists-card__product-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .meet-dermatologists-card__product-wrap img {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+  }
+
   .meet-dermatologists-card__name {
     font-family: var(--font-heading--family, 'Montserrat', sans-serif);
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--color-black, #000000);
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.25rem;
     line-height: 1.2;
   }
 
   .meet-dermatologists-card__credentials {
     font-family: var(--font-body--family, 'Montserrat', sans-serif);
     font-weight: 400;
-    font-size: 0.875rem;
-    color: var(--color-foreground, #333);
-    margin: 0 0 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-foreground, #555);
+    margin: 0 0 0.75rem;
     line-height: 1.4;
   }
 
   .meet-dermatologists-card__category {
-    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-black, #000000);
-    margin: 0 0 1rem;
-    line-height: 1.2;
+    display: none;
   }
 
   .meet-dermatologists-card__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 1.25rem;
+    gap: 0.35rem;
+    padding: 0;
     font-family: var(--font-body--family, 'Montserrat', sans-serif);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 2px solid {{ section.settings.cta_border_color }};
-    color: {{ section.settings.cta_text_color }};
-    background-color: {{ section.settings.cta_background_color }};
-    border-radius: 2px;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    border: none;
+    background: none;
+    color: {{ section.settings.cta_link_color }};
+    transition: color 0.2s ease, opacity 0.2s ease;
   }
 
   .meet-dermatologists-card__cta:hover {
-    background-color: {{ section.settings.cta_hover_background_color }};
-    color: {{ section.settings.cta_hover_text_color }};
-    border-color: {{ section.settings.cta_hover_border_color }};
+    color: {{ section.settings.cta_link_hover_color }};
+    opacity: 0.9;
+  }
+
+  .meet-dermatologists-card__cta-arrow {
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    border-right: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 2px;
   }
 
   .meet-dermatologists-card__bio {
@@ -234,9 +299,25 @@
   aria-label="{{ section.settings.aria_label | default: 'Meet our dermatologists' | escape }}"
 >
   <div class="meet-dermatologists-container">
-    {%- if section.settings.script_heading != blank or section.settings.bold_heading != blank or section.settings.product_image != blank -%}
+    {%- if section.settings.script_heading != blank or section.settings.bold_heading != blank or section.settings.product_image != blank or section.settings.product_image_2 != blank -%}
       <h2 class="meet-dermatologists-heading">
         <span class="meet-dermatologists-heading-with-image">
+          {%- if section.settings.product_image != blank -%}
+            <span class="meet-dermatologists-heading__image-wrap meet-dermatologists-heading__image-wrap--tilt" aria-hidden="true">
+              <img
+                class="meet-dermatologists-heading__inline-image"
+                src="{{ section.settings.product_image | image_url: width: 264 }}"
+                srcset="{{ section.settings.product_image | image_url: width: 180 }} 180w,
+                        {{ section.settings.product_image | image_url: width: 264 }} 264w"
+                alt=""
+                width="132"
+                height="80"
+                sizes="(max-width: 767px) 90px, 132px"
+                loading="eager"
+              >
+            </span>
+          {%- endif -%}
+
           {%- if section.settings.script_heading != blank -%}
             <span class="meet-dermatologists-heading__line meet-dermatologists-heading__script">
               {{ section.settings.script_heading | escape }}
@@ -244,14 +325,14 @@
             </span>
           {%- endif -%}
 
-          {%- if section.settings.product_image != blank -%}
-            <span class="meet-dermatologists-heading__image-wrap" aria-hidden="true">
+          {%- if section.settings.product_image_2 != blank -%}
+            <span class="meet-dermatologists-heading__image-wrap meet-dermatologists-heading__image-wrap--tilt-right" aria-hidden="true">
               <img
                 class="meet-dermatologists-heading__inline-image"
-                src="{{ section.settings.product_image | image_url: width: 264 }}"
-                srcset="{{ section.settings.product_image | image_url: width: 180 }} 180w,
-                        {{ section.settings.product_image | image_url: width: 264 }} 264w"
-                alt="{{ section.settings.product_image_alt | default: '' | escape }}"
+                src="{{ section.settings.product_image_2 | image_url: width: 264 }}"
+                srcset="{{ section.settings.product_image_2 | image_url: width: 180 }} 180w,
+                        {{ section.settings.product_image_2 | image_url: width: 264 }} 264w"
+                alt=""
                 width="132"
                 height="80"
                 sizes="(max-width: 767px) 90px, 132px"
@@ -275,32 +356,48 @@
           {%- case block.type -%}
             {%- when 'dermatologist' -%}
               <div class="meet-dermatologists-card" {{ block.shopify_attributes }}>
+                <div class="meet-dermatologists-card__name-wrap">
+                  {%- if block.settings.name != blank -%}
+                    <h3 class="meet-dermatologists-card__name">{{ block.settings.name | escape }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.credentials != blank -%}
+                    <p class="meet-dermatologists-card__credentials">{{ block.settings.credentials | escape }}</p>
+                  {%- endif -%}
+                </div>
+
                 {%- if block.settings.image != blank -%}
                   <div class="meet-dermatologists-card__image-wrap">
+                    <span class="meet-dermatologists-card__play-overlay" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
                     <img
                       class="meet-dermatologists-card__image"
                       src="{{ block.settings.image | image_url: width: 600 }}"
                       alt="{{ block.settings.name | escape }}"
                       width="400"
-                      height="400"
+                      height="250"
                       loading="lazy"
                       srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
                               {{ block.settings.image | image_url: width: 600 }} 600w"
-                      sizes="(max-width: 767px) 100vw, 50vw"
+                      sizes="(max-width: 767px) 100vw, 33vw"
                     >
                   </div>
                 {%- endif -%}
 
-                {%- if block.settings.name != blank -%}
-                  <h3 class="meet-dermatologists-card__name">{{ block.settings.name | escape }}</h3>
-                {%- endif -%}
-
-                {%- if block.settings.credentials != blank -%}
-                  <p class="meet-dermatologists-card__credentials">{{ block.settings.credentials | escape }}</p>
-                {%- endif -%}
-
                 {%- if block.settings.category != blank -%}
-                  <p class="meet-dermatologists-card__category">{{ block.settings.category | escape }}</p>
+                  <span class="meet-dermatologists-card__tag">{{ block.settings.category | escape }}</span>
+                {%- endif -%}
+
+                {%- if block.settings.product_image != blank -%}
+                  <div class="meet-dermatologists-card__product-wrap">
+                    <img
+                      src="{{ block.settings.product_image | image_url: width: 128 }}"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                    >
+                  </div>
                 {%- endif -%}
 
                 {%- if block.settings.bio != blank -%}
@@ -311,7 +408,7 @@
 
                 {%- if block.settings.cta_text != blank and block.settings.cta_url != blank -%}
                   <a href="{{ block.settings.cta_url }}" class="meet-dermatologists-card__cta">
-                    {{ block.settings.cta_text | escape }}
+                    {{ block.settings.cta_text | escape }}<span class="meet-dermatologists-card__cta-arrow" aria-hidden="true"></span>
                   </a>
                 {%- endif -%}
               </div>
@@ -364,10 +461,22 @@
       "info": "Displayed in bold uppercase below/next to image"
     },
     {
+      "type": "color",
+      "id": "script_heading_color",
+      "label": "Script Heading Color (Meet Our)",
+      "default": "#6b5b95"
+    },
+    {
       "type": "image_picker",
       "id": "product_image",
-      "label": "Inline Product Image",
-      "info": "Recommended: 132x80px (scales to 90px on mobile)"
+      "label": "Header Product Image (left)",
+      "info": "e.g. tube; shown left of “Meet Our”"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image_2",
+      "label": "Header Product Image (right)",
+      "info": "e.g. jar; shown right of script, left of DERMATOLOGISTS"
     },
     {
       "type": "text",
@@ -382,49 +491,37 @@
       "type": "color",
       "id": "background_color",
       "label": "Section Background",
-      "default": "#ffffff"
+      "default": "#f3f0ff"
     },
     {
       "type": "color",
       "id": "card_background_color",
       "label": "Card Background",
-      "default": "#f8f6f9"
-    },
-    {
-      "type": "color",
-      "id": "cta_background_color",
-      "label": "CTA Background",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "cta_text_color",
-      "label": "CTA Text",
       "default": "#ffffff"
     },
     {
       "type": "color",
-      "id": "cta_border_color",
-      "label": "CTA Border",
-      "default": "#000000"
+      "id": "tag_background_color",
+      "label": "Category Tag Background",
+      "default": "#FFE066"
     },
     {
       "type": "color",
-      "id": "cta_hover_background_color",
-      "label": "CTA Hover Background",
-      "default": "#333333"
+      "id": "tag_text_color",
+      "label": "Category Tag Text",
+      "default": "#1a1a1a"
     },
     {
       "type": "color",
-      "id": "cta_hover_text_color",
-      "label": "CTA Hover Text",
-      "default": "#ffffff"
+      "id": "cta_link_color",
+      "label": "CTA Link Color (SHOP NOW)",
+      "default": "#4a3f6d"
     },
     {
       "type": "color",
-      "id": "cta_hover_border_color",
-      "label": "CTA Hover Border",
-      "default": "#333333"
+      "id": "cta_link_hover_color",
+      "label": "CTA Link Hover Color",
+      "default": "#6b5b95"
     },
     {
       "type": "header",
@@ -459,7 +556,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Photo"
+          "label": "Video / Photo Thumbnail"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image (small jar in card)"
         },
         {
           "type": "text",
@@ -506,9 +608,18 @@
         {
           "type": "dermatologist",
           "settings": {
+            "name": "Dr. Jessica Kaprive",
+            "credentials": "GOPURE Dermatology Advisor",
+            "category": "FIRMING",
+            "cta_text": "SHOP NOW"
+          }
+        },
+        {
+          "type": "dermatologist",
+          "settings": {
             "name": "Dr. Trisha Khanna",
             "credentials": "GOPURE Dermatology Advisor",
-            "category": "Tightening",
+            "category": "TIGHTENING",
             "cta_text": "SHOP NOW"
           }
         },
@@ -517,7 +628,7 @@
           "settings": {
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
-            "category": "Toning",
+            "category": "TONING",
             "cta_text": "SHOP NOW"
           }
         }
