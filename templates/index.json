@@ -15,15 +15,15 @@
       "settings": {
         "image_desktop": "shopify://shop_images/gopure-tighten-smooth-belly-cream-skincare-product.webp",
         "image_mobile": "shopify://shop_images/gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.webp",
-        "image_alt": "Three bottles of goPure Tighten & Smooth Belly Cream against a soft purple background",
-        "title": "WILL YOU BE READY?",
-        "subtitle": "Bikini season is coming.",
-        "cta_text": "SHOP BELLY CREAM",
+        "image_alt": "Tres botellas de goPure Tighten & Smooth Belly Cream sobre fondo violeta claro",
+        "title": "¿ESTARÁS LISTA?",
+        "subtitle": "Se acerca la temporada de bikini.",
+        "cta_text": "COMPRAR CREMA PARA ABDOMEN",
         "cta_link": "",
-        "cta_aria_label": "Shop Tighten & Smooth Belly Cream",
+        "cta_aria_label": "Comprar Tighten & Smooth Belly Cream",
         "show_retail_badge": true,
         "retail_badge_image": "shopify://shop_images/now-at-target-logo.avif",
-        "retail_badge_alt": "Now at Target",
+        "retail_badge_alt": "Ahora en Target",
         "background_color": "#f4f0f8",
         "header_background_color": "#f4f0f8",
         "title_color": "#1a1a2e",
@@ -39,8 +39,8 @@
       "type": "marquee-banner",
       "name": "Marquee Banner",
       "settings": {
-        "item_1_text": "REAL SKIN BENEFITS",
-        "item_2_text": "SCIENCE BACKED INGREDIENTS",
+        "item_1_text": "BENEFICIOS REALES PARA LA PIEL",
+        "item_2_text": "INGREDIENTES AVALADOS POR LA CIENCIA",
         "background_color": "#def3ff",
         "text_color": "#3f27ae",
         "dot_color": "#3f27ae",
@@ -114,7 +114,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
+                "label": "Ver todo",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -244,7 +244,7 @@
         }
       },
       "disabled": true,
-      "name": "Featured collection",
+      "name": "Colección destacada",
       "settings": {
         "collection": "all",
         "layout_type": "grid",
@@ -276,8 +276,8 @@
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
             "badge": "",
-            "badge_secondary": "Award Winner",
-            "cta_text": "Learn More"
+            "badge_secondary": "Ganador de premio",
+            "cta_text": "Saber más"
           }
         },
         "product_wqigTW": {
@@ -288,8 +288,8 @@
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
             "badge": "",
-            "badge_secondary": "Award Winner",
-            "cta_text": "Learn More"
+            "badge_secondary": "Ganador de premio",
+            "cta_text": "Saber más"
           }
         },
         "product_GiBgHL": {
@@ -300,8 +300,8 @@
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
             "badge": "",
-            "badge_secondary": "Award Winner",
-            "cta_text": "Learn More"
+            "badge_secondary": "Ganador de premio",
+            "cta_text": "Saber más"
           }
         }
       },
@@ -310,14 +310,14 @@
         "product_wqigTW",
         "product_GiBgHL"
       ],
-      "name": "Bundles Carousel",
+      "name": "Carrusel de lotes",
       "settings": {
-        "aria_label": "new here?",
+        "aria_label": "¿nuevo por aquí?",
         "show_heading": true,
-        "pre_heading": "new here?",
+        "pre_heading": "¿nuevo por aquí?",
         "heading_color": "#3f27ae",
         "pre_heading_color": "#4a3f6d",
-        "heading": "Meet our best sellers",
+        "heading": "Conoce nuestros más vendidos",
         "yotpo_instance_id": "1285830",
         "slides_desktop": 3,
         "slides_tablet": 2,
@@ -348,15 +348,15 @@
     },
     "mission_statement_7U8gHJ": {
       "type": "mission-statement",
-      "name": "Mission Statement",
+      "name": "Declaración de misión",
       "settings": {
         "show_background_texture": true,
         "background_desktop": "shopify://shop_images/soft-gray-background-light-rays.webp",
-        "pre_heading": "We believe that",
-        "heading": "<p>Feeling <em>beautiful</em> & <em>confident</em> should be within reach <em>for everyone</em></p>",
-        "byline": "–Co-founders Alex & Erin",
+        "pre_heading": "Creemos que",
+        "heading": "<p>Sentirse <em>bella</em> y <em>segura</em> debería estar al alcance <em>de todas</em></p>",
+        "byline": "–Cofundadoras Alex y Erin",
         "color_plum": "#3f27ae",
-        "button_text": "Learn More",
+        "button_text": "Saber más",
         "button_link": "",
         "padding_top": 96,
         "padding_bottom": 64,
@@ -374,9 +374,9 @@
             "caption": "",
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "Save 42%",
-            "cta_text": "Learn More"
+            "badge": "Más vendido",
+            "badge_secondary": "Ahorra 42%",
+            "cta_text": "Saber más"
           }
         },
         "product_6BBidx": {
@@ -386,9 +386,9 @@
             "caption": "",
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "Save 42%",
-            "cta_text": "Learn More"
+            "badge": "Más vendido",
+            "badge_secondary": "Ahorra 42%",
+            "cta_text": "Saber más"
           }
         },
         "product_TeHKjJ": {
@@ -398,9 +398,9 @@
             "caption": "",
             "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
             "hover_image_alt": "",
-            "badge": "Best Seller",
-            "badge_secondary": "Save 42%",
-            "cta_text": "Learn More"
+            "badge": "Más vendido",
+            "badge_secondary": "Ahorra 42%",
+            "cta_text": "Saber más"
           }
         }
       },
@@ -409,14 +409,14 @@
         "product_6BBidx",
         "product_TeHKjJ"
       ],
-      "name": "Bundles Carousel",
+      "name": "Carrusel de lotes",
       "settings": {
-        "aria_label": "new here?",
+        "aria_label": "comprar lotes",
         "show_heading": true,
-        "pre_heading": "shop",
+        "pre_heading": "comprar",
         "heading_color": "#3f27ae",
         "pre_heading_color": "#3f27ae",
-        "heading": "Bundles",
+        "heading": "Lotes",
         "yotpo_instance_id": "1285830",
         "slides_desktop": 3,
         "slides_tablet": 2,
@@ -453,11 +453,11 @@
           "settings": {
             "image_before": "shopify://shop_images/before_image_transformation.webp",
             "image_after": "shopify://shop_images/after-8-weeks-skin-transformation_3bc33a5c-7ad7-449c-81a7-eae64f54c6be.webp",
-            "duration": "8 Weeks",
-            "quote": "The glow is actually insane.",
+            "duration": "8 semanas",
+            "quote": "El brillo es increíble.",
             "author_image": "shopify://shop_images/happy-smiling-woman-holding-cosmetic-product.webp",
             "author_name": "Sarah J.",
-            "concern": "Dullness"
+            "concern": "Opacidad"
           }
         },
         "review_EJfJqk": {
@@ -465,11 +465,11 @@
           "settings": {
             "image_before": "shopify://shop_images/before-and-after-arm-image.webp",
             "image_after": "shopify://shop_images/after-8-weeks-arm-transformation-image.webp",
-            "duration": "8 Weeks",
-            "quote": "The glow is actually insane.",
+            "duration": "8 semanas",
+            "quote": "El brillo es increíble.",
             "author_image": "shopify://shop_images/smiling-senior-woman-hairstyle-portrait.avif",
             "author_name": "Sarah J.",
-            "concern": "Dullness"
+            "concern": "Opacidad"
           }
         },
         "review_iYr86N": {
@@ -477,19 +477,19 @@
           "settings": {
             "image_before": "shopify://shop_images/before-image-of-skin-with-stretch-marks.webp",
             "image_after": "shopify://shop_images/before-image-of-skin-with-stretch-marks_79a8de2a-e4d8-4e28-9fb7-1975ede97d78.webp",
-            "duration": "8 Weeks",
-            "quote": "The glow is actually insane.",
+            "duration": "8 semanas",
+            "quote": "El brillo es increíble.",
             "author_name": "Sarah J.",
-            "concern": "Dullness"
+            "concern": "Opacidad"
           }
         },
         "review_7At3cK": {
           "type": "review",
           "settings": {
-            "duration": "8 Weeks",
-            "quote": "The glow is actually insane.",
+            "duration": "8 semanas",
+            "quote": "El brillo es increíble.",
             "author_name": "Sarah J.",
-            "concern": "Dullness"
+            "concern": "Opacidad"
           }
         }
       },
@@ -499,15 +499,15 @@
         "review_iYr86N",
         "review_7At3cK"
       ],
-      "name": "GoPure Stylized Reviews",
+      "name": "Reseñas GoPure",
       "settings": {
-        "title": "CUSTOMERS",
-        "subtitle": "can't get enough",
+        "title": "CLIENTES",
+        "subtitle": "no pueden parar",
         "bg_color": "#f3f0ff",
         "card_bg_color": "#ffffff",
         "badge_bg_color": "#e0d7ff",
         "text_color": "#4834d4",
-        "button_label": "See All Reviews",
+        "button_label": "Ver todas las reseñas",
         "button_link": ""
       }
     },
@@ -520,10 +520,10 @@
             "image": "shopify://shop_images/healthcare-professional-smiling-portrait.webp",
             "product_image": "shopify://shop_images/anti-wrinkle-moisturizer-gopure-50ml.avif",
             "name": "Dr. Trisha Khanna",
-            "credentials": "GOPURE Dermatology Advisor",
-            "category": "Tightening",
+            "credentials": "Asesor de dermatología GOPURE",
+            "category": "Reafirmación",
             "bio": "<p> <br/><br/></p>",
-            "cta_text": "SHOP NOW",
+            "cta_text": "COMPRAR AHORA",
             "cta_url": "shopify://collections"
           }
         },
@@ -533,10 +533,10 @@
             "image": "shopify://shop_images/dr-trisha-khanna-dermatology-expert-image.webp",
             "product_image": "shopify://shop_images/gopure-firming-butt-thigh-cream-4-25oz.avif",
             "name": "Dr. Edward Chen",
-            "credentials": "GOPURE Dermatology Advisor",
-            "category": "Toning",
+            "credentials": "Asesor de dermatología GOPURE",
+            "category": "Tonicidad",
             "bio": "<p><br/><br/></p>",
-            "cta_text": "SHOP NOW",
+            "cta_text": "COMPRAR AHORA",
             "cta_url": "shopify://collections"
           }
         },
@@ -546,10 +546,10 @@
             "image": "shopify://shop_images/edward-cho-dermatology-why-i-love-skincare.webp",
             "product_image": "shopify://shop_images/gopure-tighten-lift-neck-cream-50ml.avif",
             "name": "Dr. Edward Chen",
-            "credentials": "GOPURE Dermatology Advisor",
-            "category": "Toning",
+            "credentials": "Asesor de dermatología GOPURE",
+            "category": "Tonicidad",
             "bio": "<p><br/><br/></p>",
-            "cta_text": "SHOP NOW",
+            "cta_text": "COMPRAR AHORA",
             "cta_url": "shopify://collections"
           }
         }
@@ -559,12 +559,12 @@
         "dermatologist_rTgiqn",
         "dermatologist_gFde4A"
       ],
-      "name": "Meet Dermatologists",
+      "name": "Conoce a los dermatólogos",
       "settings": {
-        "aria_label": "Meet our dermatologists",
-        "script_heading": "Meet Our",
+        "aria_label": "Conoce a nuestros dermatólogos",
+        "script_heading": "Conoce a nuestros",
         "heading_line_break": true,
-        "bold_heading": "DERMATOLOGISTS",
+        "bold_heading": "DERMATÓLOGOS",
         "script_heading_color": "#6b5b95",
         "product_image": "shopify://shop_images/gopure-refine-renew-body-scrub-volcanic-sand-sugar-complex-170g.webp",
         "product_image_alt": "",
@@ -580,11 +580,11 @@
     },
     "section_title_subtitle_xiyzBP": {
       "type": "section-title-subtitle",
-      "name": "Title - subtitle",
+      "name": "Título - subtítulo",
       "settings": {
-        "title": "REAL WOMEN",
+        "title": "MUJERES REALES",
         "title_font_size": 48,
-        "subtitle": "real results",
+        "subtitle": "resultados reales",
         "subtitle_font_size": 48,
         "text_color": "#3f27ae",
         "padding_top": 36,
