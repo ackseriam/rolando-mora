@@ -345,6 +345,7 @@
         "dermatologist_hMMVCb": {
           "type": "dermatologist",
           "settings": {
+            "image": "shopify://shop_images/healthcare-professional-smiling-portrait.webp",
             "name": "Dr. Trisha Khanna",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Tightening",
