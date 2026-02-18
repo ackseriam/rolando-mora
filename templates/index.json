@@ -419,9 +419,9 @@
       "name": "Title Subtitle",
       "settings": {
         "title": "REAL WOMEN",
-        "title_font_size": 39,
+        "title_font_size": 35,
         "subtitle": "real results",
-        "subtitle_font_size": 14,
+        "subtitle_font_size": 32,
         "text_color": "#3F27AE",
         "padding_top": 36,
         "padding_bottom": 36
