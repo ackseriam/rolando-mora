@@ -373,7 +373,7 @@
             "name": "Dr. Trisha Khanna",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Tightening",
-            "bio": "",
+            "bio": "<p> <br/><br/></p>",
             "cta_text": "SHOP NOW",
             "cta_url": "shopify://collections"
           }
@@ -386,7 +386,7 @@
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Toning",
-            "bio": "",
+            "bio": "<p><br/><br/></p>",
             "cta_text": "SHOP NOW",
             "cta_url": "shopify://collections"
           }
