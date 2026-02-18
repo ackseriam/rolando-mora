@@ -1,452 +1,379 @@
 <style>
   /* =========================================================
-     Hero Banner Section – goPure Beauty replica
-     Source: https://gopurebeauty.com (data-testid="hero-banner")
-     Original wrapper class: _wrapper_2gmz6_1
+     Hero Banner Section – exact replica of goPure Beauty
+     Source:  https://gopurebeauty.com
+     Original: <section class="_wrapper_2gmz6_1" data-testid="hero-banner">
      ========================================================= */
 
+  /* ── Section wrapper ─────────────────────────────────── */
   .hero-banner-section {
-    width: 100%;
-    background-color: {{ section.settings.background_color }};
-    overflow: hidden;
-  }
-
-  /* Container: two-column on desktop, single column on mobile */
-  .hero-banner-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  /* ── Media column ─────────────────────────────────────── */
-  .hero-banner-media {
     position: relative;
+    display: block;
     width: 100%;
     overflow: hidden;
-    order: 1; /* image first on mobile */
+    background-color: {{ section.settings.background_color }};
+  }
+
+  /* ── Media container  (_media_2gmz6_9) ──────────────── */
+  .hero-banner-media {
+    display: block;
+    width: 100%;
+    line-height: 0; /* kill inline-block gap */
   }
 
   .hero-banner-media picture {
     display: block;
     width: 100%;
-    height: 100%;
   }
 
-  .hero-banner-media img {
+  /* Mobile image fills full width; desktop shows separate landscape image */
+  .hero-banner-media img.fill {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     object-position: center center;
   }
 
-  /* ── Content column ───────────────────────────────────── */
-  .hero-banner-content {
+  /* ── Header / content overlay (_header_p5roc_1) ─────── */
+  /*
+   * The original uses absolute positioning so the text/CTA sits
+   * over the hero image.  On mobile the content sits below the image
+   * in a stacked layout; on desktop it overlays at the image center.
+   */
+  .hero-banner-header {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 40px 24px 48px;
-    order: 2;
-    gap: 0;
+    text-align: center;
+    padding: 32px 24px 40px;
+    z-index: 2;
+    background-color: {{ section.settings.header_background_color }};
   }
 
-  /* ── Eyebrow / tag label above heading ──────────────── */
-  .hero-banner-eyebrow {
-    display: inline-block;
-    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: {{ section.settings.eyebrow_color }};
-    margin-bottom: 12px;
+  /* ── Headlines container (_container_64vy8_1) ──────── */
+  /*
+   * The _reverse_64vy8_5 class applies flex-direction: column-reverse
+   * so that although the subtitle span comes first in the DOM,
+   * the title appears on top visually and the subtitle below.
+   */
+  .hero-banner-headlines {
+    display: inline-flex;
+    flex-direction: column-reverse; /* _reverse_64vy8_5 */
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
   }
 
-  /* ── Heading ────────────────────────────────────────── */
-  .hero-banner-heading {
+  /* ── Subtitle (_subtitle_64vy8_22) ──────────────────── */
+  /* font-heading-secondary italic weight-400 text-center */
+  .hero-banner-subtitle {
+    display: block;
+    font-family: var(--font-accent--family, Georgia, serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: {{ section.settings.subtitle_color }};
+    text-align: center;
+  }
+
+  /* ── Title (_title_64vy8_9) ─────────────────────────── */
+  /* font-heading weight-600 uppercase text-center */
+  .hero-banner-title {
+    display: block;
     font-family: var(--font-heading--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: {{ section.settings.heading_color }};
-    margin: 0 0 16px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: {{ section.settings.title_color }};
+    text-align: center;
   }
 
-  /* ── Subheading ─────────────────────────────────────── */
-  .hero-banner-subheading {
-    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: {{ section.settings.subheading_color }};
-    margin: 0 0 24px;
-  }
-
-  /* ── Price block ────────────────────────────────────── */
-  .hero-banner-price {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 28px;
-  }
-
-  .hero-banner-price .price-label {
-    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 14px;
-    font-weight: 400;
-    color: {{ section.settings.subheading_color }};
-  }
-
-  .hero-banner-price .price-amount {
-    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 22px;
-    font-weight: 700;
-    color: {{ section.settings.heading_color }};
-  }
-
-  /* ── CTA buttons ────────────────────────────────────── */
-  .hero-banner-cta {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 32px;
-    width: 100%;
-  }
-
-  .hero-banner-cta .btn {
+  /* ── CTA button (_link_p5roc_27) ─────────────────────── */
+  /* Uses existing theme classes btn btn--secondary */
+  .hero-banner-cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    padding: 16px 24px;
+    padding: 14px 32px;
     font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .hero-banner-cta .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .hero-banner-cta .btn-primary {
-    background-color: {{ section.settings.primary_button_bg }};
-    color: {{ section.settings.primary_button_text_color }};
-    border: 2px solid {{ section.settings.primary_button_bg }};
-  }
-
-  .hero-banner-cta .btn-primary:hover {
-    background-color: {{ section.settings.primary_button_hover_bg }};
-    border-color: {{ section.settings.primary_button_hover_bg }};
-  }
-
-  .hero-banner-cta .btn-secondary {
-    background-color: transparent;
-    color: {{ section.settings.secondary_button_text_color }};
-    border: 2px solid {{ section.settings.secondary_button_border_color }};
-  }
-
-  .hero-banner-cta .btn-secondary:hover {
-    background-color: {{ section.settings.secondary_button_hover_bg }};
-    color: {{ section.settings.primary_button_text_color }};
-    border-color: {{ section.settings.secondary_button_hover_bg }};
-  }
-
-  /* ── Trust badges ───────────────────────────────────── */
-  .hero-banner-badges {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px 20px;
-    padding-top: 4px;
-  }
-
-  .hero-banner-badges .badge-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    text-align: center;
-  }
-
-  .hero-banner-badges .badge-item img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  .hero-banner-badges .badge-item span {
-    font-family: var(--font-body--family, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: {{ section.settings.badge_text_color }};
-    line-height: 1.3;
-    max-width: 64px;
+    text-decoration: none;
+    border: 2px solid {{ section.settings.cta_border_color }};
+    color: {{ section.settings.cta_text_color }};
+    background-color: {{ section.settings.cta_background_color }};
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    z-index: 3;
   }
 
-  /* ── Animations ─────────────────────────────────────── */
-  @keyframes hb-fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .hero-banner-cta-btn:hover {
+    background-color: {{ section.settings.cta_hover_background_color }};
+    color: {{ section.settings.cta_hover_text_color }};
+    border-color: {{ section.settings.cta_hover_background_color }};
   }
 
-  @keyframes hb-fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  /* ── Header overlay link (_headerOverlay_p5roc_68) ──── */
+  /* Transparent full-header clickable overlay */
+  .hero-banner-header-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    cursor: pointer;
   }
 
-  .hero-banner-section[data-animate="true"] .hero-banner-media {
-    animation: hb-fadeIn 0.7s ease forwards;
+  /* ── Target retail badge (_targetBadge_p5roc_44) ─────── */
+  .hero-banner-target-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 4;
+    max-width: 120px;
+    line-height: 0;
   }
 
-  .hero-banner-section[data-animate="true"] .hero-banner-eyebrow {
-    animation: hb-fadeInUp 0.5s ease 0.1s both;
+  .hero-banner-target-badge img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .hero-banner-section[data-animate="true"] .hero-banner-heading {
-    animation: hb-fadeInUp 0.5s ease 0.2s both;
+  /* ── Full-section overlay link (_overlay_p5roc_67) ───── */
+  .hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    cursor: pointer;
   }
 
-  .hero-banner-section[data-animate="true"] .hero-banner-subheading {
-    animation: hb-fadeInUp 0.5s ease 0.3s both;
-  }
-
-  .hero-banner-section[data-animate="true"] .hero-banner-price {
-    animation: hb-fadeInUp 0.5s ease 0.35s both;
-  }
-
-  .hero-banner-section[data-animate="true"] .hero-banner-cta {
-    animation: hb-fadeInUp 0.5s ease 0.4s both;
-  }
-
-  .hero-banner-section[data-animate="true"] .hero-banner-badges {
-    animation: hb-fadeInUp 0.5s ease 0.5s both;
-  }
-
-  /* ── Responsive: Desktop (≥ 992px) ─────────────────── */
+  /* ── Desktop layout (≥ 992px) ────────────────────────── */
+  /*
+   * On desktop the image fills the full section and the header
+   * is absolutely positioned in the lower-center of the image.
+   */
   @media screen and (min-width: 992px) {
-    .hero-banner-container {
-      flex-direction: row;
-      min-height: 600px;
-      align-items: stretch;
+    .hero-banner-section {
+      min-height: 560px;
     }
 
-    /* Image on the left */
-    .hero-banner-media {
-      order: {{ section.settings.image_position == 'right' ? '2' : '1' }};
-      flex: 0 0 52%;
-      max-width: 52%;
-    }
-
-    .hero-banner-media img {
+    .hero-banner-media img.fill {
       height: 100%;
+      min-height: 560px;
     }
 
-    /* Content on the right */
-    .hero-banner-content {
-      order: {{ section.settings.image_position == 'right' ? '1' : '2' }};
-      flex: 0 0 48%;
-      max-width: 48%;
-      padding: 60px 56px 60px 48px;
-      align-items: flex-start;
+    .hero-banner-header {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 48px 40px 56px;
+      background-color: transparent;
     }
 
-    .hero-banner-heading {
-      font-size: 42px;
-      margin-bottom: 20px;
+    .hero-banner-subtitle {
+      font-size: 22px;
     }
 
-    .hero-banner-subheading {
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
-
-    .hero-banner-cta {
-      flex-direction: row;
-      width: auto;
-    }
-
-    .hero-banner-cta .btn {
-      width: auto;
-      min-width: 180px;
-    }
-
-    .hero-banner-badges .badge-item {
-      flex-direction: row;
-      text-align: left;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-banner-badges .badge-item span {
-      max-width: none;
-      font-size: 11px;
-    }
-  }
-
-  /* ── Responsive: Large desktop (≥ 1280px) ───────────── */
-  @media screen and (min-width: 1280px) {
-    .hero-banner-heading {
+    .hero-banner-title {
       font-size: 52px;
     }
 
-    .hero-banner-content {
-      padding: 80px 80px 80px 64px;
+    .hero-banner-target-badge {
+      bottom: 32px;
+      right: 32px;
+      max-width: 160px;
+    }
+  }
+
+  /* ── Large desktop (≥ 1280px) ───────────────────────── */
+  @media screen and (min-width: 1280px) {
+    .hero-banner-title {
+      font-size: 64px;
+    }
+
+    .hero-banner-subtitle {
+      font-size: 26px;
     }
   }
 </style>
 
-{%- comment -%} =============================================
-  Hero Banner Section
-  Replicates: <section class="_wrapper_2gmz6_1" data-testid="hero-banner">
-  Source: https://gopurebeauty.com
-============================================= {%- endcomment -%}
+{%- comment -%}
+  ============================================================
+  Hero Banner Section – goPure Beauty replica
+  Original: <section class="_wrapper_2gmz6_1" data-testid="hero-banner">
+
+  Actual source content:
+    Subtitle : "Bikini season is coming."
+    Title    : "WILL YOU BE READY?"
+    CTA      : "SHOP BELLY CREAM" → /products/tighten-smooth-belly-cream
+    Badge    : "Now at Target" logo
+    Desktop img : gopure-tighten-smooth-belly-cream-skincare-product.png
+    Mobile img  : gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.png
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign cta_url   = section.settings.cta_link   | default: '/products/tighten-smooth-belly-cream'
+  assign cta_label = section.settings.cta_text   | default: 'SHOP BELLY CREAM'
+  assign cta_aria  = section.settings.cta_aria_label | default: 'Shop Tighten & Smooth Belly Cream'
+-%}
 
 <section
   class="hero-banner-section"
   data-section-id="{{ section.id }}"
   data-testid="hero-banner"
-  data-animate="true"
 >
-  <div class="hero-banner-container">
 
-    {%- comment -%} ── Media Column ────────────────────────── {%- endcomment -%}
-    <div class="hero-banner-media">
-      <picture>
-        {%- if section.settings.image_desktop != blank -%}
-          <source
-            media="(min-width: 992px)"
-            srcset="{{ section.settings.image_desktop | image_url: width: 1400 }} 1400w, {{ section.settings.image_desktop | image_url: width: 1800 }} 1800w"
-            sizes="(min-width: 1280px) 748px, (min-width: 992px) 52vw, 100vw"
-          >
-        {%- endif -%}
-
-        {%- if section.settings.image_mobile != blank -%}
-          <img
-            src="{{ section.settings.image_mobile | image_url: width: 800 }}"
-            srcset="{{ section.settings.image_mobile | image_url: width: 480 }} 480w, {{ section.settings.image_mobile | image_url: width: 800 }} 800w"
-            sizes="100vw"
-            alt="{{ section.settings.image_alt | escape }}"
-            loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
-            fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
-            width="{{ section.settings.image_mobile.width }}"
-            height="{{ section.settings.image_mobile.height }}"
-          >
-        {%- elsif section.settings.image_desktop != blank -%}
-          <img
-            src="{{ section.settings.image_desktop | image_url: width: 800 }}"
-            srcset="{{ section.settings.image_desktop | image_url: width: 480 }} 480w, {{ section.settings.image_desktop | image_url: width: 800 }} 800w, {{ section.settings.image_desktop | image_url: width: 1400 }} 1400w"
-            sizes="(min-width: 992px) 52vw, 100vw"
-            alt="{{ section.settings.image_alt | escape }}"
-            loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
-            fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
-            width="{{ section.settings.image_desktop.width }}"
-            height="{{ section.settings.image_desktop.height }}"
-          >
-        {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag: 'hero-banner-placeholder' }}
-        {%- endif -%}
-      </picture>
-    </div>
-
-    {%- comment -%} ── Content Column ──────────────────────── {%- endcomment -%}
-    <div class="hero-banner-content">
-
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="hero-banner-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+  {%- comment -%} ── Media (_media_2gmz6_9) ──────────────── {%- endcomment -%}
+  <div class="hero-banner-media">
+    <picture>
+      {%- comment -%} Desktop image source (min-width: 992px) {%- endcomment -%}
+      {%- if section.settings.image_desktop != blank -%}
+        <source
+          media="(min-width: 992px)"
+          srcset="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+        >
+      {%- else -%}
+        <source
+          media="(min-width: 992px)"
+          srcset="{{ 'gopure-tighten-smooth-belly-cream-skincare-product.png' | file_url }}"
+        >
       {%- endif -%}
 
-      {%- if section.settings.heading != blank -%}
-        <h1 class="hero-banner-heading">{{ section.settings.heading }}</h1>
+      {%- comment -%} Mobile image (default src with WebP srcset) {%- endcomment -%}
+      {%- if section.settings.image_mobile != blank -%}
+        <img
+          src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+          srcset="
+            {{ section.settings.image_mobile | image_url: width: 100  }} 100w,
+            {{ section.settings.image_mobile | image_url: width: 200  }} 200w,
+            {{ section.settings.image_mobile | image_url: width: 400  }} 400w,
+            {{ section.settings.image_mobile | image_url: width: 600  }} 600w,
+            {{ section.settings.image_mobile | image_url: width: 800  }} 800w,
+            {{ section.settings.image_mobile | image_url: width: 1000 }} 1000w,
+            {{ section.settings.image_mobile | image_url: width: 1200 }} 1200w,
+            {{ section.settings.image_mobile | image_url: width: 1400 }} 1400w
+          "
+          sizes="(min-width: 992px) 52vw, 100vw"
+          alt="{{ section.settings.image_alt | escape }}"
+          width="{{ section.settings.image_mobile.width }}"
+          height="{{ section.settings.image_mobile.height }}"
+          class="fill"
+          loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+          decoding="async"
+          fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        >
+      {%- elsif section.settings.image_desktop != blank -%}
+        <img
+          src="{{ section.settings.image_desktop | image_url: width: 1400 }}"
+          srcset="
+            {{ section.settings.image_desktop | image_url: width: 600  }} 600w,
+            {{ section.settings.image_desktop | image_url: width: 1000 }} 1000w,
+            {{ section.settings.image_desktop | image_url: width: 1400 }} 1400w,
+            {{ section.settings.image_desktop | image_url: width: 2000 }} 2000w
+          "
+          sizes="100vw"
+          alt="{{ section.settings.image_alt | escape }}"
+          width="{{ section.settings.image_desktop.width }}"
+          height="{{ section.settings.image_desktop.height }}"
+          class="fill"
+          loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+          decoding="async"
+          fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'fill' }}
       {%- endif -%}
-
-      {%- if section.settings.subheading != blank -%}
-        <p class="hero-banner-subheading">{{ section.settings.subheading }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.price != blank -%}
-        <div class="hero-banner-price">
-          {%- if section.settings.price_label != blank -%}
-            <span class="price-label">{{ section.settings.price_label | escape }}</span>
-          {%- endif -%}
-          <span class="price-amount">{{ section.settings.price | escape }}</span>
-        </div>
-      {%- endif -%}
-
-      {%- comment -%} ── CTA Buttons ─────────────────────── {%- endcomment -%}
-      <div class="hero-banner-cta">
-        {%- if section.settings.primary_button_text != blank -%}
-          <a
-            href="{{ section.settings.primary_button_link | default: '#' }}"
-            class="btn btn-primary"
-            {%- if section.settings.primary_button_new_tab %} target="_blank" rel="noopener noreferrer"{%- endif -%}
-          >
-            {{- section.settings.primary_button_text | escape -}}
-          </a>
-        {%- endif -%}
-
-        {%- if section.settings.secondary_button_text != blank -%}
-          <a
-            href="{{ section.settings.secondary_button_link | default: '#' }}"
-            class="btn btn-secondary"
-            {%- if section.settings.secondary_button_new_tab %} target="_blank" rel="noopener noreferrer"{%- endif -%}
-          >
-            {{- section.settings.secondary_button_text | escape -}}
-          </a>
-        {%- endif -%}
-      </div>
-
-      {%- comment -%} ── Trust Badges ────────────────────── {%- endcomment -%}
-      {%- if section.blocks.size > 0 -%}
-        <div class="hero-banner-badges">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'badge' -%}
-              <div class="badge-item" {{ block.shopify_attributes }}>
-                {%- if block.settings.icon != blank -%}
-                  <img
-                    src="{{ block.settings.icon | image_url: width: 72 }}"
-                    alt="{{ block.settings.text | escape }}"
-                    width="36"
-                    height="36"
-                    loading="lazy"
-                  >
-                {%- elsif block.settings.icon_svg != blank -%}
-                  <span class="badge-item__svg-icon" aria-hidden="true">
-                    {{- block.settings.icon_svg -}}
-                  </span>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <span>{{ block.settings.text | escape }}</span>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-
-    </div>
-    {%- comment -%} /.hero-banner-content {%- endcomment -%}
-
+    </picture>
   </div>
-  {%- comment -%} /.hero-banner-container {%- endcomment -%}
+  {%- comment -%} /.hero-banner-media {%- endcomment -%}
+
+  {%- comment -%} ── Header (_header_p5roc_1) ─────────────── {%- endcomment -%}
+  <header class="hero-banner-header" data-testid="hero-header">
+
+    {%- comment -%}
+      Headlines container (_container_64vy8_1 _isTwoLines_64vy8_17 _reverse_64vy8_5)
+      CSS flex-direction: column-reverse → title (DOM: last) appears on top visually,
+      subtitle (DOM: first) appears below.
+    {%- endcomment -%}
+    <span class="hero-banner-headlines" data-testid="hero-headlines">
+      <span class="hero-banner-subtitle">
+        {{- section.settings.subtitle | default: 'Bikini season is coming.' | escape -}}
+      </span>
+      <br>
+      <span class="hero-banner-title">
+        {{- section.settings.title | default: 'WILL YOU BE READY?' | escape -}}
+      </span>
+    </span>
+
+    <a
+      class="hero-banner-cta-btn btn btn--secondary"
+      data-testid="hero-cta-button"
+      href="{{ cta_url }}"
+    >
+      {{- cta_label | escape -}}
+    </a>
+
+    {%- comment -%} Transparent overlay that makes the entire header clickable {%- endcomment -%}
+    <a
+      class="hero-banner-header-overlay"
+      aria-label="{{ cta_aria | escape }}"
+      href="{{ cta_url }}"
+      tabindex="-1"
+    ></a>
+
+  </header>
+  {%- comment -%} /.hero-banner-header {%- endcomment -%}
+
+  {%- comment -%} ── Target retail badge (_targetBadge_p5roc_44) ─── {%- endcomment -%}
+  {%- if section.settings.show_retail_badge -%}
+    <div class="hero-banner-target-badge" data-testid="hero-target-badge">
+      {%- if section.settings.retail_badge_image != blank -%}
+        <img
+          src="{{ section.settings.retail_badge_image | image_url: width: 320 }}"
+          srcset="
+            {{ section.settings.retail_badge_image | image_url: width: 100 }} 100w,
+            {{ section.settings.retail_badge_image | image_url: width: 200 }} 200w,
+            {{ section.settings.retail_badge_image | image_url: width: 320 }} 320w
+          "
+          alt="{{ section.settings.retail_badge_alt | default: 'Now at Target' | escape }}"
+          width="160"
+          height="40"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- comment -%} Fallback: reference the CDN file by name if uploaded to theme assets {%- endcomment -%}
+        <img
+          src="{{ 'now-at-target-logo.png' | file_url }}"
+          alt="Now at Target"
+          width="160"
+          height="40"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Full-section overlay link (_overlay_p5roc_67) ── {%- endcomment -%}
+  <a
+    class="hero-banner-overlay"
+    aria-label="{{ cta_aria | escape }}"
+    href="{{ cta_url }}"
+    tabindex="-1"
+  ></a>
+
 </section>
 
 {% schema %}
@@ -466,106 +393,82 @@
       "type": "image_picker",
       "id": "image_desktop",
       "label": "Desktop Image",
-      "info": "Recommended: 1400×900px. Filename: gopure-tighten-smooth-belly-cream-skincare-product.png"
+      "info": "Upload: gopure-tighten-smooth-belly-cream-skincare-product.png. Shown at ≥992px."
     },
     {
       "type": "image_picker",
       "id": "image_mobile",
       "label": "Mobile Image",
-      "info": "Recommended: 800×800px. Filename: gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.png"
+      "info": "Upload: gopure-tighten-smooth-belly-cream_c573eb85-fe04-45a4-85c8-aa177bf0b222.png. Original size: 1560×2192px."
     },
     {
       "type": "text",
       "id": "image_alt",
       "label": "Image Alt Text",
-      "default": "goPure Tighten + Smooth Belly Cream skincare product"
-    },
-    {
-      "type": "select",
-      "id": "image_position",
-      "label": "Image Position",
-      "options": [
-        { "value": "left",  "label": "Left" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "left"
+      "default": "Three bottles of goPure Tighten & Smooth Belly Cream against a soft purple background"
     },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Headline Text"
     },
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow Label",
-      "default": "New Launch",
-      "info": "Small label displayed above the heading"
-    },
-    {
-      "type": "richtext",
-      "id": "heading",
-      "label": "Heading",
-      "default": "<p>Tighten + Smooth<br>Belly Cream</p>"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Powered by our proprietary MicroTight4™ Complex, this dermatologist-developed formula sculpts the look of loose skin and visibly fades stretch marks in just 4 weeks."
+      "id": "title",
+      "label": "Title (large, uppercase)",
+      "default": "WILL YOU BE READY?",
+      "info": "Displays on top. Uses primary heading font, uppercase, weight 600."
     },
     {
       "type": "text",
-      "id": "price_label",
-      "label": "Price Label",
-      "default": "From"
-    },
-    {
-      "type": "text",
-      "id": "price",
-      "label": "Price",
-      "default": "$24.99"
+      "id": "subtitle",
+      "label": "Subtitle (italic, below title)",
+      "default": "Bikini season is coming.",
+      "info": "Displays below the title. Uses secondary/accent font, italic, weight 400."
     },
     {
       "type": "header",
-      "content": "Primary Button"
+      "content": "CTA Button"
     },
     {
       "type": "text",
-      "id": "primary_button_text",
-      "label": "Button Text",
-      "default": "Shop Now"
+      "id": "cta_text",
+      "label": "Button Label",
+      "default": "SHOP BELLY CREAM"
     },
     {
       "type": "url",
-      "id": "primary_button_link",
-      "label": "Button Link"
-    },
-    {
-      "type": "checkbox",
-      "id": "primary_button_new_tab",
-      "label": "Open in new tab",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Secondary Button"
+      "id": "cta_link",
+      "label": "Button Link",
+      "info": "Default: /products/tighten-smooth-belly-cream"
     },
     {
       "type": "text",
-      "id": "secondary_button_text",
-      "label": "Button Text",
-      "default": "View Bundles & Save"
+      "id": "cta_aria_label",
+      "label": "Accessible Label (aria-label)",
+      "default": "Shop Tighten & Smooth Belly Cream"
     },
     {
-      "type": "url",
-      "id": "secondary_button_link",
-      "label": "Button Link"
+      "type": "header",
+      "content": "Retail Badge"
     },
     {
       "type": "checkbox",
-      "id": "secondary_button_new_tab",
-      "label": "Open in new tab",
-      "default": false
+      "id": "show_retail_badge",
+      "label": "Show Retail Badge",
+      "default": true,
+      "info": "Displays the 'Now at Target' badge in the bottom-right corner."
+    },
+    {
+      "type": "image_picker",
+      "id": "retail_badge_image",
+      "label": "Badge Image",
+      "info": "Upload: now-at-target-logo.png (776×191px). Leave blank to use theme asset file."
+    },
+    {
+      "type": "text",
+      "id": "retail_badge_alt",
+      "label": "Badge Alt Text",
+      "default": "Now at Target"
     },
     {
       "type": "header",
@@ -575,132 +478,79 @@
       "type": "color",
       "id": "background_color",
       "label": "Section Background",
+      "default": "#F4F0F8",
+      "info": "Visible while image loads. Match the soft purple background of the product image."
+    },
+    {
+      "type": "color",
+      "id": "header_background_color",
+      "label": "Header Background (mobile)",
+      "default": "#F4F0F8",
+      "info": "On mobile the header is stacked below the image. On desktop it overlays transparently."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_background_color",
+      "label": "Button Background",
+      "default": "rgba(0,0,0,0)",
+      "info": "The original uses btn--secondary which is typically transparent/outlined."
+    },
+    {
+      "type": "color",
+      "id": "cta_border_color",
+      "label": "Button Border",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button Text",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_background_color",
+      "label": "Button Hover Background",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_text_color",
+      "label": "Button Hover Text",
       "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading Color",
-      "default": "#1A1A2E"
-    },
-    {
-      "type": "color",
-      "id": "subheading_color",
-      "label": "Body / Subheading Color",
-      "default": "#4A4A6A"
-    },
-    {
-      "type": "color",
-      "id": "eyebrow_color",
-      "label": "Eyebrow Text Color",
-      "default": "#C9846A"
-    },
-    {
-      "type": "color",
-      "id": "primary_button_bg",
-      "label": "Primary Button Background",
-      "default": "#1A1A2E"
-    },
-    {
-      "type": "color",
-      "id": "primary_button_hover_bg",
-      "label": "Primary Button Hover Background",
-      "default": "#2D2D4E"
-    },
-    {
-      "type": "color",
-      "id": "primary_button_text_color",
-      "label": "Primary Button Text",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "secondary_button_border_color",
-      "label": "Secondary Button Border",
-      "default": "#1A1A2E"
-    },
-    {
-      "type": "color",
-      "id": "secondary_button_text_color",
-      "label": "Secondary Button Text",
-      "default": "#1A1A2E"
-    },
-    {
-      "type": "color",
-      "id": "secondary_button_hover_bg",
-      "label": "Secondary Button Hover Background",
-      "default": "#1A1A2E"
-    },
-    {
-      "type": "color",
-      "id": "badge_text_color",
-      "label": "Badge Text Color",
-      "default": "#6B6B8D"
     }
   ],
-  "blocks": [
-    {
-      "type": "badge",
-      "name": "Trust Badge",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Badge Icon",
-          "info": "Recommended: 72×72px PNG with transparent background"
-        },
-        {
-          "type": "html",
-          "id": "icon_svg",
-          "label": "Badge Icon SVG",
-          "info": "Alternative: paste inline SVG markup (used when no image is set)"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Badge Text",
-          "default": "Cruelty-Free"
-        }
-      ]
-    }
-  ],
+  "blocks": [],
   "presets": [
     {
       "name": "Hero Banner",
       "category": "Hero",
       "settings": {
-        "eyebrow": "New Launch",
-        "price_label": "From",
-        "price": "$24.99",
-        "primary_button_text": "Shop Now",
-        "secondary_button_text": "View Bundles & Save"
-      },
-      "blocks": [
-        {
-          "type": "badge",
-          "settings": {
-            "text": "Cruelty-Free"
-          }
-        },
-        {
-          "type": "badge",
-          "settings": {
-            "text": "Paraben-Free"
-          }
-        },
-        {
-          "type": "badge",
-          "settings": {
-            "text": "Dermatologist Developed"
-          }
-        },
-        {
-          "type": "badge",
-          "settings": {
-            "text": "60-Day Money Back"
-          }
-        }
-      ]
+        "title": "WILL YOU BE READY?",
+        "subtitle": "Bikini season is coming.",
+        "cta_text": "SHOP BELLY CREAM",
+        "show_retail_badge": true,
+        "background_color": "#F4F0F8",
+        "header_background_color": "#F4F0F8",
+        "title_color": "#1A1A2E",
+        "subtitle_color": "#1A1A2E",
+        "cta_border_color": "#1A1A2E",
+        "cta_text_color": "#1A1A2E",
+        "cta_hover_background_color": "#1A1A2E",
+        "cta_hover_text_color": "#FFFFFF"
+      }
     }
   ]
 }
