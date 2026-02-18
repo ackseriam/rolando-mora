@@ -240,12 +240,30 @@
         "padding-block-end": 48
       }
     },
+    "mission_statement_7U8gHJ": {
+      "type": "mission-statement",
+      "name": "Mission Statement",
+      "settings": {
+        "show_background_texture": true,
+        "background_desktop": "shopify://shop_images/soft-gray-background-light-rays.webp",
+        "pre_heading": "We believe that",
+        "heading": "<p>Feeling <em>beautiful</em> & <em>confident</em> should be within reach <em>for everyone</em></p>",
+        "byline": "–Co-founders Alex & Erin",
+        "color_plum": "#3F27AE",
+        "button_text": "Learn More",
+        "button_link": "",
+        "padding_top": 96,
+        "padding_bottom": 64,
+        "padding_top_desktop": 112,
+        "padding_bottom_desktop": 112
+      }
+    },
     "section_title_subtitle_YaQUAm": {
       "type": "section-title-subtitle",
       "name": "Title Subtitle",
       "settings": {
         "title": "REAL WOMEN",
-        "title_font_size": 14,
+        "title_font_size": 53,
         "subtitle": "real results",
         "subtitle_font_size": 14,
         "text_color": "#3f27ae",
@@ -326,6 +344,7 @@
     "hero_banner_Wyjiik",
     "marquee_banner_4fimCy",
     "product_list_fa6P9H",
+    "mission_statement_7U8gHJ",
     "section_title_subtitle_YaQUAm",
     "reviews_section_VghEyX"
   ]
