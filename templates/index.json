@@ -463,8 +463,8 @@
         "review_EJfJqk": {
           "type": "review",
           "settings": {
-            "image_before": "shopify://shop_images/before-and-after-arm-image.webp",
-            "image_after": "shopify://shop_images/after-8-weeks-arm-transformation-image.webp",
+            "image_before": "shopify://shop_images/imagen_5.jpg",
+            "image_after": "shopify://shop_images/imagen_4.jpg",
             "duration": "8 semanas",
             "quote": "El brillo es increíble.",
             "author_image": "shopify://shop_images/smiling-senior-woman-hairstyle-portrait.avif",
