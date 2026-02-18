@@ -414,6 +414,19 @@
         "padding_bottom": 64
       }
     },
+    "section_title_subtitle_d4Kewh": {
+      "type": "section-title-subtitle",
+      "name": "Title Subtitle",
+      "settings": {
+        "title": "REAL WOMEN",
+        "title_font_size": 39,
+        "subtitle": "real results",
+        "subtitle_font_size": 14,
+        "text_color": "#3F27AE",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "product_carousel_bundles_qbjpzX": {
       "type": "product-carousel-bundles",
       "blocks": {
@@ -462,7 +475,7 @@
       "name": "Bundles Carousel",
       "settings": {
         "aria_label": "Shop Bundles",
-        "show_heading": true,
+        "show_heading": false,
         "pre_heading": "shop",
         "pre_heading_color": "#3f27ae",
         "heading": "Bundles",
@@ -502,6 +515,7 @@
     "mission_statement_7U8gHJ",
     "reviews_section_VghEyX",
     "meet_dermatologists_dpTDc4",
+    "section_title_subtitle_d4Kewh",
     "product_carousel_bundles_qbjpzX"
   ]
 }
