@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "<a href=\"https://gopure.com/collections/bundlesavings\"><strong>SAVE UP TO 42%:</strong> Big savings on best-selling bundles. <span style=\"text-decoration:underline\">SHOP NOW</span></a>",
+            "text": "AHORRE HASTA UN 42 %: Grandes ahorros en los paquetes más vendidos. COMPRE AHORA",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
