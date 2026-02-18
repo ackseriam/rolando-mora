@@ -166,9 +166,14 @@
     font-family: var(--font-body--family, 'Montserrat', sans-serif);
     font-size: var(--font-size--md, 1rem);
     font-weight: 400;
-    color: var(--color-foreground, #555);
+    color: {{ section.settings.caption_color }};
     margin-top: 0.2rem;
     line-height: 1.4;
+  }
+
+  .bundles-card__yotpo {
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
   }
 
   .bundles-card__images {
@@ -295,6 +300,8 @@
     margin-bottom: 0.5rem;
     background: {{ section.settings.badge_category_background }};
     color: {{ section.settings.badge_category_color }};
+    max-width: 100px;
+    text-align: center;
   }
 
   .bundles-card__price-wrap {
@@ -435,7 +442,7 @@
                         </div>
 
                         {%- if block.settings.badge_secondary != blank -%}
-                          <span class="bundles-card__badge bundles-card__badge--category">{{ block.settings.badge_secondary | escape }}</span>
+                          <span class="bundles-card__badges bundles-card__badge--category">{{ block.settings.badge_secondary | escape }}</span>
                         {%- endif -%}
 
                         <div class="bundles-card__title-wrap">
@@ -445,6 +452,13 @@
                           {%- if block.settings.caption != blank -%}
                             <span class="bundles-card__caption">{{ block.settings.caption | escape }}</span>
                           {%- endif -%}
+                          <div
+                            class="yotpo-widget-instance bundles-card__yotpo"
+                            data-yotpo-instance-id="{{ section.settings.yotpo_instance_id | default: '1285830' }}"
+                            data-yotpo-product-id="{{ product.id }}"
+                            data-yotpo-cart-product-id="{{ product.id }}"
+                            data-yotpo-section-id="{{ section.id }}"
+                          ></div>
                         </div>
 
                         <div class="bundles-card__price-wrap">
@@ -616,6 +630,17 @@
     },
     {
       "type": "header",
+      "content": "Reviews (Yotpo)"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_instance_id",
+      "label": "Yotpo instance ID",
+      "default": "1285830",
+      "info": "Used for star rating widget below product title"
+    },
+    {
+      "type": "header",
       "content": "Carousel"
     },
     {
@@ -676,6 +701,12 @@
       "id": "card_background_color",
       "label": "Card background",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Caption color",
+      "default": "#555555"
     },
     {
       "type": "color",
