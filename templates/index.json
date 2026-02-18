@@ -578,6 +578,19 @@
         "padding_bottom": 64
       }
     },
+    "section_title_subtitle_xiyzBP": {
+      "type": "section-title-subtitle",
+      "name": "Title - subtitle",
+      "settings": {
+        "title": "REAL WOMEN",
+        "title_font_size": 48,
+        "subtitle": "real results",
+        "subtitle_font_size": 48,
+        "text_color": "#3f27ae",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "section_UrPWxm": {
       "type": "section",
       "blocks": {
@@ -723,6 +736,7 @@
     "product_carousel_bundles_qbjpzX",
     "reviews_section_VghEyX",
     "meet_dermatologists_dpTDc4",
+    "section_title_subtitle_xiyzBP",
     "section_UrPWxm"
   ]
 }
