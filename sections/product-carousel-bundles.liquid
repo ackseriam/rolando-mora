@@ -25,10 +25,10 @@
   }
 
   .product-carousel-bundles__heading {
-    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-family: 'Landour Regular Text';
     font-weight: 600;
     text-transform: uppercase;
-    font-size: var(--font-size--xl, 1.25rem);
+    font-size: 40px;
     line-height: 1;
     color: var({{ section.settings.heading_color }});
     margin: 0 0 var(--margin-5xl, 3rem);
@@ -42,11 +42,11 @@
 
   .product-carousel-bundles__pre-heading {
     display: block;
-    font-family: var(--font-accent--family, 'Playfair Display', Georgia, serif);
+    font-family: 'ivypresto-display';
     font-weight: 400;
     font-style: italic;
     text-transform: lowercase;
-    font-size: var(--font-size--lg, 1.125rem);
+    font-size: 32px;
     line-height: 1.2;
     color: {{ section.settings.pre_heading_color }};
     margin-bottom: 0.25rem;
@@ -619,6 +619,12 @@
       "id": "pre_heading",
       "label": "Pre-heading (script)",
       "default": "shop"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#3f27ae"
     },
     {
       "type": "color",
