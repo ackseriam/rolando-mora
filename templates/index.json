@@ -281,19 +281,6 @@
         "padding_bottom_desktop": 112
       }
     },
-    "section_title_subtitle_YaQUAm": {
-      "type": "section-title-subtitle",
-      "name": "Title Subtitle",
-      "settings": {
-        "title": "REAL WOMEN",
-        "title_font_size": 53,
-        "subtitle": "real results",
-        "subtitle_font_size": 14,
-        "text_color": "#3f27ae",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "reviews_section_VghEyX": {
       "type": "reviews-section",
       "blocks": {
@@ -513,7 +500,6 @@
     "marquee_banner_4fimCy",
     "product_list_fa6P9H",
     "mission_statement_7U8gHJ",
-    "section_title_subtitle_YaQUAm",
     "reviews_section_VghEyX",
     "meet_dermatologists_dpTDc4",
     "product_carousel_bundles_qbjpzX"
