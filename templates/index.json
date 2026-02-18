@@ -396,9 +396,9 @@
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Toning",
-            "bio": "",
+            "bio": "<p>Toning<br/><br/></p>",
             "cta_text": "SHOP NOW",
-            "cta_url": ""
+            "cta_url": "shopify://collections"
           }
         }
       },
