@@ -34,8 +34,8 @@
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "color_scheme": "scheme-5fe58a33-8d0d-40e1-9643-766484416f9a",
         "divider_width": 1,
         "padding-block-start": 15,
         "padding-block-end": 15
