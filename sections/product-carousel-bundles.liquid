@@ -1,0 +1,753 @@
+{% comment %}
+  Product Carousel - Bundles (Shop Bundles)
+  Replica of goPure Beauty homepage carousel
+  Source: https://gopurebeauty.com
+  Uses vanilla JS carousel (no Slick dependency)
+{% endcomment %}
+
+<style>
+  .product-carousel-bundles {
+    position: relative;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .product-carousel-bundles__container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--padding-md, 0.8rem);
+  }
+
+  .product-carousel-bundles__header {
+    text-align: center;
+    margin-bottom: var(--margin-2xl, 1.5rem);
+  }
+
+  .product-carousel-bundles__heading {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--font-size--xl, 1.25rem);
+    line-height: 1;
+    color: var(--color-black, #000000);
+    margin: 0 0 var(--margin-5xl, 3rem);
+  }
+
+  @media (min-width: 992px) {
+    .product-carousel-bundles__heading {
+      font-size: var(--font-size--2xl, 1.5rem);
+    }
+  }
+
+  .product-carousel-bundles__pre-heading {
+    display: block;
+    font-family: var(--font-accent--family, 'Playfair Display', Georgia, serif);
+    font-weight: 400;
+    font-style: italic;
+    text-transform: lowercase;
+    font-size: var(--font-size--lg, 1.125rem);
+    line-height: 1.2;
+    color: {{ section.settings.pre_heading_color }};
+    margin-bottom: 0.25rem;
+  }
+
+  @media (min-width: 992px) {
+    .product-carousel-bundles__pre-heading {
+      font-size: var(--font-size--xl, 1.25rem);
+    }
+  }
+
+  .product-carousel-bundles__wrapper {
+    position: relative;
+    margin-inline: -0.5rem;
+  }
+
+  .product-carousel-bundles__track-wrap {
+    overflow: hidden;
+  }
+
+  .product-carousel-bundles__track {
+    display: flex;
+    gap: var(--gap-xl, 1.25rem);
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  .product-carousel-bundles__slide {
+    flex: 0 0 var(--slide-width, 100%);
+    min-width: 0;
+  }
+
+  .product-carousel-bundles__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: {{ section.settings.arrow_background }};
+    border: 1px solid {{ section.settings.arrow_border }};
+    border-radius: 50%;
+    cursor: pointer;
+    color: {{ section.settings.arrow_color }};
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+
+  .product-carousel-bundles__nav:hover:not(:disabled) {
+    background: {{ section.settings.arrow_hover_background }};
+    color: {{ section.settings.arrow_hover_color }};
+  }
+
+  .product-carousel-bundles__nav:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .product-carousel-bundles__nav--prev {
+    left: 0;
+  }
+
+  .product-carousel-bundles__nav--next {
+    right: 0;
+  }
+
+  .product-carousel-bundles__nav svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .bundles-card {
+    background-color: {{ section.settings.card_background_color }};
+    border-radius: var(--style-border-radius-md, 0.8rem);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-md, 0.8rem);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .bundles-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .bundles-card__title-wrap {
+    margin-bottom: var(--padding-xs, 0.5rem);
+    padding-bottom: var(--padding-xs, 0.5rem);
+  }
+
+  .bundles-card__title {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: var(--font-size--lg, 1.125rem);
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .bundles-card__title a {
+    color: var(--color-foreground-heading, #000);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .bundles-card__title a:hover {
+    color: var(--color-foreground-heading, #000);
+    text-decoration: underline;
+  }
+
+  .bundles-card__caption {
+    display: block;
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-size: var(--font-size--md, 1rem);
+    font-weight: 400;
+    color: var(--color-foreground, #555);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  .bundles-card__images {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--style-border-radius-sm, 0.6rem);
+    margin-bottom: 1rem;
+    background: var(--color-background-subtle, #f5f5f5);
+  }
+
+  .bundles-card__images a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .bundles-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  .bundles-card__img--primary {
+    z-index: 1;
+  }
+
+  .bundles-card__img--secondary {
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .bundles-card:hover .bundles-card__img--secondary {
+    opacity: 1;
+  }
+
+  .bundles-card__images:has(.bundles-card__img--secondary):hover .bundles-card__img--primary {
+    opacity: 0;
+  }
+
+  .bundles-card__img--single {
+    opacity: 1;
+  }
+
+  .bundles-card__badge {
+    display: inline-block;
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    background: {{ section.settings.badge_background }};
+    color: {{ section.settings.badge_text_color }};
+  }
+
+  .bundles-card__price-wrap {
+    margin-bottom: 0.75rem;
+  }
+
+  .bundles-card__price {
+    font-family: var(--font-heading--family, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: var(--font-size--lg, 1.125rem);
+    color: var(--color-foreground-heading, #000);
+  }
+
+  .bundles-card__compare-price {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: var(--color-foreground, #666);
+    text-decoration: line-through;
+    margin-left: 0.35rem;
+  }
+
+  .bundles-card__cta {
+    display: inline-block;
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: {{ section.settings.cta_color }};
+    text-decoration: none;
+    margin-top: auto;
+    transition: opacity 0.2s ease;
+  }
+
+  .bundles-card__cta:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .product-carousel-bundles__nav {
+      width: 36px;
+      height: 36px;
+    }
+    .product-carousel-bundles__nav svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+
+<section
+  class="product-carousel-bundles"
+  data-section-id="{{ section.id }}"
+  data-slides-desktop="{{ section.settings.slides_desktop }}"
+  data-slides-tablet="{{ section.settings.slides_tablet }}"
+  data-slides-mobile="{{ section.settings.slides_mobile }}"
+  data-infinite="{{ section.settings.infinite }}"
+  data-speed="{{ section.settings.speed }}"
+  aria-label="{{ section.settings.aria_label | default: 'Shop Bundles' | escape }}"
+>
+  <div class="product-carousel-bundles__container">
+    {%- if section.settings.show_heading -%}
+      <header class="product-carousel-bundles__header">
+        <h2 class="product-carousel-bundles__heading">
+          {%- if section.settings.pre_heading != blank -%}
+            <span class="product-carousel-bundles__pre-heading">{{ section.settings.pre_heading | escape }}</span>
+          {%- endif -%}
+          {{ section.settings.heading | escape }}
+        </h2>
+      </header>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="product-carousel-bundles__wrapper">
+        <button
+          type="button"
+          class="product-carousel-bundles__nav product-carousel-bundles__nav--prev js-bundles-carousel-prev"
+          aria-label="Previous slide"
+          disabled
+        >
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0.40789 11.4079C0.0808754 11.7349 0.0808754 12.2651 0.40789 12.5921L5.73688 17.9211C6.0639 18.2481 6.59409 18.2481 6.9211 17.9211C7.24812 17.5941 7.24812 17.0639 6.9211 16.7369L2.18422 12L6.9211 7.26312C7.24812 6.9361 7.24812 6.40591 6.9211 6.0789C6.59409 5.75188 6.0639 5.75188 5.73688 6.0789L0.40789 11.4079ZM19 11.1626L1 11.1626L1 12.8374L19 12.8374L19 11.1626Z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="product-carousel-bundles__nav product-carousel-bundles__nav--next js-bundles-carousel-next"
+          aria-label="Next slide"
+        >
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M23.5921 12.5921C23.9191 12.2651 23.9191 11.7349 23.5921 11.4079L18.2631 6.0789C17.9361 5.75188 17.4059 5.75188 17.0789 6.0789C16.7519 6.40591 16.7519 6.9361 17.0789 7.26312L21.8158 12L17.0789 16.7369C16.7519 17.0639 16.7519 17.5941 17.0789 17.9211C17.4059 18.2481 17.9361 18.2481 18.2631 17.9211L23.5921 12.5921ZM5 12.8374L23 12.8374L23 11.1626L5 11.1626L5 12.8374Z" fill="currentColor"/>
+          </svg>
+        </button>
+
+        <div class="product-carousel-bundles__track-wrap">
+          <div class="product-carousel-bundles__track js-bundles-carousel-track">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'product' -%}
+                  {%- assign product = block.settings.product -%}
+                  {%- if product != blank -%}
+                    <div class="product-carousel-bundles__slide" {{ block.shopify_attributes }}>
+                      <div class="bundles-card">
+                        <div class="bundles-card__title-wrap">
+                          <h3 class="bundles-card__title">
+                            <a href="{{ product.url }}">
+                              {{ product.title | escape }}
+                            </a>
+                          </h3>
+                          {%- if block.settings.caption != blank -%}
+                            <span class="bundles-card__caption">{{ block.settings.caption | escape }}</span>
+                          {%- endif -%}
+                        </div>
+
+                        <div class="bundles-card__images">
+                          <a href="{{ product.url }}">
+                            {%- if block.settings.hover_image != blank -%}
+                              <img
+                                class="bundles-card__img bundles-card__img--secondary"
+                                src="{{ block.settings.hover_image | image_url: width: 600 }}"
+                                alt="{{ block.settings.hover_image_alt | default: '' | escape }}"
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                srcset="{{ block.settings.hover_image | image_url: width: 300 }} 300w,
+                                        {{ block.settings.hover_image | image_url: width: 600 }} 600w"
+                                sizes="(max-width: 767px) 85vw, (max-width: 991px) 45vw, 325px"
+                              >
+                              <img
+                                class="bundles-card__img bundles-card__img--primary"
+                                src="{{ product.featured_image | image_url: width: 600 }}"
+                                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                                        {{ product.featured_image | image_url: width: 600 }} 600w"
+                                sizes="(max-width: 767px) 85vw, (max-width: 991px) 45vw, 325px"
+                              >
+                            {%- else -%}
+                              <img
+                                class="bundles-card__img bundles-card__img--single bundles-card__img--primary"
+                                src="{{ product.featured_image | image_url: width: 600 }}"
+                                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                                        {{ product.featured_image | image_url: width: 600 }} 600w"
+                                sizes="(max-width: 767px) 85vw, (max-width: 991px) 45vw, 325px"
+                              >
+                            {%- endif -%}
+                          </a>
+                        </div>
+
+                        {%- if block.settings.badge != blank -%}
+                          <span class="bundles-card__badge">{{ block.settings.badge | escape }}</span>
+                        {%- endif -%}
+
+                        <div class="bundles-card__price-wrap">
+                          <span class="bundles-card__price">
+                            {{ product.price | money }}
+                            {%- if product.compare_at_price > product.price -%}
+                              <span class="bundles-card__compare-price">{{ product.compare_at_price | money }}</span>
+                            {%- endif -%}
+                          </span>
+                        </div>
+
+                        <a href="{{ product.url }}" class="bundles-card__cta">
+                          {{ block.settings.cta_text | default: 'Learn More' | escape }}
+                        </a>
+                      </div>
+                    </div>
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initBundlesCarousel(sectionEl) {
+      if (!sectionEl) return;
+      var track = sectionEl.querySelector('.js-bundles-carousel-track');
+      var prevBtn = sectionEl.querySelector('.js-bundles-carousel-prev');
+      var nextBtn = sectionEl.querySelector('.js-bundles-carousel-next');
+      var slides = track ? track.querySelectorAll('.product-carousel-bundles__slide') : [];
+      var count = slides.length;
+      if (count === 0) return;
+
+      var slidesDesktop = parseInt(sectionEl.dataset.slidesDesktop || '3', 10);
+      var slidesTablet = parseInt(sectionEl.dataset.slidesTablet || '2', 10);
+      var slidesMobile = parseInt(sectionEl.dataset.slidesMobile || '1', 10);
+      var infinite = sectionEl.dataset.infinite === 'true';
+      var speed = parseInt(sectionEl.dataset.speed || '300', 10);
+
+      var index = 0;
+      var wrap = sectionEl.querySelector('.product-carousel-bundles__track-wrap');
+      var trackWrapWidth = 0;
+
+      function getSlidesToShow() {
+        var w = window.innerWidth;
+        if (w < 768) return slidesMobile;
+        if (w < 992) return slidesTablet;
+        return slidesDesktop;
+      }
+
+      function getSlideWidth() {
+        if (!wrap) return 100;
+        var toShow = getSlidesToShow();
+        var gap = 20;
+        var totalGap = (toShow - 1) * gap;
+        return (wrap.offsetWidth - totalGap) / toShow;
+      }
+
+      function updateStyles() {
+        var toShow = getSlidesToShow();
+        var slideWidth = getSlideWidth();
+        track.style.setProperty('--slide-width', slideWidth + 'px');
+      }
+
+      function maxIndex() {
+        var toShow = getSlidesToShow();
+        return Math.max(0, count - toShow);
+      }
+
+      function goTo(i) {
+        var max = maxIndex();
+        index = infinite ? ((i % (max + 1)) + (max + 1)) % (max + 1) : Math.max(0, Math.min(i, max));
+        var slideWidth = getSlideWidth();
+        var gap = 20;
+        var offset = -(index * (slideWidth + gap));
+        track.style.transitionDuration = speed + 'ms';
+        track.style.transform = 'translate3d(' + offset + 'px, 0, 0)';
+        if (prevBtn) prevBtn.disabled = !infinite && index <= 0;
+        if (nextBtn) nextBtn.disabled = !infinite && index >= max;
+      }
+
+      function prev() {
+        goTo(index - 1);
+      }
+      function next() {
+        goTo(index + 1);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', prev);
+      if (nextBtn) nextBtn.addEventListener('click', next);
+
+      var ro = null;
+      function onResize() {
+        updateStyles();
+        goTo(Math.min(index, maxIndex()));
+      }
+      if (typeof ResizeObserver !== 'undefined') {
+        ro = new ResizeObserver(function() {
+          requestAnimationFrame(onResize);
+        });
+        if (wrap) ro.observe(wrap);
+      } else {
+        window.addEventListener('resize', onResize);
+      }
+
+      updateStyles();
+      goTo(0);
+    }
+
+    function initAll() {
+      document.querySelectorAll('.product-carousel-bundles[data-section-id]').forEach(initBundlesCarousel);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+      initAll();
+    }
+    document.addEventListener('shopify:section:load', function(e) {
+      var section = e.target.querySelector('.product-carousel-bundles');
+      if (section) initBundlesCarousel(section);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Bundles Carousel",
+  "tag": "section",
+  "class": "section-product-carousel-bundles",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Section Aria Label",
+      "default": "Shop Bundles"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pre_heading",
+      "label": "Pre-heading (script)",
+      "default": "shop"
+    },
+    {
+      "type": "color",
+      "id": "pre_heading_color",
+      "label": "Pre-heading color",
+      "default": "#4a3f6d"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bundles"
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "slides_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Slides to show (Desktop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "slides_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Slides to show (Tablet)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "slides_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "label": "Slides to show (Mobile)",
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite loop",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 100,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "label": "Transition speed",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Badge background",
+      "default": "#e8e4f0"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA link color",
+      "default": "#4a3f6d"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Arrow background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_border",
+      "label": "Arrow border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow icon",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_background",
+      "label": "Arrow hover background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Arrow hover icon",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "info": "Optional subtitle under title (e.g. product benefit)"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover image",
+          "info": "Shows on hover (e.g. texture or detail)"
+        },
+        {
+          "type": "text",
+          "id": "hover_image_alt",
+          "label": "Hover image alt text"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "info": "e.g. Save 42%, Best Seller"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA text",
+          "default": "Learn More"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundles Carousel",
+      "blocks": [
+        { "type": "product", "settings": { "caption": "Sculpts the look of skin from neck to knees", "badge": "Save 42%", "cta_text": "Learn More" } },
+        { "type": "product", "settings": { "caption": "Cleanses, brightens, & firms", "badge": "Save 31%", "cta_text": "Learn More" } },
+        { "type": "product", "settings": { "caption": "Targets the look of lines & wrinkles", "badge": "Save 33%", "cta_text": "Learn More" } },
+        { "type": "product", "settings": { "caption": "Sculpts the look of the neck and arms", "badge": "Save 12%", "cta_text": "Learn More" } },
+        { "type": "product", "settings": { "caption": "Sculpts the look of the belly", "badge": "Save 14%", "cta_text": "Learn More" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
