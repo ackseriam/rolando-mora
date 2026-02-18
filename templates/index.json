@@ -249,7 +249,7 @@
         "pre_heading": "We believe that",
         "heading": "<p>Feeling <em>beautiful</em> & <em>confident</em> should be within reach <em>for everyone</em></p>",
         "byline": "–Co-founders Alex & Erin",
-        "color_plum": "#3F27AE",
+        "color_plum": "#3f27ae",
         "button_text": "Learn More",
         "button_link": "",
         "padding_top": 96,
@@ -338,6 +338,55 @@
         "button_label": "See All Reviews",
         "button_link": ""
       }
+    },
+    "meet_dermatologists_dpTDc4": {
+      "type": "meet-dermatologists",
+      "blocks": {
+        "dermatologist_hMMVCb": {
+          "type": "dermatologist",
+          "settings": {
+            "name": "Dr. Trisha Khanna",
+            "credentials": "GOPURE Dermatology Advisor",
+            "category": "Tightening",
+            "bio": "",
+            "cta_text": "SHOP NOW",
+            "cta_url": ""
+          }
+        },
+        "dermatologist_rTgiqn": {
+          "type": "dermatologist",
+          "settings": {
+            "name": "Dr. Edward Chen",
+            "credentials": "GOPURE Dermatology Advisor",
+            "category": "Toning",
+            "bio": "",
+            "cta_text": "SHOP NOW",
+            "cta_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "dermatologist_hMMVCb",
+        "dermatologist_rTgiqn"
+      ],
+      "name": "Meet Dermatologists",
+      "settings": {
+        "aria_label": "Meet our dermatologists",
+        "script_heading": "Meet Our",
+        "heading_line_break": true,
+        "bold_heading": "DERMATOLOGISTS",
+        "product_image_alt": "",
+        "background_color": "#ffffff",
+        "card_background_color": "#f8f6f9",
+        "cta_background_color": "#000000",
+        "cta_text_color": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_hover_background_color": "#333333",
+        "cta_hover_text_color": "#ffffff",
+        "cta_hover_border_color": "#333333",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -346,6 +395,7 @@
     "product_list_fa6P9H",
     "mission_statement_7U8gHJ",
     "section_title_subtitle_YaQUAm",
-    "reviews_section_VghEyX"
+    "reviews_section_VghEyX",
+    "meet_dermatologists_dpTDc4"
   ]
 }
