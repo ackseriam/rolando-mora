@@ -428,17 +428,43 @@
             "badge_secondary": "Save 42%",
             "cta_text": "Learn More"
           }
+        },
+        "product_6BBidx": {
+          "type": "product",
+          "settings": {
+            "product": "tighten-lift-neck-cream",
+            "caption": "",
+            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
+            "hover_image_alt": "",
+            "badge": "Best Seller",
+            "badge_secondary": "Save 42%",
+            "cta_text": "Learn More"
+          }
+        },
+        "product_TeHKjJ": {
+          "type": "product",
+          "settings": {
+            "product": "tighten-lift-neck-cream",
+            "caption": "",
+            "hover_image": "shopify://shop_images/Neck_Cream__B_A1_1.png",
+            "hover_image_alt": "",
+            "badge": "Best Seller",
+            "badge_secondary": "Save 42%",
+            "cta_text": "Learn More"
+          }
         }
       },
       "block_order": [
-        "product_rziVcc"
+        "product_rziVcc",
+        "product_6BBidx",
+        "product_TeHKjJ"
       ],
       "name": "Bundles Carousel",
       "settings": {
         "aria_label": "Shop Bundles",
         "show_heading": true,
         "pre_heading": "shop",
-        "pre_heading_color": "#4a3f6d",
+        "pre_heading_color": "#3f27ae",
         "heading": "Bundles",
         "yotpo_instance_id": "1285830",
         "slides_desktop": 3,
