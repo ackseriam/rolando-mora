@@ -369,6 +369,7 @@
           "type": "dermatologist",
           "settings": {
             "image": "shopify://shop_images/healthcare-professional-smiling-portrait.webp",
+            "product_image": "shopify://shop_images/anti-wrinkle-moisturizer-gopure-50ml.avif",
             "name": "Dr. Trisha Khanna",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Tightening",
@@ -381,6 +382,7 @@
           "type": "dermatologist",
           "settings": {
             "image": "shopify://shop_images/dr-trisha-khanna-dermatology-expert-image.webp",
+            "product_image": "shopify://shop_images/gopure-firming-butt-thigh-cream-4-25oz.avif",
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Toning",
@@ -393,10 +395,11 @@
           "type": "dermatologist",
           "settings": {
             "image": "shopify://shop_images/edward-cho-dermatology-why-i-love-skincare.webp",
+            "product_image": "shopify://shop_images/gopure-tighten-lift-neck-cream-50ml.avif",
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Toning",
-            "bio": "<p>Toning<br/><br/></p>",
+            "bio": "<p><br/><br/></p>",
             "cta_text": "SHOP NOW",
             "cta_url": "shopify://collections"
           }
@@ -413,16 +416,15 @@
         "script_heading": "Meet Our",
         "heading_line_break": true,
         "bold_heading": "DERMATOLOGISTS",
+        "script_heading_color": "#6b5b95",
         "product_image": "shopify://shop_images/gopure-refine-renew-body-scrub-volcanic-sand-sugar-complex-170g.webp",
         "product_image_alt": "",
         "background_color": "#f5e4ff",
         "card_background_color": "#f8f6f9",
-        "cta_background_color": "#000000",
-        "cta_text_color": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_hover_background_color": "#333333",
-        "cta_hover_text_color": "#ffffff",
-        "cta_hover_border_color": "#333333",
+        "tag_background_color": "#ffe066",
+        "tag_text_color": "#1a1a1a",
+        "cta_link_color": "#4a3f6d",
+        "cta_link_hover_color": "#6b5b95",
         "padding_top": 64,
         "padding_bottom": 64
       }
