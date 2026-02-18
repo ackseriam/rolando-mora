@@ -357,6 +357,7 @@
         "dermatologist_rTgiqn": {
           "type": "dermatologist",
           "settings": {
+            "image": "shopify://shop_images/dr-trisha-khanna-dermatology-expert-image.webp",
             "name": "Dr. Edward Chen",
             "credentials": "GOPURE Dermatology Advisor",
             "category": "Toning",
