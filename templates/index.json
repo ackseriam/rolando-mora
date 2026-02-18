@@ -428,6 +428,49 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "product_carousel_bundles_qbjpzX": {
+      "type": "product-carousel-bundles",
+      "blocks": {
+        "product_rziVcc": {
+          "type": "product",
+          "settings": {
+            "product": "tighten-lift-neck-cream",
+            "caption": "",
+            "hover_image_alt": "",
+            "badge": "",
+            "cta_text": "Learn More"
+          }
+        }
+      },
+      "block_order": [
+        "product_rziVcc"
+      ],
+      "name": "Bundles Carousel",
+      "settings": {
+        "aria_label": "Shop Bundles",
+        "show_heading": true,
+        "pre_heading": "shop",
+        "pre_heading_color": "#4a3f6d",
+        "heading": "Bundles",
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "infinite": true,
+        "speed": 300,
+        "background_color": "#ffffff",
+        "card_background_color": "#ffffff",
+        "badge_background": "#e8e4f0",
+        "badge_text_color": "#333333",
+        "cta_color": "#4a3f6d",
+        "arrow_background": "#ffffff",
+        "arrow_border": "#e0e0e0",
+        "arrow_color": "#333333",
+        "arrow_hover_background": "#f5f5f5",
+        "arrow_hover_color": "#000000",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -437,6 +480,7 @@
     "mission_statement_7U8gHJ",
     "section_title_subtitle_YaQUAm",
     "reviews_section_VghEyX",
-    "meet_dermatologists_dpTDc4"
+    "meet_dermatologists_dpTDc4",
+    "product_carousel_bundles_qbjpzX"
   ]
 }
