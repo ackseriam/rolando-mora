@@ -374,7 +374,7 @@
             "category": "Tightening",
             "bio": "",
             "cta_text": "SHOP NOW",
-            "cta_url": ""
+            "cta_url": "shopify://collections"
           }
         },
         "dermatologist_rTgiqn": {
@@ -386,7 +386,7 @@
             "category": "Toning",
             "bio": "",
             "cta_text": "SHOP NOW",
-            "cta_url": ""
+            "cta_url": "shopify://collections"
           }
         },
         "dermatologist_gFde4A": {
