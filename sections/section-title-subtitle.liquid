@@ -2,6 +2,10 @@
     #shopify-section-{{ section.id }} .what-to-expect__heading {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     #shopify-section-{{ section.id }} .TITLE {
         font-family: var(--font-heading--family, "Landour Regular Text", "Landour", sans-serif);
@@ -17,7 +21,7 @@
         color: {{ section.settings.text_color }};
     }
 </style>
-<div class="what-to-expect__heading">
+<div class="{{ section.id }} what-to-expect__heading">
     {% if section.settings.title != blank %}
         <span class="what-to-expect__heading-main TITLE">{{ section.settings.title }}</span>
     {% endif %}
