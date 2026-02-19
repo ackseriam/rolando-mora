@@ -725,6 +725,116 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "social_feed_aW3VjN": {
+      "type": "social-feed",
+      "blocks": {
+        "post_N9dfiQ": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_yMAnRC": {
+          "type": "post",
+          "settings": {
+            "post_type": "video",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_pwzcCg": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_FmpnYV": {
+          "type": "post",
+          "settings": {
+            "post_type": "before_after",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_XRmjAi": {
+          "type": "post",
+          "settings": {
+            "post_type": "video",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_73pknw": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_Qn6pN4": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
+        "post_HRPzJH": {
+          "type": "post",
+          "settings": {
+            "post_type": "before_after",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        }
+      },
+      "block_order": [
+        "post_N9dfiQ",
+        "post_yMAnRC",
+        "post_pwzcCg",
+        "post_FmpnYV",
+        "post_XRmjAi",
+        "post_73pknw",
+        "post_Qn6pN4",
+        "post_HRPzJH"
+      ],
+      "name": "Social Feed",
+      "settings": {
+        "heading": "follow & tag us",
+        "instagram_handle": "@GOPUREBEAUTY",
+        "instagram_url": "",
+        "facebook_url": "",
+        "tiktok_url": "",
+        "youtube_url": "",
+        "posts_desktop": 5,
+        "posts_mobile": 2,
+        "post_gap": 8,
+        "background_color": "#f3f0ff",
+        "heading_color": "#4834d4",
+        "primary_color": "#4834d4"
+      }
     }
   },
   "order": [
@@ -737,6 +847,7 @@
     "reviews_section_VghEyX",
     "meet_dermatologists_dpTDc4",
     "section_title_subtitle_xiyzBP",
-    "section_UrPWxm"
+    "section_UrPWxm",
+    "social_feed_aW3VjN"
   ]
 }
