@@ -53,7 +53,58 @@
           endif
         -%}
 
-        {%- if variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
+        {%- if block_settings.variant_style == 'gopure_pills' -%}
+          {%- assign fieldset_index = forloop.index0 -%}
+          {%- assign popular_index = block_settings.popular_option_index | default: 1 | plus: 0 -%}
+          <fieldset
+            class="variant-option variant-option--buttons variant-option--gopure-pills"
+            data-fieldset-index="{{ fieldset_index }}"
+            data-popular-index="{{ popular_index }}"
+            ref="fieldsets[]"
+          >
+            <legend>{{ product_option.name | escape }}</legend>
+            {%- for product_option_value in product_option.values -%}
+              {%- liquid
+                assign variant_obj = product_option_value.variant
+                assign save_amount = 0
+                if variant_obj.compare_at_price > variant_obj.price
+                  assign save_amount = variant_obj.compare_at_price | minus: variant_obj.price
+                endif
+                assign is_popular = false
+                if forloop.index0 == popular_index
+                  assign is_popular = true
+                endif
+              -%}
+              <label class="variant-option__button-label variant-option__button-label--gopure">
+                {%- if is_popular -%}
+                  <span class="variant-option__gopure-badge">MOST POPULAR</span>
+                {%- endif -%}
+                <input
+                  type="radio"
+                  name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
+                  value="{{ product_option_value | escape }}"
+                  aria-label="{{ product_option_value.name }}"
+                  {% if product_option_value.available == false %}aria-disabled="true"{% endif %}
+                  data-previous-checked="false"
+                  data-fieldset-index="{{ fieldset_index }}"
+                  data-input-index="{{ forloop.index0 }}"
+                  data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
+                  data-option-value-id="{{ product_option_value.id }}"
+                  data-option-available="{{ product_option_value.available }}"
+                  data-connected-product-url="{{ product_option_value.product_url }}"
+                  {% if product_option_value.variant.id %}data-variant-id="{{ product_option_value.variant.id }}"{% endif %}
+                  {% if product_option_value.selected %}data-current-checked="true" checked{% else %}data-current-checked="false"{% endif %}
+                >
+                <span class="variant-option__button-label__content">
+                  <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  {%- if save_amount > 0 -%}
+                    <span class="variant-option__button-label__save">Save {{ save_amount | money_without_trailing_zeros }}</span>
+                  {%- endif -%}
+                </span>
+              </label>
+            {%- endfor -%}
+          </fieldset>
+        {%- elsif variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
           {%- assign fieldset_index = forloop.index0 -%}
           <fieldset
             class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}"
@@ -231,6 +282,68 @@
 
   .variant-option + .variant-option {
     margin-top: var(--padding-lg);
+  }
+
+  /* goPure Pills style (One Time variants) */
+  .variant-option--gopure-pills {
+    --gopure-border-color: #4834d4;
+    --gopure-border-selected: 3px;
+    --gopure-border-default: 1px;
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label--gopure {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 4em;
+    padding: 12px 20px;
+    background-color: #fff;
+    border: var(--gopure-border-default) solid var(--gopure-border-color);
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label--gopure:has(:checked) {
+    border-width: var(--gopure-border-selected);
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label__text {
+    text-align: center;
+    color: var(--gopure-border-color);
+    font-weight: 600;
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label__save {
+    font-size: 12px;
+    color: var(--gopure-border-color);
+  }
+
+  .variant-option__gopure-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d4e157;
+    color: #1a1a2e;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .variant-option--gopure-pills .variant-option__button-label--gopure .variant-option__button-label__pill,
+  .variant-option--gopure-pills .variant-option__button-label--gopure::before,
+  .variant-option--gopure-pills .variant-option__button-label--gopure::after {
+    display: none;
   }
 
   .variant-option--swatches {

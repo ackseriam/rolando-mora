@@ -1,0 +1,351 @@
+{%- comment -%}
+  Ingredients Carousel – goPure style
+  Horizontal carousel of ingredient cards with arrows and "See full list" link
+{%- endcomment -%}
+
+{% assign carousel_settings = block.settings %}
+{% assign cards = block.blocks | where: 'type', '_ingredient-card' %}
+
+{% if cards.size > 0 %}
+  <div
+    class="ingredients-carousel"
+    id="ingredients-carousel-{{ block.id }}"
+    data-cards-desktop="{{ carousel_settings.cards_desktop | default: 3 }}"
+    data-cards-mobile="{{ carousel_settings.cards_mobile | default: 1 }}"
+    data-gap="{{ carousel_settings.gap | default: 16 }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="ingredients-carousel__wrapper">
+      <button
+        type="button"
+        class="ingredients-carousel__arrow ingredients-carousel__arrow--prev"
+        aria-label="Previous ingredients"
+        aria-controls="ingredients-track-{{ block.id }}"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="ingredients-carousel__arrow ingredients-carousel__arrow--next"
+        aria-label="Next ingredients"
+        aria-controls="ingredients-track-{{ block.id }}"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="ingredients-carousel__track-outer">
+        <div
+          class="ingredients-carousel__track"
+          id="ingredients-track-{{ block.id }}"
+          role="list"
+        >
+          {% for card in cards %}
+            <div class="ingredients-carousel__card-wrap" role="listitem">
+              {% render 'ingredient-card-content', block: card %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {%- if carousel_settings.full_list_url != blank -%}
+      <a
+        href="{{ carousel_settings.full_list_url }}"
+        class="ingredients-carousel__link"
+      >
+        {{ carousel_settings.full_list_text | default: 'SEE FULL LIST OF INGREDIENTS' | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .ingredients-carousel {
+    --ingredients-primary: #4834d4;
+    --ingredients-arrow-border: rgba(72, 52, 212, 0.5);
+  }
+
+  .ingredients-carousel__wrapper {
+    position: relative;
+    margin-inline: -12px;
+  }
+
+  .ingredients-carousel__track-outer {
+    overflow: hidden;
+    padding-inline: 12px;
+  }
+
+  .ingredients-carousel__track {
+    display: flex;
+    gap: var(--ingredients-gap, 16px);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    touch-action: pan-x;
+  }
+
+  .ingredients-carousel__card-wrap {
+    flex: 0 0 auto;
+    width: var(--ingredient-card-width, 180px);
+  }
+
+  .ingredients-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid var(--ingredients-arrow-border);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+    padding: 0;
+  }
+
+  .ingredients-carousel__arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ingredients-carousel__arrow:hover {
+    opacity: 0.9;
+  }
+
+  .ingredients-carousel__arrow[disabled],
+  .ingredients-carousel__arrow[aria-disabled="true"] {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .ingredients-carousel__arrow--prev { left: 0; }
+  .ingredients-carousel__arrow--next { right: 0; }
+
+  .ingredients-carousel.ingredients-carousel--no-overflow .ingredients-carousel__arrow {
+    display: none;
+  }
+
+  .ingredients-carousel__link {
+    display: block;
+    text-align: center;
+    margin-block-start: 24px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: var(--ingredients-primary);
+  }
+
+  .ingredients-carousel__link:hover {
+    opacity: 0.8;
+  }
+
+  /* Ingredient card styles */
+  .ingredient-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 260px;
+  }
+
+  .ingredient-card__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-block-end: 12px;
+  }
+
+  .ingredient-card__image-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-block-end: 12px;
+  }
+
+  .ingredient-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ingredient-card__name {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #1a1a2e;
+  }
+
+  .ingredient-card__desc {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+    color: #4a4a4a;
+    flex: 1;
+  }
+{% endstylesheet %}
+
+<script>
+(function () {
+  'use strict';
+
+  var blockId = '{{ block.id }}';
+  var wrapper = document.getElementById('ingredients-carousel-' + blockId);
+  if (!wrapper) return;
+
+  var track = document.getElementById('ingredients-track-' + blockId);
+  var btnPrev = wrapper.querySelector('.ingredients-carousel__arrow--prev');
+  var btnNext = wrapper.querySelector('.ingredients-carousel__arrow--next');
+  var cards = Array.prototype.slice.call(wrapper.querySelectorAll('.ingredients-carousel__card-wrap'));
+
+  var desktopCount = parseInt(wrapper.getAttribute('data-cards-desktop') || '3', 10);
+  var mobileCount = parseInt(wrapper.getAttribute('data-cards-mobile') || '1', 10);
+  var gap = parseInt(wrapper.getAttribute('data-gap') || '16', 10);
+
+  var currentIndex = 0;
+  var visibleCount = 0;
+  var cardWidth = 0;
+
+  function recalc() {
+    var isMobile = window.matchMedia('(max-width: 749px)').matches;
+    visibleCount = isMobile ? mobileCount : desktopCount;
+    var outerWidth = track.parentElement.clientWidth;
+    cardWidth = Math.floor((outerWidth - gap * (visibleCount - 1)) / visibleCount);
+
+    cards.forEach(function (card) {
+      card.style.width = cardWidth + 'px';
+    });
+
+    var maxIndex = Math.max(0, cards.length - visibleCount);
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+    goTo(currentIndex, false);
+    updateArrows();
+    toggleOverflow();
+  }
+
+  function goTo(index, animate) {
+    if (animate === undefined) animate = true;
+    var maxIndex = Math.max(0, cards.length - visibleCount);
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+    track.style.transition = animate ? 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+    var offset = currentIndex * (cardWidth + gap);
+    track.style.transform = 'translateX(-' + offset + 'px)';
+
+    if (!animate) {
+      void track.offsetHeight;
+      track.style.transition = '';
+    }
+    updateArrows();
+  }
+
+  function updateArrows() {
+    var maxIndex = Math.max(0, cards.length - visibleCount);
+    if (btnPrev) {
+      btnPrev.setAttribute('aria-disabled', currentIndex === 0 ? 'true' : 'false');
+      btnPrev.disabled = currentIndex === 0;
+    }
+    if (btnNext) {
+      btnNext.setAttribute('aria-disabled', currentIndex >= maxIndex ? 'true' : 'false');
+      btnNext.disabled = currentIndex >= maxIndex;
+    }
+  }
+
+  function toggleOverflow() {
+    var maxIndex = Math.max(0, cards.length - visibleCount);
+    wrapper.classList.toggle('ingredients-carousel--no-overflow', maxIndex <= 0);
+  }
+
+  if (btnPrev) btnPrev.addEventListener('click', function () { goTo(currentIndex - 1); });
+  if (btnNext) btnNext.addEventListener('click', function () { goTo(currentIndex + 1); });
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(recalc, 100);
+  });
+
+  recalc();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Ingredients Carousel",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_ingredient-card"
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "cards_desktop",
+      "label": "Visible cards (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "cards_mobile",
+      "label": "Visible cards (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "url",
+      "id": "full_list_url",
+      "label": "Full ingredients list URL"
+    },
+    {
+      "type": "text",
+      "id": "full_list_text",
+      "label": "Full list link text",
+      "default": "SEE FULL LIST OF INGREDIENTS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients Carousel",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

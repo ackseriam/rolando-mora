@@ -52,8 +52,28 @@
   }
 
   .accordion--caret .icon-plus,
-  .accordion--plus .icon-caret {
+  .accordion--caret .icon-minus,
+  .accordion--plus .icon-caret,
+  .accordion--plus .icon-minus,
+  .accordion--minus .icon-caret,
+  .accordion--minus .icon-plus {
     display: none;
+  }
+
+  .accordion--minus details[open] .icon-minus {
+    display: flex;
+  }
+
+  .accordion--minus details[open] .icon-plus {
+    display: none;
+  }
+
+  .accordion--minus details:not([open]) .icon-minus {
+    display: none;
+  }
+
+  .accordion--minus details:not([open]) .icon-plus {
+    display: flex;
   }
 
   /* because we can't pass apply a specific class on a block based on its parent block setting */
@@ -70,14 +90,14 @@
 
 {% schema %}
 {
-  "name": "t:names.accordion",
-  "tag": null,
+  "name": "Accordion new",
+  "tag": null, 
   "class": "accordion",
   "blocks": [
     {
       "type": "_accordion-row"
-    }
-  ],
+    } 
+  ], 
   "settings": [
     {
       "type": "select",
@@ -91,6 +111,10 @@
         {
           "value": "plus",
           "label": "t:options.plus"
+        },
+        {
+          "value": "minus",
+          "label": "Minus (goPure style)"
         }
       ],
       "default": "caret"

@@ -363,36 +363,50 @@
     {% endcapture %}
 
     {% if sorted_media.size > 1 %}
+      {% liquid
+        assign arrows_below_thumbnails = false
+        if slideshow_controls_style == 'thumbnails' and render_slideshow_arrows
+          assign arrows_below_thumbnails = true
+        endif
+      %}
       {% capture controls %}
-        {% if render_slideshow_controls %}
-          {%- render 'slideshow-controls',
-            class: slideshow_controls_class,
-            style: slideshow_controls_style,
-            item_count: sorted_media.size,
-            thumbnails: sorted_media,
-            controls_on_media: controls_on_media,
-            pagination_position: pagination_position,
-            aspect_ratio: block_settings.aspect_ratio,
-            thumbnail_radius: block_settings.thumbnail_radius
-          -%}
-        {% endif %}
+        <div class="media-gallery__controls-wrap{% if arrows_below_thumbnails %} media-gallery__controls-wrap--arrows-below{% endif %}">
+          {% if render_slideshow_controls %}
+            {%- render 'slideshow-controls',
+              class: slideshow_controls_class,
+              style: slideshow_controls_style,
+              item_count: sorted_media.size,
+              thumbnails: sorted_media,
+              controls_on_media: controls_on_media,
+              pagination_position: pagination_position,
+              aspect_ratio: block_settings.aspect_ratio,
+              thumbnail_radius: block_settings.thumbnail_radius
+            -%}
+          {% endif %}
 
-        {% if render_mobile_slideshow_controls %}
-          {%- render 'slideshow-controls',
-            class: 'desktop:hidden media-gallery__mobile-controls',
-            style: block_settings.slideshow_mobile_controls_style,
-            item_count: sorted_media.size,
-            thumbnails: sorted_media,
-            controls_on_media: mobile_controls_on_media,
-            pagination_position: 'center',
-            aspect_ratio: block_settings.aspect_ratio,
-            thumbnail_radius: block_settings.thumbnail_radius
-          -%}
-        {% endif %}
+          {% if render_mobile_slideshow_controls %}
+            {%- render 'slideshow-controls',
+              class: 'desktop:hidden media-gallery__mobile-controls',
+              style: block_settings.slideshow_mobile_controls_style,
+              item_count: sorted_media.size,
+              thumbnails: sorted_media,
+              controls_on_media: mobile_controls_on_media,
+              pagination_position: 'center',
+              aspect_ratio: block_settings.aspect_ratio,
+              thumbnail_radius: block_settings.thumbnail_radius
+            -%}
+          {% endif %}
+
+          {% if arrows_below_thumbnails %}
+            <div class="media-gallery__arrows-below">
+              {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block_settings.icons_style %}
+            </div>
+          {% endif %}
+        </div>
       {% endcapture %}
     {% endif %}
 
-    {% if render_slideshow_arrows %}
+    {% if render_slideshow_arrows and arrows_below_thumbnails != true %}
       {% capture slideshow_arrows %}
         {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block_settings.icons_style %}
       {% endcapture %}
@@ -702,6 +716,28 @@
 
   .media-gallery__mobile-controls {
     grid-area: auto;
+  }
+
+  .media-gallery__controls-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-sm);
+  }
+
+  .media-gallery__controls-wrap--arrows-below .media-gallery__arrows-below {
+    display: flex;
+    justify-content: center;
+  }
+
+  .media-gallery__controls-wrap--arrows-below .media-gallery__arrows-below slideshow-arrows {
+    position: static;
+    mix-blend-mode: normal;
+  }
+
+  .media-gallery__controls-wrap--arrows-below .media-gallery__arrows-below .slideshow-control {
+    opacity: 1;
+    color: var(--color-foreground);
   }
 
   /* Mobile thumbnails styling */

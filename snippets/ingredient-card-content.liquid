@@ -1,0 +1,40 @@
+{%- comment -%}
+  Renders ingredient card content (used by _ingredient-card block and _ingredients-carousel)
+  @param block - Block object with settings
+{%- endcomment -%}
+
+{% assign card_settings = block.settings %}
+
+<div class="ingredient-card" {{ block.shopify_attributes }}>
+  {%- if card_settings.category_label != blank -%}
+    <span
+      class="ingredient-card__label"
+      style="background-color: {{ card_settings.category_color | default: '#8B9DC3' }};"
+    >
+      {{ card_settings.category_label | escape }}
+    </span>
+  {%- endif -%}
+
+  <div class="ingredient-card__image-wrap">
+    {%- if card_settings.image != blank -%}
+      <img
+        class="ingredient-card__image"
+        src="{{ card_settings.image | image_url: width: 400 }}"
+        alt="{{ card_settings.name | escape }}"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'ingredient-card__image' }}
+    {%- endif -%}
+  </div>
+
+  {%- if card_settings.name != blank -%}
+    <h4 class="ingredient-card__name">{{ card_settings.name | escape }}</h4>
+  {%- endif -%}
+
+  {%- if card_settings.description != blank -%}
+    <p class="ingredient-card__desc">{{ card_settings.description | escape }}</p>
+  {%- endif -%}
+</div>

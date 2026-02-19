@@ -36,9 +36,21 @@
         {
           "value": "buttons",
           "label": "t:options.buttons"
+        },
+        {
+          "value": "gopure_pills",
+          "label": "goPure Pills (One Time)"
         }
       ],
       "default": "buttons"
+    },
+    {
+      "type": "number",
+      "id": "popular_option_index",
+      "label": "MOST POPULAR badge (option index)",
+      "default": 1,
+      "info": "0 = first, 1 = second, etc. Only for goPure Pills style.",
+      "visible_if": "{{ block.settings.variant_style == 'gopure_pills' }}"
     },
     {
       "type": "checkbox",

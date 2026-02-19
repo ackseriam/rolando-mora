@@ -29,6 +29,11 @@
       <span class="svg-wrapper icon-plus">
         {{- 'icon-plus.svg' | inline_asset_content -}}
       </span>
+      <span class="svg-wrapper icon-minus" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </span>
     </summary>
 
     <div class="details-content">
@@ -46,7 +51,7 @@
 
 {% schema %}
 {
-  "name": "t:names.accordion_row",
+  "name": "Accordion row new",
   "tag": null,
   "blocks": [
     {
@@ -54,8 +59,11 @@
     },
     {
       "type": "@app"
-    }
-  ],
+    },
+    {
+      "type": "ingredients-carousel"
+    } 
+  ], 
   "settings": [
     {
       "type": "text",
