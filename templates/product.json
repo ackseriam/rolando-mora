@@ -1053,10 +1053,10 @@
         "review_mDzXbK": {
           "type": "review",
           "settings": {
-            "image_before": "shopify://shop_images/before_image_transformation.webp",
-            "image_after": "shopify://shop_images/after-8-weeks-skin-transformation_3bc33a5c-7ad7-449c-81a7-eae64f54c6be.webp",
+            "image_before": "shopify://shop_images/imagen_7.jpg",
+            "image_after": "shopify://shop_images/imagen_6.jpg",
             "duration": "8 semanas",
-            "quote": "I’m 51 años y he perdido más de 45 kg en los últimos 14 meses. Me encanta mucho de eso excepto lo que le pasa a mi cuello. Con esta crema noté resultados de inmediato, ¡y tras 90 días ha marcado una diferencia importante!",
+            "quote": "Tengo 51 años y he perdido más de 45 kg en los últimos 14 meses. Me encanta mucho de eso excepto lo que le pasa a mi cuello. Con esta crema noté resultados de inmediato, ¡y tras 90 días ha marcado una diferencia importante!",
             "author_image": "shopify://shop_images/happy-smiling-woman-holding-cosmetic-product.webp",
             "author_name": "Sarah J.",
             "concern": "Opacidad"
