@@ -729,20 +729,21 @@
     "social_feed_aW3VjN": {
       "type": "social-feed",
       "blocks": {
-        "post_N9dfiQ": {
+        "post_yMAnRC": {
           "type": "post",
           "settings": {
-            "post_type": "image",
+            "post_type": "video",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
             "show_labels": true
           }
         },
-        "post_yMAnRC": {
+        "post_N9dfiQ": {
           "type": "post",
           "settings": {
-            "post_type": "video",
+            "post_type": "image",
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-02-18_201230.png",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
@@ -811,8 +812,8 @@
         }
       },
       "block_order": [
-        "post_N9dfiQ",
         "post_yMAnRC",
+        "post_N9dfiQ",
         "post_pwzcCg",
         "post_FmpnYV",
         "post_XRmjAi",
