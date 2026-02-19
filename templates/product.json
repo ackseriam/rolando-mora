@@ -212,7 +212,7 @@
               "type": "variant-picker",
               "settings": {
                 "variant_style": "gopure_pills",
-                "popular_option_index": 1,
+                "popular_option_index": 0,
                 "show_swatches": false,
                 "alignment": "left",
                 "padding-block-start": 0,
