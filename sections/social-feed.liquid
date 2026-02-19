@@ -92,12 +92,7 @@
     justify-content: flex-end;
   }
 
-  /* Hidden on desktop (hide-desktop) */
-  @media screen and (min-width: 992px) {
-    .sf-social-links {
-      display: none;
-    }
-  }
+  /* Visible on both mobile and desktop */
 
   /* ── Social Item (_socialItem_tzef6_1) ───────────────────────── */
   /* font-heading weight-500 lh-100 color-primary uppercase pt-s spacing-normal */
@@ -244,6 +239,11 @@
     pointer-events: none;
   }
 
+  .sf-video-play--interactive {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
   .sf-video-play__btn {
     display: flex;
     align-items: center;
@@ -352,6 +352,69 @@
   /* Bring interactive play button above the link */
   .sf-video-play {
     z-index: 5;
+  }
+
+  /* ── Video modal (for inline MP4 playback) ───────────────────────── */
+  .sf-video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    padding: 20px;
+  }
+
+  .sf-video-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sf-video-modal__inner {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .sf-video-modal video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .sf-video-modal__close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a2e;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .sf-video-modal__close:hover {
+    background: #ffffff;
+  }
+
+  .sf-video-modal__close svg {
+    width: 18px;
+    height: 18px;
   }
 
   /* ── Navigation arrows ──────────────────────────────────────────── */
@@ -597,6 +660,7 @@
           >
 
             {%- for block in section.blocks -%}
+              {%- assign video_src = nil -%}
               {%- if block.type == 'post' -%}
 
                 <article
@@ -609,6 +673,21 @@
                     {%- comment -%} ── Video Post ───────────────────── {%- endcomment -%}
                     {%- if block.settings.post_type == 'video' -%}
 
+                      {%- liquid
+                        assign video_src = nil
+                        if block.settings.video != blank and block.settings.video.sources.size > 0
+                          for source in block.settings.video.sources
+                            if source.format == 'mp4' or source.url contains '.mp4'
+                              assign video_src = source.url
+                              break
+                            endif
+                          endfor
+                          if video_src == nil
+                            assign video_src = block.settings.video.sources[0].url
+                          endif
+                        endif
+                      -%}
+
                       {%- if block.settings.thumbnail != blank -%}
                         <img
                           class="sf-post-image"
@@ -620,12 +699,29 @@
                           width="{{ block.settings.thumbnail.width }}"
                           height="{{ block.settings.thumbnail.height }}"
                         >
+                      {%- elsif video_src != nil and block.settings.video.preview_image != blank -%}
+                        <img
+                          class="sf-post-image"
+                          src="{{ block.settings.video.preview_image | image_url: width: 800 }}"
+                          alt="{{ block.settings.alt_text | escape }}"
+                          loading="lazy"
+                          width="800"
+                          height="800"
+                        >
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'sf-post-image' }}
                       {%- endif -%}
 
-                      {%- comment -%} Play button overlay {%- endcomment -%}
-                      <div class="sf-video-play" aria-hidden="true">
+                      {%- comment -%} Play button overlay (clickable when video exists) {%- endcomment -%}
+                      <div
+                        class="sf-video-play {% if video_src != nil %}sf-video-play--interactive{% endif %}"
+                        aria-hidden="true"
+                        {% if video_src != nil %}
+                          data-video-src="{{ video_src }}"
+                          role="button"
+                          tabindex="0"
+                        {% endif %}
+                      >
                         <span class="sf-video-play__btn">
                           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 3l14 9-14 9V3z"/>
@@ -692,8 +788,12 @@
                       </div>
                     {%- endif -%}
 
-                    {%- comment -%} Full-post link overlay {%- endcomment -%}
-                    {%- if block.settings.post_url != blank -%}
+                    {%- comment -%} Full-post link overlay (omit when video has inline playback) {%- endcomment -%}
+                    {%- assign has_inline_video = false -%}
+                    {%- if block.settings.post_type == 'video' and block.settings.video != blank and block.settings.video.sources.size > 0 -%}
+                      {%- assign has_inline_video = true -%}
+                    {%- endif -%}
+                    {%- if block.settings.post_url != blank and has_inline_video == false -%}
                       <a
                         href="{{ block.settings.post_url }}"
                         target="_blank"
@@ -720,6 +820,30 @@
 
   </div>
   {%- comment -%} /.sf-inner {%- endcomment -%}
+
+  {%- comment -%} Video modal for MP4 playback {%- endcomment -%}
+  <div
+    class="sf-video-modal"
+    id="sf-video-modal-{{ section.id }}"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Video player"
+    hidden
+  >
+    <div class="sf-video-modal__inner">
+      <button
+        type="button"
+        class="sf-video-modal__close"
+        aria-label="Close video"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <video controls playsinline></video>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -869,6 +993,58 @@
   /* ── Init ───────────────────────────────────────────────────── */
   recalc();
 
+  /* ── Video modal playback ───────────────────────────────────── */
+  var modal = document.getElementById('sf-video-modal-' + sectionId);
+  if (modal) {
+    var modalVideo = modal.querySelector('video');
+    var modalClose = modal.querySelector('.sf-video-modal__close');
+    var playButtons = wrapper.querySelectorAll('.sf-video-play--interactive[data-video-src]');
+
+    function openModal(src) {
+      if (!modalVideo || !src) return;
+      modalVideo.src = src;
+      modalVideo.load();
+      modal.classList.add('is-open');
+      modal.removeAttribute('hidden');
+      modalVideo.play();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('hidden', '');
+      if (modalVideo) {
+        modalVideo.pause();
+        modalVideo.removeAttribute('src');
+      }
+      document.body.style.overflow = '';
+    }
+
+    playButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var src = btn.getAttribute('data-video-src');
+        if (src) openModal(src);
+      });
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          var src = btn.getAttribute('data-video-src');
+          if (src) openModal(src);
+        }
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
+
 })();
 </script>
 
@@ -893,7 +1069,7 @@
     },
     {
       "type": "header",
-      "content": "Social Links (shown on mobile only)"
+      "content": "Social Links"
     },
     {
       "type": "text",
@@ -1003,10 +1179,16 @@
           "info": "Used for image and before/after posts"
         },
         {
+          "type": "video",
+          "id": "video",
+          "label": "Video (MP4)",
+          "info": "Upload an MP4 or select from Files. When set, clicking play opens a video player."
+        },
+        {
           "type": "image_picker",
           "id": "thumbnail",
           "label": "Video Thumbnail",
-          "info": "Used only for video posts (still frame)"
+          "info": "Used only for video posts (still frame). Optional if video has a preview image."
         },
         {
           "type": "text",
