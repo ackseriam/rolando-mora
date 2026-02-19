@@ -764,6 +764,7 @@
           "type": "post",
           "settings": {
             "post_type": "before_after",
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-02-18_201454.png",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
@@ -784,6 +785,7 @@
           "type": "post",
           "settings": {
             "post_type": "image",
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-02-18_201809.png",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
