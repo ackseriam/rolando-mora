@@ -801,16 +801,6 @@
             "overlay_text": "",
             "show_labels": true
           }
-        },
-        "post_HRPzJH": {
-          "type": "post",
-          "settings": {
-            "post_type": "before_after",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
         }
       },
       "block_order": [
@@ -820,8 +810,7 @@
         "post_FmpnYV",
         "post_XRmjAi",
         "post_73pknw",
-        "post_Qn6pN4",
-        "post_HRPzJH"
+        "post_Qn6pN4"
       ],
       "name": "Social Feed",
       "settings": {
