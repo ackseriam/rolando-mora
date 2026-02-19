@@ -4,80 +4,81 @@
 {%- endcomment -%}
 
 {% assign carousel_settings = block.settings %}
-{% assign cards = block.blocks | where: 'type', '_ingredient-card' %}
+{% capture cards_output %}{% content_for 'blocks' %}{% endcapture %}
 
-{% if cards.size > 0 %}
-  <div
-    class="ingredients-carousel"
-    id="ingredients-carousel-{{ block.id }}"
-    data-cards-desktop="{{ carousel_settings.cards_desktop | default: 3 }}"
-    data-cards-mobile="{{ carousel_settings.cards_mobile | default: 1 }}"
-    data-gap="{{ carousel_settings.gap | default: 16 }}"
-    {{ block.shopify_attributes }}
-  >
-    <div class="ingredients-carousel__wrapper">
-      <button
-        type="button"
-        class="ingredients-carousel__arrow ingredients-carousel__arrow--prev"
-        aria-label="Previous ingredients"
-        aria-controls="ingredients-track-{{ block.id }}"
+{% if cards_output != blank %}
+<div
+  class="ingredients-carousel"
+  id="ingredients-carousel-{{ block.id }}"
+  data-cards-desktop="{{ carousel_settings.cards_desktop | default: 3 }}"
+  data-cards-mobile="{{ carousel_settings.cards_mobile | default: 1 }}"
+  data-gap="{{ carousel_settings.gap | default: 16 }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ingredients-carousel__wrapper">
+    <button
+      type="button"
+      class="ingredients-carousel__arrow ingredients-carousel__arrow--prev"
+      aria-label="Previous ingredients"
+      aria-controls="ingredients-track-{{ block.id }}"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="ingredients-carousel__arrow ingredients-carousel__arrow--next"
+      aria-label="Next ingredients"
+      aria-controls="ingredients-track-{{ block.id }}"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="ingredients-carousel__track-outer">
+      <div
+        class="ingredients-carousel__track"
+        id="ingredients-track-{{ block.id }}"
+        role="list"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <button
-        type="button"
-        class="ingredients-carousel__arrow ingredients-carousel__arrow--next"
-        aria-label="Next ingredients"
-        aria-controls="ingredients-track-{{ block.id }}"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-
-      <div class="ingredients-carousel__track-outer">
-        <div
-          class="ingredients-carousel__track"
-          id="ingredients-track-{{ block.id }}"
-          role="list"
-        >
-          {% for card in cards %}
-            <div class="ingredients-carousel__card-wrap" role="listitem">
-              {% render 'ingredient-card-content', block: card %}
-            </div>
-          {% endfor %}
-        </div>
+        {{ cards_output }}
       </div>
     </div>
-
-    {%- if carousel_settings.full_list_url != blank -%}
-      <a
-        href="{{ carousel_settings.full_list_url }}"
-        class="ingredients-carousel__link"
-      >
-        {{ carousel_settings.full_list_text | default: 'SEE FULL LIST OF INGREDIENTS' | escape }}
-      </a>
-    {%- endif -%}
   </div>
+
+  {%- if carousel_settings.full_list_url != blank -%}
+    <a
+      href="{{ carousel_settings.full_list_url }}"
+      class="ingredients-carousel__link"
+    >
+      {{ carousel_settings.full_list_text | default: 'SEE FULL LIST OF INGREDIENTS' | escape }}
+    </a>
+  {%- endif -%}
+</div>
 {% endif %}
 
 {% stylesheet %}
   .ingredients-carousel {
     --ingredients-primary: #4834d4;
     --ingredients-arrow-border: rgba(72, 52, 212, 0.5);
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .ingredients-carousel__wrapper {
     position: relative;
-    margin-inline: -12px;
+    width: 100%;
+    min-width: 0;
   }
 
   .ingredients-carousel__track-outer {
     overflow: hidden;
-    padding-inline: 12px;
+    width: 100%;
+    min-width: 0;
   }
 
   .ingredients-carousel__track {
@@ -86,9 +87,10 @@
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
     touch-action: pan-x;
+    max-width: 200px;
   }
 
-  .ingredients-carousel__card-wrap {
+  .ingredients-carousel__track .ingredient-card {
     flex: 0 0 auto;
     width: var(--ingredient-card-width, 180px);
   }
@@ -101,12 +103,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
     border-radius: 50%;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--ingredients-arrow-border);
-    color: #fff;
+    color: var(--ingredients-primary);
     cursor: pointer;
     transition: opacity 0.2s ease, border-color 0.2s ease;
     padding: 0;
@@ -128,8 +131,8 @@
     pointer-events: none;
   }
 
-  .ingredients-carousel__arrow--prev { left: 0; }
-  .ingredients-carousel__arrow--next { right: 0; }
+  .ingredients-carousel__arrow--prev { left: 8px; }
+  .ingredients-carousel__arrow--next { right: 8px; }
 
   .ingredients-carousel.ingredients-carousel--no-overflow .ingredients-carousel__arrow {
     display: none;
@@ -217,7 +220,7 @@
   var track = document.getElementById('ingredients-track-' + blockId);
   var btnPrev = wrapper.querySelector('.ingredients-carousel__arrow--prev');
   var btnNext = wrapper.querySelector('.ingredients-carousel__arrow--next');
-  var cards = Array.prototype.slice.call(wrapper.querySelectorAll('.ingredients-carousel__card-wrap'));
+  var cards = Array.prototype.slice.call(wrapper.querySelectorAll('.ingredients-carousel__track .ingredient-card'));
 
   var desktopCount = parseInt(wrapper.getAttribute('data-cards-desktop') || '3', 10);
   var mobileCount = parseInt(wrapper.getAttribute('data-cards-mobile') || '1', 10);
@@ -286,6 +289,13 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(recalc, 100);
   });
+
+  var details = wrapper.closest('details');
+  if (details) {
+    details.addEventListener('toggle', function () {
+      if (details.open) recalc();
+    });
+  }
 
   recalc();
 })();

@@ -326,8 +326,8 @@
   }
 
   .variant-option__gopure-badge {
-    position: absolute;
-    top: -10px;
+    position: relative;
+    top: -4px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #d4e157;
@@ -371,12 +371,14 @@
     gap: var(--gap-sm);
     margin: 0;
     padding: 0;
-    border: none;
+    border: 1px solid black;
+    border-radius: 22px;
   }
 
   .variant-option--buttons legend {
     padding: 0;
     margin-block-end: var(--margin-xs);
+    display: none;
   }
 
   .variant-option__swatch-value {

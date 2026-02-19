@@ -428,7 +428,7 @@
                 "padding-block-end": 9,
                 "padding-inline-start": 13,
                 "padding-inline-end": 11
-              },
+              }, 
               "blocks": {
                 "accordion_row_3DMjfk": {
                   "type": "_accordion-row",
