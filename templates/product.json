@@ -718,72 +718,72 @@
                   "blocks": {
                     "ingredients_carousel_mtmVYx": {
                       "type": "ingredients-carousel",
-                      "name": "Ingredients Carousel",
+                      "name": "Carrusel de ingredientes",
                       "settings": {
                         "cards_desktop": 3,
                         "cards_mobile": 1,
                         "gap": 16,
                         "full_list_url": "",
-                        "full_list_text": "SEE FULL LIST OF INGREDIENTS"
+                        "full_list_text": "VER LISTA COMPLETA DE INGREDIENTES"
                       },
                       "blocks": {
                         "ingredient_card_FFMdaU": {
                           "type": "_ingredient-card",
-                          "name": "Ingredient Card",
+                          "name": "Tarjeta de ingrediente",
                           "settings": {
-                            "category_label": "CLINICAL FORMULA",
+                            "category_label": "FÓRMULA CLÍNICA",
                             "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
-                            "name": "Ingredient",
-                            "description": "Brief benefit description"
+                            "name": "Ingrediente",
+                            "description": "Breve descripción del beneficio"
                           },
                           "blocks": {}
                         },
                         "ingredient_card_tHh6mf": {
                           "type": "_ingredient-card",
-                          "name": "Ingredient Card",
+                          "name": "Tarjeta de ingrediente",
                           "settings": {
-                            "category_label": "CLINICAL FORMULA",
+                            "category_label": "FÓRMULA CLÍNICA",
                             "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
-                            "name": "Ingredient",
-                            "description": "Brief benefit description"
+                            "name": "Ingrediente",
+                            "description": "Breve descripción del beneficio"
                           },
                           "blocks": {}
                         },
                         "ingredient_card_FbVMcR": {
                           "type": "_ingredient-card",
-                          "name": "Ingredient Card",
+                          "name": "Tarjeta de ingrediente",
                           "settings": {
-                            "category_label": "CLINICAL FORMULA",
+                            "category_label": "FÓRMULA CLÍNICA",
                             "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
-                            "name": "Ingredient",
-                            "description": "Brief benefit description"
+                            "name": "Ingrediente",
+                            "description": "Breve descripción del beneficio"
                           },
                           "blocks": {}
                         },
                         "ingredient_card_PxVHnj": {
                           "type": "_ingredient-card",
-                          "name": "Ingredient Card",
+                          "name": "Tarjeta de ingrediente",
                           "settings": {
-                            "category_label": "CLINICAL FORMULA",
+                            "category_label": "FÓRMULA CLÍNICA",
                             "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
-                            "name": "Ingredient",
-                            "description": "Brief benefit description"
+                            "name": "Ingrediente",
+                            "description": "Breve descripción del beneficio"
                           },
                           "blocks": {}
                         },
                         "ingredient_card_eEVpzE": {
                           "type": "_ingredient-card",
-                          "name": "Ingredient Card",
+                          "name": "Tarjeta de ingrediente",
                           "settings": {
-                            "category_label": "CLINICAL FORMULA",
+                            "category_label": "FÓRMULA CLÍNICA",
                             "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
-                            "name": "Ingredient",
-                            "description": "Brief benefit description"
+                            "name": "Ingrediente",
+                            "description": "Breve descripción del beneficio"
                           },
                           "blocks": {}
                         }
@@ -1116,28 +1116,28 @@
       "type": "what-to-expect",
       "name": "Qué esperar",
       "settings": {
-        "section_heading_italic": "DIA 1",
-        "section_heading_main": "EXPECT",
-        "card_1_day_label": "DAY 1",
+        "section_heading_italic": "DÍA 1",
+        "section_heading_main": "ESPERAR",
+        "card_1_day_label": "DÍA 1",
         "card_1_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/tighten-lift-neck-cream-hydrating-skincare-1.7oz.jpg?v=1759926070",
-        "card_1_bullet_1": "Use GoPure everywhere for full-body firming (or just your neck!)",
-        "card_1_bullet_2": "Take before photos and throw away your old body moisturizer",
-        "card_1_bullet_3": "ActivSmooth Complex penetrates deep and gets to work instantly",
-        "card_2_day_label": "DAY 7",
+        "card_1_bullet_1": "Usa GoPure en todo el cuerpo para reafirmar (o solo en el cuello)",
+        "card_1_bullet_2": "Haz fotos de antes y despídete de tu antigua crema corporal",
+        "card_1_bullet_3": "El complejo ActivSmooth penetra en profundidad y actúa al instante",
+        "card_2_day_label": "DÍA 7",
         "card_2_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-close-up-image.jpg?v=1759926588",
-        "card_2_bullet_1": "Subtle firming improvements become visible",
-        "card_2_bullet_2": "Skin feels noticeably smoother and more supple everywhere you've applied it",
-        "card_2_bullet_3": "You're excited to continue your routine",
-        "card_3_day_label": "DAY 30",
+        "card_2_bullet_1": "Las mejoras sutiles de firmeza se hacen visibles",
+        "card_2_bullet_2": "La piel se nota más suave y flexible donde lo aplicaste",
+        "card_2_bullet_3": "Te entusiasma seguir con tu rutina",
+        "card_3_day_label": "DÍA 30",
         "card_3_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-image.jpg?v=1759926070",
-        "card_3_bullet_1": "Take your after photos",
-        "card_3_bullet_2": "Dramatic difference in firmness and smoothness everywhere you've applied it",
-        "card_3_bullet_3": "Friends start asking what you're doing differently",
-        "card_4_day_label": "DAY 60",
+        "card_3_bullet_1": "Haz tus fotos de después",
+        "card_3_bullet_2": "Diferencia notable en firmeza y suavidad donde lo aplicaste",
+        "card_3_bullet_3": "Tus amigos preguntan qué estás haciendo distinto",
+        "card_4_day_label": "DÍA 60",
         "card_4_image_url": "https://cdn.shopify.com/s/files/1/0743/0383/files/neck-skin-closeup-health-beauty.jpg?v=1759926586",
-        "card_4_bullet_1": "Your transformation photos tell the whole story",
-        "card_4_bullet_2": "Skin looks visibly lifted, firm, tighter, and years younger from head to toe",
-        "card_4_bullet_3": "You're officially addicted to your new full-body routine",
+        "card_4_bullet_1": "Las fotos de tu transformación cuentan la historia completa",
+        "card_4_bullet_2": "La piel se ve más levantada, firme, tersa y más joven de pies a cabeza",
+        "card_4_bullet_3": "Estás enganchada a tu nueva rutina corporal",
         "cta_text": "TRANSFORMA TU CUELLO HOY",
         "cta_url": "/products/gp-tighten-lift-neck-cream#product-top-variant",
         "background_color": "#fef7fa",
@@ -1149,28 +1149,28 @@
     },
     "gopure_standard_mRnzhN": {
       "type": "gopure-standard",
-      "name": "GoPure Standard",
+      "name": "Estándar GoPure",
       "settings": {
-        "badge_text": "Clinical Testing",
-        "heading_main": "THE GOPURE",
-        "heading_italic": "Standard",
-        "stat_1_title": "15 Versions Tested",
-        "stat_1_description": "Before any product touches your skin",
-        "stat_2_title": "1 Full Year",
-        "stat_2_description": "Of rigorous clinical trials per product",
-        "stat_3_title": "100+ HOURS",
-        "stat_3_description": "Of specialized training for our testing specialists",
-        "card_heading": "Real Science, Not Just Surveys",
-        "card_subtext": "While most brands rely only on 'consumer surveys' (aka opinions), we also invest in legitimate clinical research:",
-        "method_1_title": "VISIA® COMPLEXION ANALYSIS",
-        "method_1_description": "Medical-grade skin imaging technology",
-        "method_2_title": "CUTOMETER® TESTING",
-        "method_2_description": "Measures skin elasticity using precision vacuum technology",
-        "method_3_title": "BALLISTOMETER® ANALYSIS",
-        "method_3_description": "Cutting-edge technology measuring skin firmness",
-        "method_4_title": "DERMATOLOGIST SUPERVISED",
-        "method_4_description": "Every test monitored by licensed professionals",
-        "highlight_text": "<p>This is the same technology used in <strong>$500/jar luxury</strong> skincare. The difference? <strong>We don't charge you for it.</strong></p>",
+        "badge_text": "Pruebas clínicas",
+        "heading_main": "EL ESTÁNDAR",
+        "heading_italic": "GoPure",
+        "stat_1_title": "15 versiones probadas",
+        "stat_1_description": "Antes de que cualquier producto toque tu piel",
+        "stat_2_title": "1 año completo",
+        "stat_2_description": "De ensayos clínicos rigurosos por producto",
+        "stat_3_title": "100+ HORAS",
+        "stat_3_description": "De formación especializada para nuestros técnicos",
+        "card_heading": "Ciencia real, no solo encuestas",
+        "card_subtext": "Mientras muchas marcas solo usan 'encuestas de consumidores' (opiniones), nosotros invertimos en investigación clínica real:",
+        "method_1_title": "ANÁLISIS VISIA® DE COMPLEJÓN",
+        "method_1_description": "Tecnología de imagen cutánea de grado médico",
+        "method_2_title": "PRUEBAS CUTÓMETRO®",
+        "method_2_description": "Mide la elasticidad de la piel con tecnología de vacío de precisión",
+        "method_3_title": "ANÁLISIS BALLISTÓMETRO®",
+        "method_3_description": "Tecnología puntera que mide la firmeza de la piel",
+        "method_4_title": "SUPERVISIÓN DERMATOLÓGICA",
+        "method_4_description": "Cada prueba supervisada por profesionales titulados",
+        "highlight_text": "<p>Es la misma tecnología que se usa en cosmética de lujo de <strong>500 $/bote</strong>. ¿La diferencia? <strong>No te cobramos por ello.</strong></p>",
         "color_indigo": "#3f27ae",
         "color_primary": "#3f27ae",
         "badge_bg_color": "#d4f1ff"
@@ -1182,9 +1182,9 @@
         "row_e9EJd6": {
           "type": "row",
           "settings": {
-            "row_label": "Price",
+            "row_label": "Precio",
             "gopure_positive": true,
-            "gopure_value": "As low as $24.99",
+            "gopure_value": "Desde $24.99",
             "competitor_negative": true,
             "competitor_value": "$150+"
           }
@@ -1192,49 +1192,49 @@
         "row_C6kFJV": {
           "type": "row",
           "settings": {
-            "row_label": "Anti-Aging Benefits",
+            "row_label": "Beneficios antienvejecimiento",
             "gopure_positive": true,
-            "gopure_value": "Lifts, Firms, Tightens",
+            "gopure_value": "Lift, firma, reafirma",
             "competitor_negative": true,
-            "competitor_value": "Basic Moisturizing"
+            "competitor_value": "Hidratación básica"
           }
         },
         "row_GFhhnY": {
           "type": "row",
           "settings": {
-            "row_label": "Visible Firming Results",
+            "row_label": "Resultados visibles de firmeza",
             "gopure_positive": true,
-            "gopure_value": "<strong>4</strong> Weeks",
+            "gopure_value": "<strong>4</strong> semanas",
             "competitor_negative": true,
-            "competitor_value": "No Results"
+            "competitor_value": "Sin resultados"
           }
         },
         "row_UjBkmz": {
           "type": "row",
           "settings": {
-            "row_label": "Exclusive Technology",
+            "row_label": "Tecnología exclusiva",
             "gopure_positive": true,
             "gopure_value": "ActivSmooth™ Complex",
             "competitor_negative": true,
-            "competitor_value": "Generic Formula"
+            "competitor_value": "Fórmula genérica"
           }
         },
         "row_cGTjd6": {
           "type": "row",
           "settings": {
-            "row_label": "Clean and Safe Profile",
+            "row_label": "Perfil limpio y seguro",
             "gopure_positive": true,
-            "gopure_value": "<strong>2,700+</strong> Banned Ingredients",
+            "gopure_value": "<strong>2,700+</strong> ingredientes prohibidos",
             "competitor_negative": true,
-            "competitor_value": "Contains Toxins"
+            "competitor_value": "Contiene toxinas"
           }
         },
         "row_eGHwJA": {
           "type": "row",
           "settings": {
-            "row_label": "Active Ingredients",
+            "row_label": "Ingredientes activos",
             "gopure_positive": false,
-            "gopure_value": "<strong>6%</strong> (60x MORE!)",
+            "gopure_value": "<strong>6%</strong> (¡60 veces más!)",
             "competitor_negative": false,
             "competitor_value": "0.10%"
           }
@@ -1242,11 +1242,11 @@
         "row_qPY9VR": {
           "type": "row",
           "settings": {
-            "row_label": "Guarantee",
+            "row_label": "Garantía",
             "gopure_positive": true,
-            "gopure_value": "<strong>60-day</strong> money-back guarantee",
+            "gopure_value": "Garantía de devolución de <strong>60 días</strong>",
             "competitor_negative": true,
-            "competitor_value": "No guarantee"
+            "competitor_value": "Sin garantía"
           }
         }
       },
@@ -1259,10 +1259,10 @@
         "row_eGHwJA",
         "row_qPY9VR"
       ],
-      "name": "Comparison Table",
+      "name": "Tabla comparativa",
       "settings": {
-        "section_heading": "Cleaner, Proven, More Effective",
-        "competitor_name": "Luxury Body Moisturizer",
+        "section_heading": "Más limpio, probado, más efectivo",
+        "competitor_name": "Hidratante corporal de lujo",
         "background_color": "#faf8f5",
         "heading_color": "#3f27ae",
         "gopure_highlight_bg": "#e1edf5",
@@ -1275,10 +1275,10 @@
     },
     "marquee_banner_XYiyFi": {
       "type": "marquee-banner",
-      "name": "Marquee Banner",
+      "name": "Banner marquesina",
       "settings": {
-        "item_1_text": "REAL SKIN BENEFITS",
-        "item_2_text": "SCIENCE BACKED INGREDIENTS",
+        "item_1_text": "BENEFICIOS REALES PARA LA PIEL",
+        "item_2_text": "INGREDIENTES CON BASE CIENTÍFICA",
         "background_color": "#def3ff",
         "text_color": "#3f27ae",
         "dot_color": "#3f27ae",
@@ -1324,11 +1324,11 @@
       "type": "dermatologist-quote",
       "name": "Cita de dermatólogo",
       "settings": {
-        "heading_italic": "What Our Dermatologist",
-        "heading_main": "has to say",
-        "quote_text": "With consistent use, the formulation will diminish the look of sagging skin, fine lines, and wrinkles on the neck.",
-        "doctor_name": "Dr. Jessica Kaprive",
-        "doctor_title": "goPure Dermatology Advisor",
+        "heading_italic": "Lo que dice nuestra",
+        "heading_main": "dermatóloga",
+        "quote_text": "Con un uso constante, la fórmula reducirá el aspecto de piel flácida, líneas finas y arrugas en el cuello.",
+        "doctor_name": "Dra. Jessica Kaprive",
+        "doctor_title": "Asesora en dermatología de GoPure",
         "background_color": "#f3f0ff",
         "quote_background_color": "#fff5f7",
         "image_frame_color": "#dde4f6"
