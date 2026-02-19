@@ -428,7 +428,7 @@
                 "padding-block-end": 9,
                 "padding-inline-start": 13,
                 "padding-inline-end": 11
-              }, 
+              },
               "blocks": {
                 "accordion_row_3DMjfk": {
                   "type": "_accordion-row",
@@ -732,7 +732,7 @@
                           "name": "Ingredient Card",
                           "settings": {
                             "category_label": "CLINICAL FORMULA",
-                            "category_color": "#8B9DC3",
+                            "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
                             "name": "Ingredient",
                             "description": "Brief benefit description"
@@ -744,7 +744,7 @@
                           "name": "Ingredient Card",
                           "settings": {
                             "category_label": "CLINICAL FORMULA",
-                            "category_color": "#8B9DC3",
+                            "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
                             "name": "Ingredient",
                             "description": "Brief benefit description"
@@ -756,7 +756,31 @@
                           "name": "Ingredient Card",
                           "settings": {
                             "category_label": "CLINICAL FORMULA",
-                            "category_color": "#8B9DC3",
+                            "category_color": "#8b9dc3",
+                            "image": "shopify://shop_images/iamgen_2.jpg",
+                            "name": "Ingredient",
+                            "description": "Brief benefit description"
+                          },
+                          "blocks": {}
+                        },
+                        "ingredient_card_PxVHnj": {
+                          "type": "_ingredient-card",
+                          "name": "Ingredient Card",
+                          "settings": {
+                            "category_label": "CLINICAL FORMULA",
+                            "category_color": "#8b9dc3",
+                            "image": "shopify://shop_images/iamgen_2.jpg",
+                            "name": "Ingredient",
+                            "description": "Brief benefit description"
+                          },
+                          "blocks": {}
+                        },
+                        "ingredient_card_eEVpzE": {
+                          "type": "_ingredient-card",
+                          "name": "Ingredient Card",
+                          "settings": {
+                            "category_label": "CLINICAL FORMULA",
+                            "category_color": "#8b9dc3",
                             "image": "shopify://shop_images/iamgen_2.jpg",
                             "name": "Ingredient",
                             "description": "Brief benefit description"
@@ -767,7 +791,9 @@
                       "block_order": [
                         "ingredient_card_FFMdaU",
                         "ingredient_card_tHh6mf",
-                        "ingredient_card_FbVMcR"
+                        "ingredient_card_FbVMcR",
+                        "ingredient_card_PxVHnj",
+                        "ingredient_card_eEVpzE"
                       ]
                     }
                   },
