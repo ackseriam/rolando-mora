@@ -24,10 +24,10 @@
   <div class="page-width"> 
     <div class="reviews-carousel-container">
       <!-- Navigation Arrows -->
-      <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}" aria-label="Previous Slide">
+      <button class="nav-arrow nav-prev" id="PrevSlide-{{ section.id }}" aria-label="Diapositiva anterior">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
-      <button class="nav-arrow nav-next" id="NextSlide-{{ section.id }}" aria-label="Next Slide">
+      <button class="nav-arrow nav-next" id="NextSlide-{{ section.id }}" aria-label="Diapositiva siguiente">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
 
@@ -53,7 +53,7 @@
                     {%- else -%}
                       {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg review-img' }}
                     {%- endif -%}
-                    <span class="image-label-pill label-left">Before</span>
+                    <span class="image-label-pill label-left">Antes</span>
                   </div>
 
                   <div class="image-wrapper">
@@ -62,7 +62,7 @@
                     {%- else -%}
                       {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg review-img' }}
                     {%- endif -%}
-                    <span class="image-label-pill label-right">After {{ block.settings.duration }}</span>
+                    <span class="image-label-pill label-right">Después {{ block.settings.duration }}</span>
                   </div>
                 </div>
 
@@ -99,7 +99,7 @@
 
     <!-- Bottom Elements -->
     <div class="bottom-pill-container">
-        <span class="bottom-disclaimer-pill text-center">Consumer results, may vary</span>
+        <span class="bottom-disclaimer-pill text-center">Resultados de consumidores, pueden variar</span>
     </div>
 
     <div class="progress-bar-container">
@@ -183,117 +183,117 @@
 
 {% schema %}
 {
-  "name": "GoPure Stylized Reviews",
+  "name": "Reseñas GoPure",
   "tag": "section",
   "class": "section",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Heading",
-      "default": "CUSTOMERS"
+      "label": "Título",
+      "default": "CLIENTES"
     },
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Subheading",
-      "default": "can't get enough"
+      "label": "Subtítulo",
+      "default": "no pueden parar"
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Colores"
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Section Background",
+      "label": "Fondo de la sección",
       "default": "#f3f0ff"
     },
     {
       "type": "color",
       "id": "card_bg_color",
-      "label": "Card Background",
+      "label": "Fondo de la tarjeta",
       "default": "#fff5f7"
     },
     {
       "type": "color",
       "id": "badge_bg_color",
-      "label": "Pill Label Color",
+      "label": "Color de la etiqueta",
       "default": "#e0d7ff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text/Heading Color",
+      "label": "Color del texto/título",
       "default": "#4834d4"
     },
     {
       "type": "header",
-      "content": "Footer"
+      "content": "Pie"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Button Label",
-      "default": "See All Reviews"
+      "label": "Texto del botón",
+      "default": "Ver todas las reseñas"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button Link"
+      "label": "Enlace del botón"
     }
   ],
   "blocks": [
     {
       "type": "review",
-      "name": "Review",
+      "name": "Reseña",
       "settings": [
         {
           "type": "image_picker",
           "id": "image_before",
-          "label": "Before Image"
+          "label": "Imagen antes"
         },
         {
           "type": "image_picker",
           "id": "image_after",
-          "label": "After Image"
+          "label": "Imagen después"
         },
         {
           "type": "text",
           "id": "duration",
-          "label": "Duration Label",
-          "default": "8 Weeks",
-          "info": "Appears after 'After' on the image label"
+          "label": "Etiqueta de duración",
+          "default": "8 semanas",
+          "info": "Aparece después de 'Después' en la etiqueta de la imagen"
         },
         {
           "type": "textarea",
           "id": "quote",
-          "label": "Review Quote",
-          "default": "The glow is actually insane."
+          "label": "Cita de la reseña",
+          "default": "El brillo es increíble."
         },
         {
             "type": "image_picker",
             "id": "author_image",
-            "label": "Author Photo"
+            "label": "Foto del autor"
         },
         {
           "type": "text",
           "id": "author_name",
-          "label": "Author Name",
+          "label": "Nombre del autor",
           "default": "Sarah J."
         },
         {
           "type": "text",
           "id": "concern",
-          "label": "Skin Concern",
-          "default": "Dullness"
+          "label": "Problema de piel",
+          "default": "Opacidad"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "GoPure Stylized Reviews",
+      "name": "Reseñas GoPure",
       "blocks": [
         {
           "type": "review"

@@ -1,49 +1,49 @@
 {%- comment -%}
-  Ingredient Card – goPure style
-  Used inside _ingredients-carousel block
+  Tarjeta de ingrediente – estilo goPure
+  Usada dentro del bloque _ingredients-carousel
 {%- endcomment -%}
 
 {% render 'ingredient-card-content', block: block %}
 
 {% schema %}
 {
-  "name": "Ingredient Card",
+  "name": "Tarjeta de ingrediente",
   "tag": null,
   "settings": [
     {
       "type": "text",
       "id": "category_label",
-      "label": "Category label",
-      "default": "CLINICAL FORMULA",
-      "info": "e.g. CLINICAL FORMULA, NATURAL EXTRACT"
+      "label": "Etiqueta de categoría",
+      "default": "FÓRMULA CLÍNICA",
+      "info": "p. ej. FÓRMULA CLÍNICA, EXTRACTO NATURAL"
     },
     {
       "type": "color",
       "id": "category_color",
-      "label": "Category label color",
+      "label": "Color de la etiqueta de categoría",
       "default": "#8B9DC3"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Ingredient image"
+      "label": "Imagen del ingrediente"
     },
     {
       "type": "text",
       "id": "name",
-      "label": "Ingredient name",
-      "default": "Ingredient"
+      "label": "Nombre del ingrediente",
+      "default": "Ingrediente"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
-      "default": "Brief benefit description"
+      "label": "Descripción",
+      "default": "Breve descripción del beneficio"
     }
   ],
   "presets": [
     {
-      "name": "Ingredient Card",
+      "name": "Tarjeta de ingrediente",
       "category": "t:categories.product"
     } 
   ]
