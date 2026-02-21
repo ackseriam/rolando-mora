@@ -482,22 +482,12 @@
             "author_name": "Sarah J.",
             "concern": "Opacidad"
           }
-        },
-        "review_7At3cK": {
-          "type": "review",
-          "settings": {
-            "duration": "8 semanas",
-            "quote": "El brillo es increíble.",
-            "author_name": "Sarah J.",
-            "concern": "Opacidad"
-          }
         }
       },
       "block_order": [
         "review_r7y7HP",
         "review_EJfJqk",
-        "review_iYr86N",
-        "review_7At3cK"
+        "review_iYr86N"
       ],
       "name": "Reseñas GoPure",
       "settings": {
