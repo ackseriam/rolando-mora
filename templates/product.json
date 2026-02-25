@@ -1428,7 +1428,7 @@
           "name": "t:names.video",
           "settings": {
             "source": "uploaded",
-            "video": "shopify://files/videos/459fd1e96324472cad71422b91014b37.mp4",
+            "video": "shopify://files/videos/53c3e83be4cb44fdb67e5f00f81c28b2.mp4",
             "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
