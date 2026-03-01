@@ -402,18 +402,6 @@
             "cta_text": "Saber más"
           }
         },
-        "product_ti8LjV": {
-          "type": "product",
-          "settings": {
-            "product": "tighten-lift-neck-cream",
-            "caption": "",
-            "hover_image": "shopify://shop_images/IMG_3042.jpg",
-            "hover_image_alt": "",
-            "badge": "Más vendido",
-            "badge_secondary": "Ahorra 42%",
-            "cta_text": "Saber más"
-          }
-        },
         "product_WdK4GJ": {
           "type": "product",
           "settings": {
@@ -430,7 +418,6 @@
         "product_rziVcc",
         "product_6BBidx",
         "product_TeHKjJ",
-        "product_ti8LjV",
         "product_WdK4GJ"
       ],
       "name": "Carrusel de lotes",
