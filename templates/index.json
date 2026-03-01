@@ -788,7 +788,8 @@
           "type": "post",
           "settings": {
             "post_type": "image",
-            "alt_text": "",
+            "image": "shopify://shop_images/IMG_3027.jpg",
+            "alt_text": "Recupere el brillo y la tonicidad. Los resultados son increibles",
             "post_url": "",
             "overlay_text": "",
             "show_labels": true
