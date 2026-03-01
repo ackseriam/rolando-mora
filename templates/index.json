@@ -744,7 +744,7 @@
           "type": "post",
           "settings": {
             "post_type": "video",
-            "video": "shopify://files/videos/cbe363a3c19c4fb59f10d23d9a7b9eba.mp4",
+            "image": "shopify://shop_images/IMG_3028.jpg",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
