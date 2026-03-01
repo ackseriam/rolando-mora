@@ -817,6 +817,17 @@
             "overlay_text": "Los resultados son increibles",
             "show_labels": true
           }
+        },
+        "post_CCNpxq": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "image": "shopify://shop_images/IMG_3030.jpg",
+            "alt_text": "Recupere el brillo y la tonicidad. Los resultados son increibles",
+            "post_url": "",
+            "overlay_text": "Llevo 7 semanas usando el producto y veo los beneficios. Lo recomiendo",
+            "show_labels": true
+          }
         }
       },
       "block_order": [
@@ -827,7 +838,8 @@
         "post_FmpnYV",
         "post_XRmjAi",
         "post_73pknw",
-        "post_Qn6pN4"
+        "post_Qn6pN4",
+        "post_CCNpxq"
       ],
       "name": "Social Feed",
       "settings": {
