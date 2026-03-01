@@ -474,10 +474,11 @@
         "review_iYr86N": {
           "type": "review",
           "settings": {
-            "image_before": "shopify://shop_images/imagen_8.jpg",
-            "image_after": "shopify://shop_images/imagen_8.jpg",
+            "image_before": "shopify://shop_images/IMG_3018.jpg",
+            "image_after": "shopify://shop_images/IMG_3018.jpg",
             "duration": "8 semanas",
             "quote": "Piel renovada con un tono increíble.",
+            "author_image": "shopify://shop_images/IMG_3019.jpg",
             "author_name": "Alexandra Whitman",
             "concern": "Tonicidad"
           }
