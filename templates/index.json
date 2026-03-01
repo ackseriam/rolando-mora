@@ -743,7 +743,7 @@
         "post_pwzcCg": {
           "type": "post",
           "settings": {
-            "post_type": "video",
+            "post_type": "image",
             "image": "shopify://shop_images/IMG_3028.jpg",
             "alt_text": "",
             "post_url": "",
