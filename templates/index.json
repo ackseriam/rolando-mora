@@ -718,6 +718,17 @@
     "social_feed_aW3VjN": {
       "type": "social-feed",
       "blocks": {
+        "post_4rinVm": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "image": "shopify://shop_images/IMG_3043.jpg",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "Después de usar el producto por 8 semanas recuperé la firmeza y el tono de mi piel",
+            "show_labels": true
+          }
+        },
         "post_yMAnRC": {
           "type": "post",
           "settings": {
@@ -797,6 +808,7 @@
         }
       },
       "block_order": [
+        "post_4rinVm",
         "post_yMAnRC",
         "post_N9dfiQ",
         "post_pwzcCg",
