@@ -805,6 +805,17 @@
     "social_feed_aW3VjN": {
       "type": "social-feed",
       "blocks": {
+        "post_XcDRQJ": {
+          "type": "post",
+          "settings": {
+            "post_type": "image",
+            "video": "shopify://files/videos/b3172c99-95bf-4d04-9007-ca4598d6e43a.mov",
+            "alt_text": "",
+            "post_url": "",
+            "overlay_text": "",
+            "show_labels": true
+          }
+        },
         "post_4rinVm": {
           "type": "post",
           "settings": {
@@ -906,6 +917,7 @@
         }
       },
       "block_order": [
+        "post_XcDRQJ",
         "post_4rinVm",
         "post_yMAnRC",
         "post_N9dfiQ",
