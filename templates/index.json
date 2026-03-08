@@ -896,8 +896,9 @@
         "post_CCNpxq": {
           "type": "post",
           "settings": {
-            "post_type": "image",
+            "post_type": "video",
             "image": "shopify://shop_images/IMG_3030.jpg",
+            "video": "shopify://files/videos/b3172c99-95bf-4d04-9007-ca4598d6e43a.mov",
             "alt_text": "Recupere el brillo y la tonicidad. Los resultados son increibles",
             "post_url": "",
             "overlay_text": "Beneficios visibles",
