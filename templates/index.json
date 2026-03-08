@@ -805,61 +805,6 @@
     "social_feed_aW3VjN": {
       "type": "social-feed",
       "blocks": {
-        "post_iNhG6Q": {
-          "type": "post",
-          "settings": {
-            "post_type": "image",
-            "video": "shopify://files/videos/d3b4447b-1027-421d-aa9c-c1c9156698f9.mov",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
-        },
-        "post_NCAacy": {
-          "type": "post",
-          "settings": {
-            "post_type": "image",
-            "video": "shopify://files/videos/b369e865-9294-49b2-abba-07a0ea252c2f.mov",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
-        },
-        "post_PwpqNa": {
-          "type": "post",
-          "settings": {
-            "post_type": "image",
-            "video": "shopify://files/videos/fc09adb1-a5b1-4fea-955d-ce1b81227162.mov",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
-        },
-        "post_RygQUy": {
-          "type": "post",
-          "settings": {
-            "post_type": "image",
-            "video": "shopify://files/videos/b3172c99-95bf-4d04-9007-ca4598d6e43a.mov",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
-        },
-        "post_NPFqzD": {
-          "type": "post",
-          "settings": {
-            "post_type": "image",
-            "video": "shopify://files/videos/b884dbea-cb7f-4206-8b22-ebf47b3e3def.mov",
-            "alt_text": "",
-            "post_url": "",
-            "overlay_text": "",
-            "show_labels": true
-          }
-        },
         "post_4rinVm": {
           "type": "post",
           "settings": {
@@ -961,11 +906,6 @@
         }
       },
       "block_order": [
-        "post_iNhG6Q",
-        "post_NCAacy",
-        "post_PwpqNa",
-        "post_RygQUy",
-        "post_NPFqzD",
         "post_4rinVm",
         "post_yMAnRC",
         "post_N9dfiQ",
