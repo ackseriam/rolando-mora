@@ -601,6 +601,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/b3172c99-95bf-4d04-9007-ca4598d6e43a.mov",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -624,6 +625,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/fc09adb1-a5b1-4fea-955d-ce1b81227162.mov",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
@@ -818,7 +820,7 @@
           "type": "post",
           "settings": {
             "post_type": "image",
-            "video": "shopify://files/videos/d3b4447b-1027-421d-aa9c-c1c9156698f9.mov",
+            "video": "shopify://files/videos/b884dbea-cb7f-4206-8b22-ebf47b3e3def.mov",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "",
