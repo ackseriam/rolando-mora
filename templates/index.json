@@ -808,8 +808,9 @@
         "post_4rinVm": {
           "type": "post",
           "settings": {
-            "post_type": "image",
+            "post_type": "video",
             "image": "shopify://shop_images/IMG_3043.jpg",
+            "video": "shopify://files/videos/b884dbea-cb7f-4206-8b22-ebf47b3e3def.mov",
             "alt_text": "",
             "post_url": "",
             "overlay_text": "Recuperé la firmeza y el tono de mi piel",
